@@ -1,0 +1,5 @@
+<launch>
+  <arg name="robot_description" />
+  <arg name="DOBOT_TYPE" default="$(env DOBOT_TYPE)" />
+  <include file="$(find dobot_gazebo)/launch/robot_control_panther.xml"/>
+</launch>

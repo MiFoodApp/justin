@@ -1,0 +1,6 @@
+devel_space: /home/bclacy/Cube-Sorting-Robot/devel
+install: false
+install_space: /home/bclacy/Cube-Sorting-Robot/install
+profile: default
+source_space: /home/bclacy/Cube-Sorting-Robot/src
+workspace: /home/bclacy/Cube-Sorting-Robot

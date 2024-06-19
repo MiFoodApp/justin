@@ -1,0 +1,28 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "${default}",
+        "limitSymbolsToIncludedHeaders": false
+      },
+      "includePath": [
+        "/home/justin/catkin_ws/devel/include/**",
+        "/opt/ros/noetic/include/**",
+        "/home/justin/catkin_ws/src/MiFood/Cube-Sorting-Robot/src/dh_gripper_ros/dh_gripper_driver/include/**",
+        "/home/justin/catkin_ws/src/MiFood/Cube-Sorting-Robot/src/dobot_bringup/include/**",
+        "/home/justin/catkin_ws/src/MiFood/Cube-Sorting-Robot/src/grasping/gazebo-pkgs/gazebo_grasp_plugin/include/**",
+        "/home/justin/catkin_ws/src/MiFood/Cube-Sorting-Robot/src/grasping/gazebo-pkgs/gazebo_state_plugins/include/**",
+        "/home/justin/catkin_ws/src/MiFood/Cube-Sorting-Robot/src/grasping/gazebo-pkgs/gazebo_test_tools/include/**",
+        "/home/justin/catkin_ws/src/MiFood/Cube-Sorting-Robot/src/grasping/gazebo-pkgs/gazebo_version_helpers/include/**",
+        "/home/justin/catkin_ws/src/MiFood/Cube-Sorting-Robot/src/grasping/gazebo-pkgs/gazebo_world_plugin_loader/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS",
+      "intelliSenseMode": "gcc-x64",
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "gnu11",
+      "cppStandard": "c++14"
+    }
+  ],
+  "version": 4
+}

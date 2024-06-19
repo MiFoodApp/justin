@@ -1,0 +1,5 @@
+Symlinking /home/bclacy/Cube-Sorting-Robot/devel/lib/pkgconfig/dh_gripper_driver.pc
+Symlinking /home/bclacy/Cube-Sorting-Robot/devel/lib/dh_gripper_driver/dh_gripper_driver_test
+Symlinking /home/bclacy/Cube-Sorting-Robot/devel/lib/dh_gripper_driver/dh_gripper_driver
+Symlinking /home/bclacy/Cube-Sorting-Robot/devel/share/dh_gripper_driver/cmake/dh_gripper_driverConfig.cmake
+Symlinking /home/bclacy/Cube-Sorting-Robot/devel/share/dh_gripper_driver/cmake/dh_gripper_driverConfig-version.cmake

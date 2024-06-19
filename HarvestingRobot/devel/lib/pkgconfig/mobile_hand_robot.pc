@@ -1,0 +1,1 @@
+/home/bclacy/Cube-Sorting-Robot/devel/.private/mobile_hand_robot/lib/pkgconfig/mobile_hand_robot.pc

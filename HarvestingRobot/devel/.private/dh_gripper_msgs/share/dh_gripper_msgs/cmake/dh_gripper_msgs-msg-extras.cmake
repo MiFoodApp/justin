@@ -1,0 +1,2 @@
+set(dh_gripper_msgs_MESSAGE_FILES "/home/bclacy/Cube-Sorting-Robot/src/dh_gripper_ros/dh_gripper_msgs/msg/GripperCtrl.msg;/home/bclacy/Cube-Sorting-Robot/src/dh_gripper_ros/dh_gripper_msgs/msg/GripperState.msg;/home/bclacy/Cube-Sorting-Robot/src/dh_gripper_ros/dh_gripper_msgs/msg/GripperRotCtrl.msg;/home/bclacy/Cube-Sorting-Robot/src/dh_gripper_ros/dh_gripper_msgs/msg/GripperRotState.msg")
+set(dh_gripper_msgs_SERVICE_FILES "")

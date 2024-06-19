@@ -1,0 +1,8 @@
+prefix=/home/bclacy/Cube-Sorting-Robot/devel/.private/dh_pgc140_urdf
+
+Name: dh_pgc140_urdf
+Description: Description of dh_pgc140_urdf
+Version: 1.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

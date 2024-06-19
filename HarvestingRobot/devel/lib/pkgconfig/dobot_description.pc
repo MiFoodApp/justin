@@ -1,0 +1,1 @@
+/home/bclacy/Cube-Sorting-Robot/devel/.private/dobot_description/lib/pkgconfig/dobot_description.pc

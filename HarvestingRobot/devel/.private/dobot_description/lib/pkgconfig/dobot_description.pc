@@ -1,0 +1,8 @@
+prefix=/home/bclacy/Cube-Sorting-Robot/devel/.private/dobot_description
+
+Name: dobot_description
+Description: Description of dobot_description
+Version: 1.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

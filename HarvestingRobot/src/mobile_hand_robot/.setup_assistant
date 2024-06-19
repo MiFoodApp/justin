@@ -1,0 +1,11 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: dobot_gazebo
+    relative_path: urdf/nova5_robot_panther.xacro
+    xacro_args: ""
+  SRDF:
+    relative_path: config/nova5_robot.srdf
+  CONFIG:
+    author_name: Usman
+    author_email: engr.moh.usman@gmail.com
+    generated_timestamp: 1704455980

@@ -1,0 +1,1 @@
+/home/bclacy/Cube-Sorting-Robot/devel/.private/object_msgs/share/roseus/ros/object_msgs/manifest.l

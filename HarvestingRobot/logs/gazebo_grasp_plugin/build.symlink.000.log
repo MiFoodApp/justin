@@ -1,0 +1,5 @@
+Symlinking /home/bclacy/Cube-Sorting-Robot/devel/lib/libgazebo_grasp_msgs.so
+Symlinking /home/bclacy/Cube-Sorting-Robot/devel/lib/libgazebo_grasp_fix.so
+Symlinking /home/bclacy/Cube-Sorting-Robot/devel/lib/pkgconfig/gazebo_grasp_plugin.pc
+Symlinking /home/bclacy/Cube-Sorting-Robot/devel/share/gazebo_grasp_plugin/cmake/gazebo_grasp_pluginConfig-version.cmake
+Symlinking /home/bclacy/Cube-Sorting-Robot/devel/share/gazebo_grasp_plugin/cmake/gazebo_grasp_pluginConfig.cmake

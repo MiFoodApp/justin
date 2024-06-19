@@ -1,0 +1,1 @@
+/home/bclacy/Cube-Sorting-Robot/devel/.private/dh_gripper_msgs/share/roseus/ros/dh_gripper_msgs/msg/GripperRotCtrl.l

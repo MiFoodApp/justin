@@ -1,0 +1,3 @@
+roslaunch cube_sorting_robot simulation.launch
+rosrun cube_sorting_robot control_hand.py
+roslaunch cube_sorting_robot cube_sorter.launch

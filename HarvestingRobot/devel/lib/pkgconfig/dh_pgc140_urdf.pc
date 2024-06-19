@@ -1,0 +1,1 @@
+/home/bclacy/Cube-Sorting-Robot/devel/.private/dh_pgc140_urdf/lib/pkgconfig/dh_pgc140_urdf.pc

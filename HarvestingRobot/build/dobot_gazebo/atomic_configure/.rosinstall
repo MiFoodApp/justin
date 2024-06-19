@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/bclacy/Cube-Sorting-Robot/devel/.private/dobot_gazebo/setup.sh

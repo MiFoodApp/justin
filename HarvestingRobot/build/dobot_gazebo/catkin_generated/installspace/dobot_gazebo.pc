@@ -1,0 +1,8 @@
+prefix=/home/bclacy/Cube-Sorting-Robot/install
+
+Name: dobot_gazebo
+Description: Description of dobot_gazebo
+Version: 1.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

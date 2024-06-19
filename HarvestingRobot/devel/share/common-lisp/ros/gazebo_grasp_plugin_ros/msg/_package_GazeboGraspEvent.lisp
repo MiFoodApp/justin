@@ -1,0 +1,1 @@
+/home/bclacy/Cube-Sorting-Robot/devel/.private/gazebo_grasp_plugin_ros/share/common-lisp/ros/gazebo_grasp_plugin_ros/msg/_package_GazeboGraspEvent.lisp

@@ -1,0 +1,30 @@
+[  0%] Built target geometry_msgs_generate_messages_py
+[  0%] Built target geometry_msgs_generate_messages_lisp
+[  0%] Built target shape_msgs_generate_messages_lisp
+[  0%] Built target std_msgs_generate_messages_lisp
+[  0%] Built target object_recognition_msgs_generate_messages_lisp
+[  0%] Built target std_msgs_generate_messages_py
+[  0%] Built target object_recognition_msgs_generate_messages_nodejs
+[  0%] Built target object_recognition_msgs_generate_messages_py
+[  0%] Built target geometry_msgs_generate_messages_nodejs
+[  0%] Built target shape_msgs_generate_messages_py
+[  0%] Built target std_msgs_generate_messages_nodejs
+[  0%] Built target shape_msgs_generate_messages_nodejs
+[  0%] Built target object_recognition_msgs_generate_messages_eus
+[  0%] Built target std_msgs_generate_messages_eus
+[  0%] Built target shape_msgs_generate_messages_eus
+[  0%] Built target std_msgs_generate_messages_cpp
+[  0%] Built target geometry_msgs_generate_messages_eus
+[  0%] Built target shape_msgs_generate_messages_cpp
+[  0%] Built target object_recognition_msgs_generate_messages_cpp
+[  0%] Built target geometry_msgs_generate_messages_cpp
+[  0%] Built target _object_msgs_generate_messages_check_deps_ObjectPose
+[  0%] Built target _object_msgs_generate_messages_check_deps_Object
+[  0%] Built target _object_msgs_generate_messages_check_deps_RegisterObject
+[  0%] Built target _object_msgs_generate_messages_check_deps_ObjectInfo
+[ 91%] Built target object_msgs_generate_messages_nodejs
+[ 91%] Built target object_msgs_generate_messages_cpp
+[ 91%] Built target object_msgs_generate_messages_lisp
+[100%] Built target object_msgs_generate_messages_eus
+[100%] Built target object_msgs_generate_messages_py
+[100%] Built target object_msgs_generate_messages

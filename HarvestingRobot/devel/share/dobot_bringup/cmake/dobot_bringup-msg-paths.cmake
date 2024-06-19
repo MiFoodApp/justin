@@ -1,0 +1,1 @@
+/home/bclacy/Cube-Sorting-Robot/devel/.private/dobot_bringup/share/dobot_bringup/cmake/dobot_bringup-msg-paths.cmake

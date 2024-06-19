@@ -1,0 +1,764 @@
+[35m[1mScanning dependencies of target _dobot_bringup_generate_messages_check_deps_AOExecute[0m
+[35m[1mScanning dependencies of target _dobot_bringup_generate_messages_check_deps_Arch[0m
+[35m[1mScanning dependencies of target _dobot_bringup_generate_messages_check_deps_StartPath[0m
+[35m[1mScanning dependencies of target roscpp_generate_messages_nodejs[0m
+[35m[1mScanning dependencies of target _dobot_bringup_generate_messages_check_deps_AO[0m
+[35m[1mScanning dependencies of target _dobot_bringup_generate_messages_check_deps_MoveJog[0m
+[35m[1mScanning dependencies of target _dobot_bringup_generate_messages_check_deps_PowerOn[0m
+[35m[1mScanning dependencies of target _dobot_bringup_generate_messages_check_deps_SpeedJ[0m
+[35m[1mScanning dependencies of target _dobot_bringup_generate_messages_check_deps_DO[0m
+[35m[1mScanning dependencies of target _dobot_bringup_generate_messages_check_deps_ToolVectorActual[0m
+[35m[1mScanning dependencies of target _dobot_bringup_generate_messages_check_deps_TcpDashboard[0m
+[35m[1mScanning dependencies of target _dobot_bringup_generate_messages_check_deps_StopDrag[0m
+[  0%] Built target roscpp_generate_messages_nodejs
+[35m[1mScanning dependencies of target _dobot_bringup_generate_messages_check_deps_ToolDOExecute[0m
+[35m[1mScanning dependencies of target _dobot_bringup_generate_messages_check_deps_Continues[0m
+[  0%] Built target _dobot_bringup_generate_messages_check_deps_AOExecute
+[  0%] Built target _dobot_bringup_generate_messages_check_deps_StartPath
+[  0%] Built target _dobot_bringup_generate_messages_check_deps_TcpDashboard
+[  0%] Built target _dobot_bringup_generate_messages_check_deps_PowerOn
+[  0%] Built target _dobot_bringup_generate_messages_check_deps_SpeedJ
+[  0%] Built target _dobot_bringup_generate_messages_check_deps_AO
+[  0%] Built target _dobot_bringup_generate_messages_check_deps_MoveJog
+[35m[1mScanning dependencies of target _dobot_bringup_generate_messages_check_deps_TcpRealData[0m
+[  0%] Built target _dobot_bringup_generate_messages_check_deps_Arch
+[  0%] Built target _dobot_bringup_generate_messages_check_deps_ToolVectorActual
+[35m[1mScanning dependencies of target _dobot_bringup_generate_messages_check_deps_CP[0m
+[35m[1mScanning dependencies of target _dobot_bringup_generate_messages_check_deps_ModbusClose[0m
+[  0%] Built target _dobot_bringup_generate_messages_check_deps_DO
+[35m[1mScanning dependencies of target _dobot_bringup_generate_messages_check_deps_PositiveSolution[0m
+[35m[1mScanning dependencies of target _dobot_bringup_generate_messages_check_deps_AccJ[0m
+[35m[1mScanning dependencies of target _dobot_bringup_generate_messages_check_deps_PayLoad[0m
+[35m[1mScanning dependencies of target _dobot_bringup_generate_messages_check_deps_SetPayload[0m
+[35m[1mScanning dependencies of target _dobot_bringup_generate_messages_check_deps_ModbusCreate[0m
+[35m[1mScanning dependencies of target _dobot_bringup_generate_messages_check_deps_RelMovLTool[0m
+[35m[1mScanning dependencies of target _dobot_bringup_generate_messages_check_deps_StartTrace[0m
+[35m[1mScanning dependencies of target _dobot_bringup_generate_messages_check_deps_SpeedFactor[0m
+[35m[1mScanning dependencies of target _dobot_bringup_generate_messages_check_deps_DOExecute[0m
+[  0%] Built target _dobot_bringup_generate_messages_check_deps_ToolDOExecute
+[  0%] Built target _dobot_bringup_generate_messages_check_deps_StopDrag
+[  0%] Built target _dobot_bringup_generate_messages_check_deps_Continues
+[35m[1mScanning dependencies of target _dobot_bringup_generate_messages_check_deps_ClearError[0m
+[  0%] Built target _dobot_bringup_generate_messages_check_deps_ModbusClose
+[  0%] Built target _dobot_bringup_generate_messages_check_deps_CP
+[  0%] Built target _dobot_bringup_generate_messages_check_deps_TcpRealData
+[  0%] Built target _dobot_bringup_generate_messages_check_deps_AccJ
+[  0%] Built target _dobot_bringup_generate_messages_check_deps_SetPayload
+[  0%] Built target _dobot_bringup_generate_messages_check_deps_ModbusCreate
+[  0%] Built target _dobot_bringup_generate_messages_check_deps_StartTrace
+[  0%] Built target _dobot_bringup_generate_messages_check_deps_DOExecute
+[  0%] Built target _dobot_bringup_generate_messages_check_deps_PositiveSolution
+[35m[1mScanning dependencies of target _dobot_bringup_generate_messages_check_deps_RobotStatus[0m
+[35m[1mScanning dependencies of target _dobot_bringup_generate_messages_check_deps_ResetRobot[0m
+[35m[1mScanning dependencies of target _dobot_bringup_generate_messages_check_deps_Tool[0m
+[  0%] Built target _dobot_bringup_generate_messages_check_deps_RelMovLTool
+[35m[1mScanning dependencies of target _dobot_bringup_generate_messages_check_deps_Arc[0m
+[35m[1mScanning dependencies of target _dobot_bringup_generate_messages_check_deps_RunScript[0m
+[35m[1mScanning dependencies of target _dobot_bringup_generate_messages_check_deps_MovJIO[0m
+[35m[1mScanning dependencies of target _dobot_bringup_generate_messages_check_deps_SetArmOrientation[0m
+[35m[1mScanning dependencies of target _dobot_bringup_generate_messages_check_deps_SpeedL[0m
+[  0%] Built target _dobot_bringup_generate_messages_check_deps_SpeedFactor
+[  0%] Built target _dobot_bringup_generate_messages_check_deps_PayLoad
+[35m[1mScanning dependencies of target _dobot_bringup_generate_messages_check_deps_JointMovJ[0m
+[35m[1mScanning dependencies of target _dobot_bringup_generate_messages_check_deps_SetSafeSkin[0m
+[35m[1mScanning dependencies of target _dobot_bringup_generate_messages_check_deps_EnableRobot[0m
+[35m[1mScanning dependencies of target _dobot_bringup_generate_messages_check_deps_LimZ[0m
+[35m[1mScanning dependencies of target _dobot_bringup_generate_messages_check_deps_GetPathStartPose[0m
+[35m[1mScanning dependencies of target _dobot_bringup_generate_messages_check_deps_RobotMode[0m
+[35m[1mScanning dependencies of target _dobot_bringup_generate_messages_check_deps_DisableRobot[0m
+[  0%] Built target _dobot_bringup_generate_messages_check_deps_ClearError
+[  0%] Built target _dobot_bringup_generate_messages_check_deps_ResetRobot
+[35m[1mScanning dependencies of target _dobot_bringup_generate_messages_check_deps_StartDrag[0m
+[  0%] Built target _dobot_bringup_generate_messages_check_deps_SetArmOrientation
+[  0%] Built target _dobot_bringup_generate_messages_check_deps_Arc
+[  0%] Built target _dobot_bringup_generate_messages_check_deps_SpeedL
+[  0%] Built target _dobot_bringup_generate_messages_check_deps_JointMovJ
+[  0%] Built target _dobot_bringup_generate_messages_check_deps_RunScript
+[35m[1mScanning dependencies of target _dobot_bringup_generate_messages_check_deps_ToolDI[0m
+[  0%] Built target _dobot_bringup_generate_messages_check_deps_MovJIO
+[35m[1mScanning dependencies of target _dobot_bringup_generate_messages_check_deps_HandleTrajPoints[0m
+[  0%] Built target _dobot_bringup_generate_messages_check_deps_LimZ
+[35m[1mScanning dependencies of target _dobot_bringup_generate_messages_check_deps_GetPose[0m
+[35m[1mScanning dependencies of target std_msgs_generate_messages_py[0m
+[35m[1mScanning dependencies of target _dobot_bringup_generate_messages_check_deps_PauseScript[0m
+[  0%] Built target _dobot_bringup_generate_messages_check_deps_RobotMode
+[  0%] Built target _dobot_bringup_generate_messages_check_deps_RobotStatus
+[35m[1mScanning dependencies of target _dobot_bringup_generate_messages_check_deps_StopScript[0m
+[  0%] Built target _dobot_bringup_generate_messages_check_deps_Tool
+[  0%] Built target _dobot_bringup_generate_messages_check_deps_DisableRobot
+[  0%] Built target _dobot_bringup_generate_messages_check_deps_GetPathStartPose
+[  0%] Built target _dobot_bringup_generate_messages_check_deps_SetSafeSkin
+[  0%] Built target _dobot_bringup_generate_messages_check_deps_EnableRobot
+[  0%] Built target std_msgs_generate_messages_py
+[35m[1mScanning dependencies of target _dobot_bringup_generate_messages_check_deps_SyncAll[0m
+[35m[1mScanning dependencies of target _dobot_bringup_generate_messages_check_deps_DIGroup[0m
+[35m[1mScanning dependencies of target _dobot_bringup_generate_messages_check_deps_ToolDO[0m
+[  0%] Built target _dobot_bringup_generate_messages_check_deps_StartDrag
+[35m[1mScanning dependencies of target _dobot_bringup_generate_messages_check_deps_SetObstacleAvoid[0m
+[  0%] Built target _dobot_bringup_generate_messages_check_deps_GetPose
+[  0%] Built target _dobot_bringup_generate_messages_check_deps_StopScript
+[  0%] Built target _dobot_bringup_generate_messages_check_deps_HandleTrajPoints
+[  0%] Built target _dobot_bringup_generate_messages_check_deps_ToolDI
+[35m[1mScanning dependencies of target _dobot_bringup_generate_messages_check_deps_ContinueScript[0m
+[  0%] Built target _dobot_bringup_generate_messages_check_deps_PauseScript
+[  0%] Built target _dobot_bringup_generate_messages_check_deps_SyncAll
+[  0%] Built target _dobot_bringup_generate_messages_check_deps_ToolDO
+[35m[1mScanning dependencies of target _dobot_bringup_generate_messages_check_deps_RelMovL[0m
+[  0%] Built target _dobot_bringup_generate_messages_check_deps_DIGroup
+[35m[1mScanning dependencies of target _dobot_bringup_generate_messages_check_deps_Jump[0m
+[  0%] Built target _dobot_bringup_generate_messages_check_deps_SetObstacleAvoid
+[35m[1mScanning dependencies of target _dobot_bringup_generate_messages_check_deps_GetHoldRegs[0m
+[35m[1mScanning dependencies of target _dobot_bringup_generate_messages_check_deps_EmergencyStop[0m
+[  0%] Built target _dobot_bringup_generate_messages_check_deps_ContinueScript
+[35m[1mScanning dependencies of target _dobot_bringup_generate_messages_check_deps_SetCollisionLevel[0m
+[  0%] Built target _dobot_bringup_generate_messages_check_deps_RelMovL
+[35m[1mScanning dependencies of target _dobot_bringup_generate_messages_check_deps_StartFCTrace[0m
+[35m[1mScanning dependencies of target _dobot_bringup_generate_messages_check_deps_InverseSolution[0m
+[35m[1mScanning dependencies of target _dobot_bringup_generate_messages_check_deps_DigitalOutputs[0m
+[35m[1mScanning dependencies of target _dobot_bringup_generate_messages_check_deps_ToolAI[0m
+[  0%] Built target _dobot_bringup_generate_messages_check_deps_Jump
+[35m[1mScanning dependencies of target _dobot_bringup_generate_messages_check_deps_SetTerminalKeys[0m
+[  0%] Built target _dobot_bringup_generate_messages_check_deps_GetHoldRegs
+[35m[1mScanning dependencies of target _dobot_bringup_generate_messages_check_deps_MovLIO[0m
+[35m[1mScanning dependencies of target _dobot_bringup_generate_messages_check_deps_GetAngle[0m
+[35m[1mScanning dependencies of target _dobot_bringup_generate_messages_check_deps_RelMovJTool[0m
+[  0%] Built target _dobot_bringup_generate_messages_check_deps_StartFCTrace
+[  0%] Built target _dobot_bringup_generate_messages_check_deps_SetCollisionLevel
+[  0%] Built target _dobot_bringup_generate_messages_check_deps_ToolAI
+[35m[1mScanning dependencies of target _dobot_bringup_generate_messages_check_deps_StopmoveJog[0m
+[35m[1mScanning dependencies of target _dobot_bringup_generate_messages_check_deps_SetCoils[0m
+[35m[1mScanning dependencies of target _dobot_bringup_generate_messages_check_deps_DI[0m
+[35m[1mScanning dependencies of target _dobot_bringup_generate_messages_check_deps_GetSixForceData[0m
+[  0%] Built target _dobot_bringup_generate_messages_check_deps_InverseSolution
+[  0%] Built target _dobot_bringup_generate_messages_check_deps_DigitalOutputs
+[  0%] Built target _dobot_bringup_generate_messages_check_deps_EmergencyStop
+[35m[1mScanning dependencies of target _dobot_bringup_generate_messages_check_deps_BrakeControl[0m
+[35m[1mScanning dependencies of target _dobot_bringup_generate_messages_check_deps_RelMovJUser[0m
+[  0%] Built target _dobot_bringup_generate_messages_check_deps_SetTerminalKeys
+[35m[1mScanning dependencies of target _dobot_bringup_generate_messages_check_deps_GetErrorID[0m
+[35m[1mScanning dependencies of target _dobot_bringup_generate_messages_check_deps_GetInRegs[0m
+[35m[1mScanning dependencies of target _dobot_bringup_generate_messages_check_deps_RelMovLUser[0m
+[35m[1mScanning dependencies of target _dobot_bringup_generate_messages_check_deps_AccL[0m
+[35m[1mScanning dependencies of target _dobot_bringup_generate_messages_check_deps_MovJ[0m
+[  0%] Built target _dobot_bringup_generate_messages_check_deps_MovLIO
+[  0%] Built target _dobot_bringup_generate_messages_check_deps_GetAngle
+[  0%] Built target _dobot_bringup_generate_messages_check_deps_RelMovJTool
+[35m[1mScanning dependencies of target _dobot_bringup_generate_messages_check_deps_pause[0m
+[35m[1mScanning dependencies of target _dobot_bringup_generate_messages_check_deps_GetInBits[0m
+[35m[1mScanning dependencies of target _dobot_bringup_generate_messages_check_deps_DOGroup[0m
+[  0%] Built target _dobot_bringup_generate_messages_check_deps_StopmoveJog
+[  0%] Built target _dobot_bringup_generate_messages_check_deps_SetCoils
+[  0%] Built target _dobot_bringup_generate_messages_check_deps_DI
+[  0%] Built target _dobot_bringup_generate_messages_check_deps_BrakeControl
+[  0%] Built target _dobot_bringup_generate_messages_check_deps_RelMovJUser
+[  0%] Built target _dobot_bringup_generate_messages_check_deps_GetSixForceData
+[35m[1mScanning dependencies of target _dobot_bringup_generate_messages_check_deps_Circle[0m
+[  0%] Built target _dobot_bringup_generate_messages_check_deps_GetInRegs
+[  0%] Built target _dobot_bringup_generate_messages_check_deps_RelMovLUser
+[35m[1mScanning dependencies of target _dobot_bringup_generate_messages_check_deps_AI[0m
+[35m[1mScanning dependencies of target _dobot_bringup_generate_messages_check_deps_GetTerminal485[0m
+[  0%] Built target _dobot_bringup_generate_messages_check_deps_MovJ
+[  0%] Built target _dobot_bringup_generate_messages_check_deps_pause
+[  0%] Built target _dobot_bringup_generate_messages_check_deps_GetInBits
+[  0%] Built target _dobot_bringup_generate_messages_check_deps_GetErrorID
+[35m[1mScanning dependencies of target _dobot_bringup_generate_messages_check_deps_Wait[0m
+[35m[1mScanning dependencies of target _dobot_bringup_generate_messages_check_deps_MovJExt[0m
+[  0%] Built target _dobot_bringup_generate_messages_check_deps_AccL
+[35m[1mScanning dependencies of target _dobot_bringup_generate_messages_check_deps_LoadSwitch[0m
+[  0%] Built target _dobot_bringup_generate_messages_check_deps_DOGroup
+[35m[1mScanning dependencies of target _dobot_bringup_generate_messages_check_deps_RelJointMovJ[0m
+[35m[1mScanning dependencies of target _dobot_bringup_generate_messages_check_deps_TCPSpeed[0m
+[  0%] Built target _dobot_bringup_generate_messages_check_deps_Circle
+[  0%] Built target _dobot_bringup_generate_messages_check_deps_GetTerminal485
+[  0%] Built target _dobot_bringup_generate_messages_check_deps_AI
+[  0%] Built target _dobot_bringup_generate_messages_check_deps_Wait
+[  0%] Built target _dobot_bringup_generate_messages_check_deps_LoadSwitch
+[  0%] Built target _dobot_bringup_generate_messages_check_deps_MovJExt
+[35m[1mScanning dependencies of target _dobot_bringup_generate_messages_check_deps_GetTraceStartPose[0m
+[35m[1mScanning dependencies of target _dobot_bringup_generate_messages_check_deps_SetTerminal485[0m
+[35m[1mScanning dependencies of target _dobot_bringup_generate_messages_check_deps_TCPSpeedEnd[0m
+[35m[1mScanning dependencies of target _dobot_bringup_generate_messages_check_deps_GetCoils[0m
+[  0%] Built target _dobot_bringup_generate_messages_check_deps_TCPSpeed
+[35m[1mScanning dependencies of target _dobot_bringup_generate_messages_check_deps_MovL[0m
+[  0%] Built target _dobot_bringup_generate_messages_check_deps_RelJointMovJ
+[35m[1mScanning dependencies of target _dobot_bringup_generate_messages_check_deps_RelMovJ[0m
+[35m[1mScanning dependencies of target _dobot_bringup_generate_messages_check_deps_SetCollideDrag[0m
+[35m[1mScanning dependencies of target _dobot_bringup_generate_messages_check_deps_User[0m
+[35m[1mScanning dependencies of target _dobot_bringup_generate_messages_check_deps_ServoJ[0m
+[35m[1mScanning dependencies of target _dobot_bringup_generate_messages_check_deps_ServoP[0m
+[35m[1mScanning dependencies of target _dobot_bringup_generate_messages_check_deps_Sync[0m
+[  0%] Built target _dobot_bringup_generate_messages_check_deps_GetTraceStartPose
+[  0%] Built target _dobot_bringup_generate_messages_check_deps_TCPSpeedEnd
+[  0%] Built target _dobot_bringup_generate_messages_check_deps_MovL
+[35m[1mScanning dependencies of target _dobot_bringup_generate_messages_check_deps_SetHoldRegs[0m
+[  0%] Built target _dobot_bringup_generate_messages_check_deps_GetCoils
+[  0%] Built target _dobot_bringup_generate_messages_check_deps_SetTerminal485
+[  0%] Built target _dobot_bringup_generate_messages_check_deps_RelMovJ
+[35m[1mScanning dependencies of target std_msgs_generate_messages_nodejs[0m
+[  0%] Built target _dobot_bringup_generate_messages_check_deps_User
+[35m[1mScanning dependencies of target std_msgs_generate_messages_lisp[0m
+[35m[1mScanning dependencies of target std_msgs_generate_messages_eus[0m
+[35m[1mScanning dependencies of target std_msgs_generate_messages_cpp[0m
+[  0%] Built target _dobot_bringup_generate_messages_check_deps_ServoJ
+[  0%] Built target std_msgs_generate_messages_nodejs
+[  0%] Built target _dobot_bringup_generate_messages_check_deps_Sync
+[35m[1mScanning dependencies of target actionlib_generate_messages_cpp[0m
+[  0%] Built target std_msgs_generate_messages_lisp
+[  0%] Built target _dobot_bringup_generate_messages_check_deps_SetCollideDrag
+[  0%] Built target std_msgs_generate_messages_eus
+[  0%] Built target std_msgs_generate_messages_cpp
+[35m[1mScanning dependencies of target actionlib_msgs_generate_messages_nodejs[0m
+[35m[1mScanning dependencies of target rosgraph_msgs_generate_messages_eus[0m
+[35m[1mScanning dependencies of target actionlib_msgs_generate_messages_lisp[0m
+[  0%] Built target actionlib_generate_messages_cpp
+[35m[1mScanning dependencies of target actionlib_generate_messages_py[0m
+[  0%] Built target _dobot_bringup_generate_messages_check_deps_ServoP
+[35m[1mScanning dependencies of target rosgraph_msgs_generate_messages_cpp[0m
+[  0%] Built target rosgraph_msgs_generate_messages_eus
+[  0%] Built target actionlib_msgs_generate_messages_lisp
+[35m[1mScanning dependencies of target actionlib_generate_messages_eus[0m
+[  0%] Built target _dobot_bringup_generate_messages_check_deps_SetHoldRegs
+[35m[1mScanning dependencies of target roscpp_generate_messages_cpp[0m
+[  0%] Built target actionlib_msgs_generate_messages_nodejs
+[35m[1mScanning dependencies of target roscpp_generate_messages_eus[0m
+[  0%] Built target actionlib_generate_messages_py
+[35m[1mScanning dependencies of target rosgraph_msgs_generate_messages_py[0m
+[35m[1mScanning dependencies of target roscpp_generate_messages_py[0m
+[  0%] Built target rosgraph_msgs_generate_messages_cpp
+[35m[1mScanning dependencies of target rosgraph_msgs_generate_messages_lisp[0m
+[35m[1mScanning dependencies of target actionlib_msgs_generate_messages_eus[0m
+[35m[1mScanning dependencies of target roscpp_generate_messages_lisp[0m
+[35m[1mScanning dependencies of target actionlib_generate_messages_lisp[0m
+[  0%] Built target actionlib_generate_messages_eus
+[35m[1mScanning dependencies of target rosgraph_msgs_generate_messages_nodejs[0m
+[35m[1mScanning dependencies of target actionlib_msgs_generate_messages_py[0m
+[  0%] Built target roscpp_generate_messages_eus
+[35m[1mScanning dependencies of target actionlib_msgs_generate_messages_cpp[0m
+[  0%] Built target roscpp_generate_messages_py
+[  0%] Built target rosgraph_msgs_generate_messages_py
+[35m[1mScanning dependencies of target actionlib_generate_messages_nodejs[0m
+[  0%] Built target rosgraph_msgs_generate_messages_lisp
+[  0%] Built target actionlib_msgs_generate_messages_eus
+[  0%] Built target roscpp_generate_messages_lisp
+[  0%] Built target rosgraph_msgs_generate_messages_nodejs
+[  0%] Built target actionlib_msgs_generate_messages_py
+[  0%] Built target roscpp_generate_messages_cpp
+[  0%] Built target actionlib_msgs_generate_messages_cpp
+[35m[1mScanning dependencies of target dobot_bringup_generate_messages_nodejs[0m
+[35m[1mScanning dependencies of target dobot_bringup_generate_messages_py[0m
+[  0%] Built target actionlib_generate_messages_lisp
+[35m[1mScanning dependencies of target dobot_bringup_generate_messages_lisp[0m
+[  0%] Built target actionlib_generate_messages_nodejs
+[35m[1mScanning dependencies of target dobot_bringup_generate_messages_eus[0m
+[35m[1mScanning dependencies of target dobot_bringup_generate_messages_cpp[0m
+[  0%] [34m[1mGenerating Javascript code from dobot_bringup/RobotStatus.msg[0m
+[  0%] [34m[1mGenerating Javascript code from dobot_bringup/ToolVectorActual.msg[0m
+[  0%] [34m[1mGenerating Python from MSG dobot_bringup/RobotStatus[0m
+[  1%] [34m[1mGenerating Lisp code from dobot_bringup/RobotStatus.msg[0m
+[  1%] [34m[1mGenerating EusLisp code from dobot_bringup/RobotStatus.msg[0m
+[  1%] [34m[1mGenerating C++ code from dobot_bringup/RobotStatus.msg[0m
+[  1%] [34m[1mGenerating Lisp code from dobot_bringup/ToolVectorActual.msg[0m
+[  1%] [34m[1mGenerating EusLisp code from dobot_bringup/ToolVectorActual.msg[0m
+[  1%] [34m[1mGenerating Javascript code from dobot_bringup/EnableRobot.srv[0m
+[  2%] [34m[1mGenerating C++ code from dobot_bringup/ToolVectorActual.msg[0m
+[  2%] [34m[1mGenerating Lisp code from dobot_bringup/EnableRobot.srv[0m
+[  2%] [34m[1mGenerating EusLisp code from dobot_bringup/DisableRobot.srv[0m
+[  2%] [34m[1mGenerating EusLisp code from dobot_bringup/EnableRobot.srv[0m
+[  3%] [34m[1mGenerating Javascript code from dobot_bringup/DisableRobot.srv[0m
+[  4%] [34m[1mGenerating EusLisp code from dobot_bringup/ClearError.srv[0m
+[  4%] [34m[1mGenerating Lisp code from dobot_bringup/DisableRobot.srv[0m
+[  4%] [34m[1mGenerating Lisp code from dobot_bringup/ClearError.srv[0m
+[  4%] [34m[1mGenerating Javascript code from dobot_bringup/ClearError.srv[0m
+[  4%] [34m[1mGenerating Javascript code from dobot_bringup/ResetRobot.srv[0m
+[  5%] [34m[1mGenerating Python from MSG dobot_bringup/ToolVectorActual[0m
+[  5%] [34m[1mGenerating Python code from SRV dobot_bringup/EnableRobot[0m
+[  5%] [34m[1mGenerating C++ code from dobot_bringup/EnableRobot.srv[0m
+[  5%] [34m[1mGenerating Lisp code from dobot_bringup/ResetRobot.srv[0m
+[  6%] [34m[1mGenerating Lisp code from dobot_bringup/SpeedFactor.srv[0m
+[  6%] [34m[1mGenerating Javascript code from dobot_bringup/SpeedFactor.srv[0m
+[  6%] [34m[1mGenerating Javascript code from dobot_bringup/User.srv[0m
+[  6%] [34m[1mGenerating EusLisp code from dobot_bringup/ResetRobot.srv[0m
+[  6%] [34m[1mGenerating Lisp code from dobot_bringup/User.srv[0m
+[  6%] [34m[1mGenerating Lisp code from dobot_bringup/Tool.srv[0m
+[  6%] [34m[1mGenerating Lisp code from dobot_bringup/RobotMode.srv[0m
+[  6%] [34m[1mGenerating Javascript code from dobot_bringup/Tool.srv[0m
+[  7%] [34m[1mGenerating Javascript code from dobot_bringup/RobotMode.srv[0m
+[  7%] [34m[1mGenerating Javascript code from dobot_bringup/PayLoad.srv[0m
+[  7%] [34m[1mGenerating EusLisp code from dobot_bringup/SpeedFactor.srv[0m
+[  7%] [34m[1mGenerating Javascript code from dobot_bringup/DO.srv[0m
+[  7%] [34m[1mGenerating Lisp code from dobot_bringup/PayLoad.srv[0m
+[  7%] [34m[1mGenerating Python code from SRV dobot_bringup/ClearError[0m
+[  7%] [34m[1mGenerating Python code from SRV dobot_bringup/DisableRobot[0m
+[  7%] [34m[1mGenerating C++ code from dobot_bringup/DisableRobot.srv[0m
+[  8%] [34m[1mGenerating Python code from SRV dobot_bringup/ResetRobot[0m
+[  8%] [34m[1mGenerating Python code from SRV dobot_bringup/SpeedFactor[0m
+[  8%] [34m[1mGenerating Javascript code from dobot_bringup/DOExecute.srv[0m
+[  8%] [34m[1mGenerating Python code from SRV dobot_bringup/User[0m
+[  8%] [34m[1mGenerating Python code from SRV dobot_bringup/Tool[0m
+[  8%] [34m[1mGenerating C++ code from dobot_bringup/ClearError.srv[0m
+[  8%] [34m[1mGenerating Python code from SRV dobot_bringup/RobotMode[0m
+[  8%] [34m[1mGenerating EusLisp code from dobot_bringup/User.srv[0m
+[  8%] [34m[1mGenerating EusLisp code from dobot_bringup/Tool.srv[0m
+[  8%] [34m[1mGenerating C++ code from dobot_bringup/ResetRobot.srv[0m
+[  9%] [34m[1mGenerating Lisp code from dobot_bringup/DO.srv[0m
+[ 10%] [34m[1mGenerating EusLisp code from dobot_bringup/RobotMode.srv[0m
+[ 10%] [34m[1mGenerating Javascript code from dobot_bringup/ToolDO.srv[0m
+[ 11%] [34m[1mGenerating Javascript code from dobot_bringup/ToolDOExecute.srv[0m
+[ 11%] [34m[1mGenerating Lisp code from dobot_bringup/DOExecute.srv[0m
+[ 11%] [34m[1mGenerating EusLisp code from dobot_bringup/PayLoad.srv[0m
+[ 11%] [34m[1mGenerating Javascript code from dobot_bringup/AO.srv[0m
+[ 11%] [34m[1mGenerating Javascript code from dobot_bringup/AOExecute.srv[0m
+[ 11%] [34m[1mGenerating EusLisp code from dobot_bringup/DO.srv[0m
+[ 11%] [34m[1mGenerating EusLisp code from dobot_bringup/DOExecute.srv[0m
+[ 11%] [34m[1mGenerating EusLisp code from dobot_bringup/ToolDO.srv[0m
+[ 11%] [34m[1mGenerating Lisp code from dobot_bringup/ToolDO.srv[0m
+[ 11%] [34m[1mGenerating Lisp code from dobot_bringup/ToolDOExecute.srv[0m
+[ 11%] [34m[1mGenerating Javascript code from dobot_bringup/AccJ.srv[0m
+[ 11%] [34m[1mGenerating Lisp code from dobot_bringup/AO.srv[0m
+[ 12%] [34m[1mGenerating Lisp code from dobot_bringup/AOExecute.srv[0m
+[ 12%] [34m[1mGenerating Lisp code from dobot_bringup/AccL.srv[0m
+[ 12%] [34m[1mGenerating Lisp code from dobot_bringup/AccJ.srv[0m
+[ 13%] [34m[1mGenerating C++ code from dobot_bringup/SpeedFactor.srv[0m
+[ 13%] [34m[1mGenerating Python code from SRV dobot_bringup/PayLoad[0m
+[ 13%] [34m[1mGenerating Python code from SRV dobot_bringup/DO[0m
+[ 13%] [34m[1mGenerating Lisp code from dobot_bringup/SpeedJ.srv[0m
+[ 15%] [34m[1mGenerating EusLisp code from dobot_bringup/ToolDOExecute.srv[0m
+[ 15%] [34m[1mGenerating Python code from SRV dobot_bringup/DOExecute[0m
+[ 15%] [34m[1mGenerating Javascript code from dobot_bringup/AccL.srv[0m
+[ 15%] [34m[1mGenerating EusLisp code from dobot_bringup/AO.srv[0m
+[ 15%] [34m[1mGenerating Python code from SRV dobot_bringup/ToolDO[0m
+[ 16%] [34m[1mGenerating Javascript code from dobot_bringup/SpeedJ.srv[0m
+[ 16%] [34m[1mGenerating EusLisp code from dobot_bringup/AOExecute.srv[0m
+[ 16%] [34m[1mGenerating C++ code from dobot_bringup/User.srv[0m
+[ 16%] [34m[1mGenerating Lisp code from dobot_bringup/SpeedL.srv[0m
+[ 17%] [34m[1mGenerating Lisp code from dobot_bringup/Arc.srv[0m
+[ 17%] [34m[1mGenerating Lisp code from dobot_bringup/Arch.srv[0m
+[ 17%] [34m[1mGenerating Lisp code from dobot_bringup/CP.srv[0m
+[ 17%] [34m[1mGenerating Javascript code from dobot_bringup/SpeedL.srv[0m
+[ 17%] [34m[1mGenerating EusLisp code from dobot_bringup/AccJ.srv[0m
+[ 17%] [34m[1mGenerating EusLisp code from dobot_bringup/AccL.srv[0m
+[ 17%] [34m[1mGenerating Javascript code from dobot_bringup/Arc.srv[0m
+[ 17%] [34m[1mGenerating Lisp code from dobot_bringup/LimZ.srv[0m
+[ 17%] [34m[1mGenerating Lisp code from dobot_bringup/SetArmOrientation.srv[0m
+[ 17%] [34m[1mGenerating Python code from SRV dobot_bringup/ToolDOExecute[0m
+[ 18%] [34m[1mGenerating Lisp code from dobot_bringup/PowerOn.srv[0m
+[ 18%] [34m[1mGenerating Python code from SRV dobot_bringup/AO[0m
+[ 19%] [34m[1mGenerating EusLisp code from dobot_bringup/SpeedJ.srv[0m
+[ 19%] [34m[1mGenerating Python code from SRV dobot_bringup/AOExecute[0m
+[ 19%] [34m[1mGenerating EusLisp code from dobot_bringup/SpeedL.srv[0m
+[ 19%] [34m[1mGenerating Javascript code from dobot_bringup/Arch.srv[0m
+[ 19%] [34m[1mGenerating EusLisp code from dobot_bringup/Arc.srv[0m
+[ 19%] [34m[1mGenerating C++ code from dobot_bringup/RobotMode.srv[0m
+[ 19%] [34m[1mGenerating C++ code from dobot_bringup/Tool.srv[0m
+[ 20%] [34m[1mGenerating C++ code from dobot_bringup/DO.srv[0m
+[ 20%] [34m[1mGenerating C++ code from dobot_bringup/PayLoad.srv[0m
+[ 20%] [34m[1mGenerating EusLisp code from dobot_bringup/Arch.srv[0m
+[ 20%] [34m[1mGenerating C++ code from dobot_bringup/DOExecute.srv[0m
+[ 20%] [34m[1mGenerating Lisp code from dobot_bringup/RunScript.srv[0m
+[ 21%] [34m[1mGenerating EusLisp code from dobot_bringup/LimZ.srv[0m
+[ 21%] [34m[1mGenerating EusLisp code from dobot_bringup/CP.srv[0m
+[ 21%] [34m[1mGenerating Javascript code from dobot_bringup/CP.srv[0m
+[ 22%] [34m[1mGenerating Javascript code from dobot_bringup/LimZ.srv[0m
+[ 22%] [34m[1mGenerating Javascript code from dobot_bringup/SetArmOrientation.srv[0m
+[ 22%] [34m[1mGenerating Javascript code from dobot_bringup/PowerOn.srv[0m
+[ 22%] [34m[1mGenerating C++ code from dobot_bringup/ToolDO.srv[0m
+[ 22%] [34m[1mGenerating C++ code from dobot_bringup/ToolDOExecute.srv[0m
+[ 22%] [34m[1mGenerating Lisp code from dobot_bringup/StopScript.srv[0m
+[ 22%] [34m[1mGenerating Javascript code from dobot_bringup/RunScript.srv[0m
+[ 22%] [34m[1mGenerating Lisp code from dobot_bringup/PauseScript.srv[0m
+[ 22%] [34m[1mGenerating EusLisp code from dobot_bringup/SetArmOrientation.srv[0m
+[ 23%] [34m[1mGenerating Python code from SRV dobot_bringup/AccJ[0m
+[ 24%] [34m[1mGenerating Lisp code from dobot_bringup/GetHoldRegs.srv[0m
+[ 24%] [34m[1mGenerating EusLisp code from dobot_bringup/PowerOn.srv[0m
+[ 24%] [34m[1mGenerating Lisp code from dobot_bringup/ContinueScript.srv[0m
+[ 24%] [34m[1mGenerating EusLisp code from dobot_bringup/RunScript.srv[0m
+[ 24%] [34m[1mGenerating EusLisp code from dobot_bringup/StopScript.srv[0m
+[ 24%] [34m[1mGenerating Lisp code from dobot_bringup/SetHoldRegs.srv[0m
+[ 24%] [34m[1mGenerating Lisp code from dobot_bringup/SetSafeSkin.srv[0m
+[ 24%] [34m[1mGenerating C++ code from dobot_bringup/AO.srv[0m
+[ 25%] [34m[1mGenerating C++ code from dobot_bringup/AOExecute.srv[0m
+[ 25%] [34m[1mGenerating C++ code from dobot_bringup/AccJ.srv[0m
+[ 25%] [34m[1mGenerating Lisp code from dobot_bringup/SetObstacleAvoid.srv[0m
+[ 25%] [34m[1mGenerating Javascript code from dobot_bringup/StopScript.srv[0m
+[ 25%] [34m[1mGenerating C++ code from dobot_bringup/AccL.srv[0m
+[ 25%] [34m[1mGenerating Python code from SRV dobot_bringup/AccL[0m
+[ 26%] [34m[1mGenerating Javascript code from dobot_bringup/PauseScript.srv[0m
+[ 27%] [34m[1mGenerating EusLisp code from dobot_bringup/PauseScript.srv[0m
+[ 27%] [34m[1mGenerating EusLisp code from dobot_bringup/ContinueScript.srv[0m
+[ 27%] [34m[1mGenerating Lisp code from dobot_bringup/PositiveSolution.srv[0m
+[ 27%] [34m[1mGenerating EusLisp code from dobot_bringup/GetHoldRegs.srv[0m
+[ 28%] [34m[1mGenerating Lisp code from dobot_bringup/SetCollisionLevel.srv[0m
+[ 28%] [34m[1mGenerating C++ code from dobot_bringup/SpeedJ.srv[0m
+[ 28%] [34m[1mGenerating EusLisp code from dobot_bringup/SetHoldRegs.srv[0m
+[ 28%] [34m[1mGenerating Lisp code from dobot_bringup/EmergencyStop.srv[0m
+[ 28%] [34m[1mGenerating Javascript code from dobot_bringup/ContinueScript.srv[0m
+[ 28%] [34m[1mGenerating EusLisp code from dobot_bringup/SetSafeSkin.srv[0m
+[ 28%] [34m[1mGenerating C++ code from dobot_bringup/SpeedL.srv[0m
+[ 28%] [34m[1mGenerating Javascript code from dobot_bringup/GetHoldRegs.srv[0m
+[ 28%] [34m[1mGenerating Javascript code from dobot_bringup/SetHoldRegs.srv[0m
+[ 29%] [34m[1mGenerating Javascript code from dobot_bringup/SetObstacleAvoid.srv[0m
+[ 30%] [34m[1mGenerating EusLisp code from dobot_bringup/SetObstacleAvoid.srv[0m
+[ 30%] [34m[1mGenerating Javascript code from dobot_bringup/SetSafeSkin.srv[0m
+[ 30%] [34m[1mGenerating Javascript code from dobot_bringup/SetCollisionLevel.srv[0m
+[ 30%] [34m[1mGenerating Javascript code from dobot_bringup/EmergencyStop.srv[0m
+[ 30%] [34m[1mGenerating Javascript code from dobot_bringup/PositiveSolution.srv[0m
+[ 30%] [34m[1mGenerating EusLisp code from dobot_bringup/PositiveSolution.srv[0m
+[ 30%] [34m[1mGenerating Python code from SRV dobot_bringup/SpeedL[0m
+[ 30%] [34m[1mGenerating EusLisp code from dobot_bringup/SetCollisionLevel.srv[0m
+[ 30%] [34m[1mGenerating Python code from SRV dobot_bringup/SpeedJ[0m
+[ 30%] [34m[1mGenerating Lisp code from dobot_bringup/BrakeControl.srv[0m
+[ 30%] [34m[1mGenerating Javascript code from dobot_bringup/BrakeControl.srv[0m
+[ 30%] [34m[1mGenerating EusLisp code from dobot_bringup/EmergencyStop.srv[0m
+[ 31%] [34m[1mGenerating Javascript code from dobot_bringup/Continues.srv[0m
+[ 31%] [34m[1mGenerating Javascript code from dobot_bringup/DI.srv[0m
+[ 31%] [34m[1mGenerating Javascript code from dobot_bringup/ToolDI.srv[0m
+[ 31%] [34m[1mGenerating Javascript code from dobot_bringup/AI.srv[0m
+[ 31%] [34m[1mGenerating Python code from SRV dobot_bringup/Arc[0m
+[ 32%] [34m[1mGenerating Python code from SRV dobot_bringup/Arch[0m
+[ 33%] [34m[1mGenerating EusLisp code from dobot_bringup/BrakeControl.srv[0m
+[ 33%] [34m[1mGenerating C++ code from dobot_bringup/Arc.srv[0m
+[ 33%] [34m[1mGenerating C++ code from dobot_bringup/Arch.srv[0m
+[ 34%] [34m[1mGenerating EusLisp code from dobot_bringup/Continues.srv[0m
+[ 34%] [34m[1mGenerating C++ code from dobot_bringup/CP.srv[0m
+[ 34%] [34m[1mGenerating Lisp code from dobot_bringup/Continues.srv[0m
+[ 35%] [34m[1mGenerating Lisp code from dobot_bringup/ToolDI.srv[0m
+[ 35%] [34m[1mGenerating Lisp code from dobot_bringup/AI.srv[0m
+[ 35%] [34m[1mGenerating Lisp code from dobot_bringup/DI.srv[0m
+[ 35%] [34m[1mGenerating C++ code from dobot_bringup/LimZ.srv[0m
+[ 35%] [34m[1mGenerating Lisp code from dobot_bringup/ToolAI.srv[0m
+[ 35%] [34m[1mGenerating Javascript code from dobot_bringup/ToolAI.srv[0m
+[ 35%] [34m[1mGenerating EusLisp code from dobot_bringup/DI.srv[0m
+[ 35%] [34m[1mGenerating EusLisp code from dobot_bringup/ToolDI.srv[0m
+[ 35%] [34m[1mGenerating Lisp code from dobot_bringup/DigitalOutputs.srv[0m
+[ 35%] [34m[1mGenerating EusLisp code from dobot_bringup/AI.srv[0m
+[ 35%] [34m[1mGenerating EusLisp code from dobot_bringup/ToolAI.srv[0m
+[ 36%] [34m[1mGenerating EusLisp code from dobot_bringup/DigitalOutputs.srv[0m
+[ 36%] [34m[1mGenerating Javascript code from dobot_bringup/GetAngle.srv[0m
+[ 37%] [34m[1mGenerating Javascript code from dobot_bringup/DigitalOutputs.srv[0m
+[ 37%] [34m[1mGenerating Lisp code from dobot_bringup/GetAngle.srv[0m
+[ 38%] [34m[1mGenerating Lisp code from dobot_bringup/GetCoils.srv[0m
+[ 38%] [34m[1mGenerating Javascript code from dobot_bringup/GetCoils.srv[0m
+[ 38%] [34m[1mGenerating Javascript code from dobot_bringup/GetErrorID.srv[0m
+[ 38%] [34m[1mGenerating Javascript code from dobot_bringup/StopmoveJog.srv[0m
+[ 38%] [34m[1mGenerating Lisp code from dobot_bringup/GetErrorID.srv[0m
+[ 38%] [34m[1mGenerating EusLisp code from dobot_bringup/GetAngle.srv[0m
+[ 38%] [34m[1mGenerating Python code from SRV dobot_bringup/LimZ[0m
+[ 38%] [34m[1mGenerating EusLisp code from dobot_bringup/GetCoils.srv[0m
+[ 38%] [34m[1mGenerating Python code from SRV dobot_bringup/CP[0m
+[ 39%] [34m[1mGenerating Python code from SRV dobot_bringup/SetArmOrientation[0m
+[ 39%] [34m[1mGenerating Javascript code from dobot_bringup/StopDrag.srv[0m
+[ 40%] [34m[1mGenerating C++ code from dobot_bringup/PowerOn.srv[0m
+[ 40%] [34m[1mGenerating Python code from SRV dobot_bringup/PowerOn[0m
+[ 40%] [34m[1mGenerating C++ code from dobot_bringup/RunScript.srv[0m
+[ 40%] [34m[1mGenerating Javascript code from dobot_bringup/StartDrag.srv[0m
+[ 40%] [34m[1mGenerating C++ code from dobot_bringup/StopScript.srv[0m
+[ 40%] [34m[1mGenerating EusLisp code from dobot_bringup/GetErrorID.srv[0m
+[ 40%] [34m[1mGenerating Javascript code from dobot_bringup/SetPayload.srv[0m
+[ 40%] [34m[1mGenerating Lisp code from dobot_bringup/StopDrag.srv[0m
+[ 40%] [34m[1mGenerating C++ code from dobot_bringup/PauseScript.srv[0m
+[ 40%] [34m[1mGenerating C++ code from dobot_bringup/SetArmOrientation.srv[0m
+[ 40%] [34m[1mGenerating Lisp code from dobot_bringup/StopmoveJog.srv[0m
+[ 41%] [34m[1mGenerating Python code from SRV dobot_bringup/RunScript[0m
+[ 41%] [34m[1mGenerating Javascript code from dobot_bringup/SetCoils.srv[0m
+[ 41%] [34m[1mGenerating Python code from SRV dobot_bringup/StopScript[0m
+[ 41%] [34m[1mGenerating C++ code from dobot_bringup/ContinueScript.srv[0m
+[ 41%] [34m[1mGenerating Javascript code from dobot_bringup/RelMovJTool.srv[0m
+[ 41%] [34m[1mGenerating Lisp code from dobot_bringup/StartDrag.srv[0m
+[ 41%] [34m[1mGenerating EusLisp code from dobot_bringup/StopmoveJog.srv[0m
+[ 42%] [34m[1mGenerating EusLisp code from dobot_bringup/StopDrag.srv[0m
+[ 42%] [34m[1mGenerating EusLisp code from dobot_bringup/StartDrag.srv[0m
+[ 42%] [34m[1mGenerating EusLisp code from dobot_bringup/SetPayload.srv[0m
+[ 43%] [34m[1mGenerating Lisp code from dobot_bringup/SetPayload.srv[0m
+[ 44%] [34m[1mGenerating C++ code from dobot_bringup/GetHoldRegs.srv[0m
+[ 44%] [34m[1mGenerating C++ code from dobot_bringup/SetHoldRegs.srv[0m
+[ 45%] [34m[1mGenerating C++ code from dobot_bringup/SetSafeSkin.srv[0m
+[ 45%] [34m[1mGenerating Javascript code from dobot_bringup/RelMovLTool.srv[0m
+[ 45%] [34m[1mGenerating Javascript code from dobot_bringup/RelMovLUser.srv[0m
+[ 45%] [34m[1mGenerating Javascript code from dobot_bringup/RelMovJUser.srv[0m
+[ 45%] [34m[1mGenerating Python code from SRV dobot_bringup/PauseScript[0m
+[ 45%] [34m[1mGenerating Lisp code from dobot_bringup/SetCoils.srv[0m
+[ 45%] [34m[1mGenerating Javascript code from dobot_bringup/InverseSolution.srv[0m
+[ 45%] [34m[1mGenerating Lisp code from dobot_bringup/RelMovJTool.srv[0m
+[ 45%] [34m[1mGenerating EusLisp code from dobot_bringup/SetCoils.srv[0m
+[ 45%] [34m[1mGenerating Javascript code from dobot_bringup/GetPose.srv[0m
+[ 45%] [34m[1mGenerating Python code from SRV dobot_bringup/ContinueScript[0m
+[ 45%] [34m[1mGenerating Javascript code from dobot_bringup/GetInRegs.srv[0m
+[ 45%] [34m[1mGenerating EusLisp code from dobot_bringup/RelMovJTool.srv[0m
+[ 45%] [34m[1mGenerating Python code from SRV dobot_bringup/GetHoldRegs[0m
+[ 46%] [34m[1mGenerating Javascript code from dobot_bringup/GetInBits.srv[0m
+[ 46%] [34m[1mGenerating EusLisp code from dobot_bringup/RelMovLTool.srv[0m
+[ 47%] [34m[1mGenerating EusLisp code from dobot_bringup/RelMovLUser.srv[0m
+[ 47%] [34m[1mGenerating Javascript code from dobot_bringup/DIGroup.srv[0m
+[ 47%] [34m[1mGenerating EusLisp code from dobot_bringup/RelMovJUser.srv[0m
+[ 47%] [34m[1mGenerating Javascript code from dobot_bringup/DOGroup.srv[0m
+[ 48%] [34m[1mGenerating Python code from SRV dobot_bringup/SetHoldRegs[0m
+[ 48%] [34m[1mGenerating Javascript code from dobot_bringup/pause.srv[0m
+[ 48%] [34m[1mGenerating Python code from SRV dobot_bringup/SetSafeSkin[0m
+[ 48%] [34m[1mGenerating Lisp code from dobot_bringup/RelMovLTool.srv[0m
+[ 48%] [34m[1mGenerating Javascript code from dobot_bringup/Wait.srv[0m
+[ 50%] [34m[1mGenerating Javascript code from dobot_bringup/MovJExt.srv[0m
+[ 50%] [34m[1mGenerating EusLisp code from dobot_bringup/InverseSolution.srv[0m
+[ 50%] [34m[1mGenerating Javascript code from dobot_bringup/ModbusCreate.srv[0m
+[ 50%] [34m[1mGenerating EusLisp code from dobot_bringup/GetPose.srv[0m
+[ 50%] [34m[1mGenerating Javascript code from dobot_bringup/ModbusClose.srv[0m
+[ 50%] [34m[1mGenerating Javascript code from dobot_bringup/LoadSwitch.srv[0m
+[ 50%] [34m[1mGenerating Javascript code from dobot_bringup/RelJointMovJ.srv[0m
+[ 50%] [34m[1mGenerating C++ code from dobot_bringup/SetObstacleAvoid.srv[0m
+[ 50%] [34m[1mGenerating C++ code from dobot_bringup/PositiveSolution.srv[0m
+[ 51%] [34m[1mGenerating C++ code from dobot_bringup/SetCollisionLevel.srv[0m
+[ 51%] [34m[1mGenerating Lisp code from dobot_bringup/RelMovLUser.srv[0m
+[ 51%] [34m[1mGenerating C++ code from dobot_bringup/EmergencyStop.srv[0m
+[ 51%] [34m[1mGenerating Lisp code from dobot_bringup/RelMovJUser.srv[0m
+[ 52%] [34m[1mGenerating Lisp code from dobot_bringup/InverseSolution.srv[0m
+[ 52%] [34m[1mGenerating Python code from SRV dobot_bringup/SetObstacleAvoid[0m
+[ 52%] [34m[1mGenerating EusLisp code from dobot_bringup/GetInRegs.srv[0m
+[ 52%] [34m[1mGenerating C++ code from dobot_bringup/BrakeControl.srv[0m
+[ 52%] [34m[1mGenerating Lisp code from dobot_bringup/GetPose.srv[0m
+[ 53%] [34m[1mGenerating EusLisp code from dobot_bringup/GetInBits.srv[0m
+[ 54%] [34m[1mGenerating Javascript code from dobot_bringup/GetTraceStartPose.srv[0m
+[ 54%] [34m[1mGenerating Lisp code from dobot_bringup/GetInRegs.srv[0m
+[ 54%] [34m[1mGenerating Javascript code from dobot_bringup/GetPathStartPose.srv[0m
+[ 54%] [34m[1mGenerating Javascript code from dobot_bringup/HandleTrajPoints.srv[0m
+[ 54%] [34m[1mGenerating Python code from SRV dobot_bringup/PositiveSolution[0m
+[ 54%] [34m[1mGenerating Lisp code from dobot_bringup/GetInBits.srv[0m
+[ 54%] [34m[1mGenerating EusLisp code from dobot_bringup/DOGroup.srv[0m
+[ 54%] [34m[1mGenerating EusLisp code from dobot_bringup/DIGroup.srv[0m
+[ 54%] [34m[1mGenerating EusLisp code from dobot_bringup/pause.srv[0m
+[ 54%] [34m[1mGenerating Python code from SRV dobot_bringup/SetCollisionLevel[0m
+[ 55%] [34m[1mGenerating Python code from SRV dobot_bringup/EmergencyStop[0m
+[ 55%] [34m[1mGenerating EusLisp code from dobot_bringup/Wait.srv[0m
+[ 55%] [34m[1mGenerating Lisp code from dobot_bringup/DIGroup.srv[0m
+[ 55%] [34m[1mGenerating Python code from SRV dobot_bringup/BrakeControl[0m
+[ 55%] [34m[1mGenerating Javascript code from dobot_bringup/GetSixForceData.srv[0m
+[ 55%] [34m[1mGenerating Javascript code from dobot_bringup/SetCollideDrag.srv[0m
+[ 55%] [34m[1mGenerating Python code from SRV dobot_bringup/Continues[0m
+[ 55%] [34m[1mGenerating Python code from SRV dobot_bringup/DI[0m
+[ 55%] [34m[1mGenerating Python code from SRV dobot_bringup/ToolDI[0m
+[ 56%] [34m[1mGenerating Lisp code from dobot_bringup/DOGroup.srv[0m
+[ 56%] [34m[1mGenerating Lisp code from dobot_bringup/pause.srv[0m
+[ 56%] [34m[1mGenerating Lisp code from dobot_bringup/Wait.srv[0m
+[ 56%] [34m[1mGenerating Lisp code from dobot_bringup/MovJExt.srv[0m
+[ 57%] [34m[1mGenerating EusLisp code from dobot_bringup/MovJExt.srv[0m
+[ 57%] [34m[1mGenerating Python code from SRV dobot_bringup/ToolAI[0m
+[ 58%] [34m[1mGenerating Python code from SRV dobot_bringup/AI[0m
+[ 58%] [34m[1mGenerating C++ code from dobot_bringup/Continues.srv[0m
+[ 59%] [34m[1mGenerating Javascript code from dobot_bringup/SetTerminalKeys.srv[0m
+[ 59%] [34m[1mGenerating Javascript code from dobot_bringup/SetTerminal485.srv[0m
+[ 59%] [34m[1mGenerating C++ code from dobot_bringup/DI.srv[0m
+[ 60%] [34m[1mGenerating C++ code from dobot_bringup/ToolDI.srv[0m
+[ 60%] [34m[1mGenerating C++ code from dobot_bringup/AI.srv[0m
+[ 60%] [34m[1mGenerating Lisp code from dobot_bringup/ModbusCreate.srv[0m
+[ 60%] [34m[1mGenerating C++ code from dobot_bringup/ToolAI.srv[0m
+[ 60%] [34m[1mGenerating Python code from SRV dobot_bringup/DigitalOutputs[0m
+[ 60%] [34m[1mGenerating Python code from SRV dobot_bringup/GetAngle[0m
+[ 60%] [34m[1mGenerating EusLisp code from dobot_bringup/ModbusCreate.srv[0m
+[ 60%] [34m[1mGenerating EusLisp code from dobot_bringup/ModbusClose.srv[0m
+[ 60%] [34m[1mGenerating EusLisp code from dobot_bringup/LoadSwitch.srv[0m
+[ 60%] [34m[1mGenerating Javascript code from dobot_bringup/GetTerminal485.srv[0m
+[ 60%] [34m[1mGenerating Python code from SRV dobot_bringup/GetCoils[0m
+[ 61%] [34m[1mGenerating Lisp code from dobot_bringup/ModbusClose.srv[0m
+[ 61%] [34m[1mGenerating Javascript code from dobot_bringup/TCPSpeed.srv[0m
+[ 62%] [34m[1mGenerating Python code from SRV dobot_bringup/GetErrorID[0m
+[ 62%] [34m[1mGenerating Python code from SRV dobot_bringup/StopmoveJog[0m
+[ 62%] [34m[1mGenerating Lisp code from dobot_bringup/LoadSwitch.srv[0m
+[ 62%] [34m[1mGenerating Python code from SRV dobot_bringup/StopDrag[0m
+[ 62%] [34m[1mGenerating Python code from SRV dobot_bringup/StartDrag[0m
+[ 62%] [34m[1mGenerating EusLisp code from dobot_bringup/RelJointMovJ.srv[0m
+[ 62%] [34m[1mGenerating Lisp code from dobot_bringup/RelJointMovJ.srv[0m
+[ 62%] [34m[1mGenerating EusLisp code from dobot_bringup/GetPathStartPose.srv[0m
+[ 63%] [34m[1mGenerating EusLisp code from dobot_bringup/GetTraceStartPose.srv[0m
+[ 63%] [34m[1mGenerating Javascript code from dobot_bringup/TCPSpeedEnd.srv[0m
+[ 63%] [34m[1mGenerating Javascript code from dobot_bringup/MovJ.srv[0m
+[ 64%] [34m[1mGenerating Javascript code from dobot_bringup/JointMovJ.srv[0m
+[ 64%] [34m[1mGenerating C++ code from dobot_bringup/DigitalOutputs.srv[0m
+[ 64%] [34m[1mGenerating Python code from SRV dobot_bringup/SetPayload[0m
+[ 64%] [34m[1mGenerating C++ code from dobot_bringup/GetAngle.srv[0m
+[ 65%] [34m[1mGenerating Lisp code from dobot_bringup/GetTraceStartPose.srv[0m
+[ 65%] [34m[1mGenerating Python code from SRV dobot_bringup/SetCoils[0m
+[ 66%] [34m[1mGenerating C++ code from dobot_bringup/GetCoils.srv[0m
+[ 66%] [34m[1mGenerating C++ code from dobot_bringup/GetErrorID.srv[0m
+[ 66%] [34m[1mGenerating C++ code from dobot_bringup/StopmoveJog.srv[0m
+[ 66%] [34m[1mGenerating Python code from SRV dobot_bringup/RelMovJTool[0m
+[ 66%] [34m[1mGenerating C++ code from dobot_bringup/StopDrag.srv[0m
+[ 66%] [34m[1mGenerating Javascript code from dobot_bringup/MovL.srv[0m
+[ 66%] [34m[1mGenerating Lisp code from dobot_bringup/GetPathStartPose.srv[0m
+[ 66%] [34m[1mGenerating Javascript code from dobot_bringup/Jump.srv[0m
+[ 66%] [34m[1mGenerating EusLisp code from dobot_bringup/HandleTrajPoints.srv[0m
+[ 66%] [34m[1mGenerating C++ code from dobot_bringup/StartDrag.srv[0m
+[ 66%] [34m[1mGenerating C++ code from dobot_bringup/SetPayload.srv[0m
+[ 67%] [34m[1mGenerating C++ code from dobot_bringup/SetCoils.srv[0m
+[ 67%] [34m[1mGenerating C++ code from dobot_bringup/RelMovJTool.srv[0m
+[ 68%] [34m[1mGenerating Lisp code from dobot_bringup/HandleTrajPoints.srv[0m
+[ 68%] [34m[1mGenerating Javascript code from dobot_bringup/RelMovJ.srv[0m
+[ 68%] [34m[1mGenerating Python code from SRV dobot_bringup/RelMovLTool[0m
+[ 68%] [34m[1mGenerating Lisp code from dobot_bringup/GetSixForceData.srv[0m
+[ 68%] [34m[1mGenerating EusLisp code from dobot_bringup/GetSixForceData.srv[0m
+[ 68%] [34m[1mGenerating EusLisp code from dobot_bringup/SetCollideDrag.srv[0m
+[ 68%] [34m[1mGenerating Lisp code from dobot_bringup/SetCollideDrag.srv[0m
+[ 70%] [34m[1mGenerating EusLisp code from dobot_bringup/SetTerminalKeys.srv[0m
+[ 70%] [34m[1mGenerating Javascript code from dobot_bringup/RelMovL.srv[0m
+[ 70%] [34m[1mGenerating Javascript code from dobot_bringup/MovLIO.srv[0m
+[ 70%] [34m[1mGenerating Lisp code from dobot_bringup/SetTerminalKeys.srv[0m
+[ 70%] [34m[1mGenerating Lisp code from dobot_bringup/SetTerminal485.srv[0m
+[ 70%] [34m[1mGenerating Javascript code from dobot_bringup/MovJIO.srv[0m
+[ 70%] [34m[1mGenerating C++ code from dobot_bringup/RelMovLTool.srv[0m
+[ 70%] [34m[1mGenerating C++ code from dobot_bringup/RelMovLUser.srv[0m
+[ 71%] [34m[1mGenerating C++ code from dobot_bringup/InverseSolution.srv[0m
+[ 71%] [34m[1mGenerating C++ code from dobot_bringup/RelMovJUser.srv[0m
+[ 72%] [34m[1mGenerating Lisp code from dobot_bringup/GetTerminal485.srv[0m
+[ 72%] [34m[1mGenerating Javascript code from dobot_bringup/Circle.srv[0m
+[ 72%] [34m[1mGenerating Javascript code from dobot_bringup/ServoJ.srv[0m
+[ 72%] [34m[1mGenerating C++ code from dobot_bringup/GetInRegs.srv[0m
+[ 72%] [34m[1mGenerating C++ code from dobot_bringup/GetInBits.srv[0m
+[ 72%] [34m[1mGenerating C++ code from dobot_bringup/DIGroup.srv[0m
+[ 73%] [34m[1mGenerating C++ code from dobot_bringup/DOGroup.srv[0m
+[ 73%] [34m[1mGenerating C++ code from dobot_bringup/GetPose.srv[0m
+[ 73%] [34m[1mGenerating C++ code from dobot_bringup/pause.srv[0m
+[ 73%] [34m[1mGenerating EusLisp code from dobot_bringup/SetTerminal485.srv[0m
+[ 73%] [34m[1mGenerating EusLisp code from dobot_bringup/GetTerminal485.srv[0m
+[ 73%] [34m[1mGenerating EusLisp code from dobot_bringup/TCPSpeed.srv[0m
+[ 73%] [34m[1mGenerating Lisp code from dobot_bringup/TCPSpeedEnd.srv[0m
+[ 73%] [34m[1mGenerating Lisp code from dobot_bringup/TCPSpeed.srv[0m
+[ 73%] [34m[1mGenerating Lisp code from dobot_bringup/JointMovJ.srv[0m
+[ 74%] [34m[1mGenerating Javascript code from dobot_bringup/ServoP.srv[0m
+[ 74%] [34m[1mGenerating Lisp code from dobot_bringup/MovJ.srv[0m
+[ 74%] [34m[1mGenerating Javascript code from dobot_bringup/Sync.srv[0m
+[ 74%] [34m[1mGenerating C++ code from dobot_bringup/Wait.srv[0m
+[ 74%] [34m[1mGenerating Python code from SRV dobot_bringup/RelMovLUser[0m
+[ 74%] [34m[1mGenerating Python code from SRV dobot_bringup/RelMovJUser[0m
+[ 75%] [34m[1mGenerating Lisp code from dobot_bringup/MovL.srv[0m
+[ 75%] [34m[1mGenerating Lisp code from dobot_bringup/RelMovJ.srv[0m
+[ 75%] [34m[1mGenerating Lisp code from dobot_bringup/Jump.srv[0m
+[ 75%] [34m[1mGenerating Javascript code from dobot_bringup/SyncAll.srv[0m
+[ 75%] [34m[1mGenerating Lisp code from dobot_bringup/RelMovL.srv[0m
+[ 75%] [34m[1mGenerating C++ code from dobot_bringup/MovJExt.srv[0m
+[ 75%] [34m[1mGenerating EusLisp code from dobot_bringup/TCPSpeedEnd.srv[0m
+[ 76%] [34m[1mGenerating EusLisp code from dobot_bringup/JointMovJ.srv[0m
+[ 77%] [34m[1mGenerating Python code from SRV dobot_bringup/InverseSolution[0m
+[ 77%] [34m[1mGenerating Lisp code from dobot_bringup/MovLIO.srv[0m
+[ 77%] [34m[1mGenerating EusLisp code from dobot_bringup/MovJ.srv[0m
+[ 77%] [34m[1mGenerating Python code from SRV dobot_bringup/GetPose[0m
+[ 77%] [34m[1mGenerating EusLisp code from dobot_bringup/MovL.srv[0m
+[ 78%] [34m[1mGenerating Lisp code from dobot_bringup/MovJIO.srv[0m
+[ 78%] [34m[1mGenerating Javascript code from dobot_bringup/StartTrace.srv[0m
+[ 78%] [34m[1mGenerating Lisp code from dobot_bringup/Circle.srv[0m
+[ 78%] [34m[1mGenerating Lisp code from dobot_bringup/ServoJ.srv[0m
+[ 78%] [34m[1mGenerating EusLisp code from dobot_bringup/Jump.srv[0m
+[ 78%] [34m[1mGenerating EusLisp code from dobot_bringup/RelMovJ.srv[0m
+[ 78%] [34m[1mGenerating Lisp code from dobot_bringup/ServoP.srv[0m
+[ 79%] [34m[1mGenerating EusLisp code from dobot_bringup/RelMovL.srv[0m
+[ 79%] [34m[1mGenerating Lisp code from dobot_bringup/Sync.srv[0m
+[ 79%] [34m[1mGenerating C++ code from dobot_bringup/ModbusCreate.srv[0m
+[ 80%] [34m[1mGenerating C++ code from dobot_bringup/ModbusClose.srv[0m
+[ 80%] [34m[1mGenerating Javascript code from dobot_bringup/StartPath.srv[0m
+[ 81%] [34m[1mGenerating Javascript code from dobot_bringup/StartFCTrace.srv[0m
+[ 81%] [34m[1mGenerating C++ code from dobot_bringup/LoadSwitch.srv[0m
+[ 82%] [34m[1mGenerating Lisp code from dobot_bringup/SyncAll.srv[0m
+[ 82%] [34m[1mGenerating Lisp code from dobot_bringup/StartTrace.srv[0m
+[ 82%] [34m[1mGenerating Lisp code from dobot_bringup/StartPath.srv[0m
+[ 82%] [34m[1mGenerating Lisp code from dobot_bringup/StartFCTrace.srv[0m
+[ 82%] [34m[1mGenerating Lisp code from dobot_bringup/MoveJog.srv[0m
+[ 82%] [34m[1mGenerating Javascript code from dobot_bringup/MoveJog.srv[0m
+[ 83%] [34m[1mGenerating Lisp code from dobot_bringup/TcpDashboard.srv[0m
+[ 83%] [34m[1mGenerating Javascript code from dobot_bringup/TcpDashboard.srv[0m
+[ 83%] [34m[1mGenerating EusLisp code from dobot_bringup/MovLIO.srv[0m
+[ 83%] [34m[1mGenerating Lisp code from dobot_bringup/TcpRealData.srv[0m
+[ 83%] [34m[1mGenerating C++ code from dobot_bringup/RelJointMovJ.srv[0m
+[ 83%] [34m[1mGenerating Javascript code from dobot_bringup/TcpRealData.srv[0m
+[ 83%] [34m[1mGenerating C++ code from dobot_bringup/GetTraceStartPose.srv[0m
+[ 83%] [34m[1mGenerating EusLisp code from dobot_bringup/MovJIO.srv[0m
+[ 83%] [34m[1mGenerating Python code from SRV dobot_bringup/GetInRegs[0m
+[ 83%] [34m[1mGenerating Python code from SRV dobot_bringup/GetInBits[0m
+[ 83%] [34m[1mGenerating Python code from SRV dobot_bringup/DIGroup[0m
+[ 83%] [34m[1mGenerating Python code from SRV dobot_bringup/DOGroup[0m
+[ 83%] [34m[1mGenerating C++ code from dobot_bringup/GetPathStartPose.srv[0m
+[ 84%] [34m[1mGenerating C++ code from dobot_bringup/HandleTrajPoints.srv[0m
+[ 84%] [34m[1mGenerating C++ code from dobot_bringup/GetSixForceData.srv[0m
+[ 85%] [34m[1mGenerating Python code from SRV dobot_bringup/pause[0m
+[ 85%] [34m[1mGenerating Python code from SRV dobot_bringup/Wait[0m
+[ 85%] [34m[1mGenerating Python code from SRV dobot_bringup/ModbusCreate[0m
+[ 85%] Built target dobot_bringup_generate_messages_nodejs
+[ 85%] [34m[1mGenerating Python code from SRV dobot_bringup/MovJExt[0m
+[ 85%] [34m[1mGenerating Python code from SRV dobot_bringup/ModbusClose[0m
+[ 86%] [34m[1mGenerating Python code from SRV dobot_bringup/LoadSwitch[0m
+[ 86%] Built target dobot_bringup_generate_messages_lisp
+[ 86%] [34m[1mGenerating EusLisp code from dobot_bringup/Circle.srv[0m
+[ 86%] [34m[1mGenerating C++ code from dobot_bringup/SetCollideDrag.srv[0m
+[ 86%] [34m[1mGenerating C++ code from dobot_bringup/SetTerminalKeys.srv[0m
+[ 86%] [34m[1mGenerating EusLisp code from dobot_bringup/ServoJ.srv[0m
+[ 87%] [34m[1mGenerating EusLisp code from dobot_bringup/ServoP.srv[0m
+[ 87%] [34m[1mGenerating EusLisp code from dobot_bringup/Sync.srv[0m
+[ 87%] [34m[1mGenerating C++ code from dobot_bringup/SetTerminal485.srv[0m
+[ 87%] [34m[1mGenerating Python code from SRV dobot_bringup/RelJointMovJ[0m
+[ 88%] [34m[1mGenerating C++ code from dobot_bringup/GetTerminal485.srv[0m
+[ 88%] [34m[1mGenerating Python code from SRV dobot_bringup/GetTraceStartPose[0m
+[ 88%] [34m[1mGenerating Python code from SRV dobot_bringup/GetPathStartPose[0m
+[ 88%] [34m[1mGenerating EusLisp code from dobot_bringup/SyncAll.srv[0m
+[ 88%] [34m[1mGenerating EusLisp code from dobot_bringup/StartTrace.srv[0m
+[ 88%] [34m[1mGenerating Python code from SRV dobot_bringup/HandleTrajPoints[0m
+[ 88%] [34m[1mGenerating C++ code from dobot_bringup/TCPSpeed.srv[0m
+[ 89%] [34m[1mGenerating Python code from SRV dobot_bringup/GetSixForceData[0m
+[ 89%] [34m[1mGenerating EusLisp code from dobot_bringup/StartPath.srv[0m
+[ 89%] [34m[1mGenerating C++ code from dobot_bringup/TCPSpeedEnd.srv[0m
+[ 90%] [34m[1mGenerating C++ code from dobot_bringup/MovJ.srv[0m
+[ 90%] [34m[1mGenerating C++ code from dobot_bringup/MovL.srv[0m
+[ 90%] [34m[1mGenerating C++ code from dobot_bringup/JointMovJ.srv[0m
+[ 90%] [34m[1mGenerating Python code from SRV dobot_bringup/SetCollideDrag[0m
+[ 90%] [34m[1mGenerating C++ code from dobot_bringup/Jump.srv[0m
+[ 90%] [34m[1mGenerating EusLisp code from dobot_bringup/MoveJog.srv[0m
+[ 91%] [34m[1mGenerating EusLisp code from dobot_bringup/StartFCTrace.srv[0m
+[ 91%] [34m[1mGenerating Python code from SRV dobot_bringup/SetTerminalKeys[0m
+[ 91%] [34m[1mGenerating Python code from SRV dobot_bringup/SetTerminal485[0m
+[ 91%] [34m[1mGenerating EusLisp code from dobot_bringup/TcpDashboard.srv[0m
+[ 91%] [34m[1mGenerating Python code from SRV dobot_bringup/GetTerminal485[0m
+[ 91%] [34m[1mGenerating EusLisp code from dobot_bringup/TcpRealData.srv[0m
+[ 91%] [34m[1mGenerating EusLisp manifest code for dobot_bringup[0m
+[ 91%] [34m[1mGenerating C++ code from dobot_bringup/RelMovJ.srv[0m
+[ 91%] [34m[1mGenerating C++ code from dobot_bringup/RelMovL.srv[0m
+[ 91%] [34m[1mGenerating C++ code from dobot_bringup/MovLIO.srv[0m
+[ 92%] [34m[1mGenerating Python code from SRV dobot_bringup/TCPSpeed[0m
+[ 93%] [34m[1mGenerating C++ code from dobot_bringup/MovJIO.srv[0m
+[ 93%] [34m[1mGenerating C++ code from dobot_bringup/Circle.srv[0m
+[ 93%] [34m[1mGenerating Python code from SRV dobot_bringup/TCPSpeedEnd[0m
+[ 93%] [34m[1mGenerating Python code from SRV dobot_bringup/JointMovJ[0m
+[ 93%] [34m[1mGenerating C++ code from dobot_bringup/ServoJ.srv[0m
+[ 93%] [34m[1mGenerating C++ code from dobot_bringup/ServoP.srv[0m
+[ 93%] [34m[1mGenerating C++ code from dobot_bringup/Sync.srv[0m
+[ 93%] [34m[1mGenerating Python code from SRV dobot_bringup/MovJ[0m
+[ 93%] [34m[1mGenerating Python code from SRV dobot_bringup/MovL[0m
+[ 93%] [34m[1mGenerating Python code from SRV dobot_bringup/RelMovJ[0m
+[ 94%] [34m[1mGenerating Python code from SRV dobot_bringup/RelMovL[0m
+[ 94%] [34m[1mGenerating Python code from SRV dobot_bringup/Jump[0m
+[ 95%] [34m[1mGenerating C++ code from dobot_bringup/SyncAll.srv[0m
+[ 95%] [34m[1mGenerating C++ code from dobot_bringup/StartTrace.srv[0m
+[ 95%] [34m[1mGenerating C++ code from dobot_bringup/StartPath.srv[0m
+[ 95%] [34m[1mGenerating Python code from SRV dobot_bringup/MovLIO[0m
+[ 95%] [34m[1mGenerating Python code from SRV dobot_bringup/MovJIO[0m
+[ 95%] [34m[1mGenerating C++ code from dobot_bringup/StartFCTrace.srv[0m
+[ 95%] [34m[1mGenerating C++ code from dobot_bringup/MoveJog.srv[0m
+[ 96%] [34m[1mGenerating C++ code from dobot_bringup/TcpDashboard.srv[0m
+[ 97%] [34m[1mGenerating C++ code from dobot_bringup/TcpRealData.srv[0m
+[ 97%] [34m[1mGenerating Python code from SRV dobot_bringup/Circle[0m
+[ 97%] [34m[1mGenerating Python code from SRV dobot_bringup/ServoJ[0m
+[ 97%] [34m[1mGenerating Python code from SRV dobot_bringup/ServoP[0m
+[ 98%] [34m[1mGenerating Python code from SRV dobot_bringup/StartTrace[0m
+[ 98%] [34m[1mGenerating Python code from SRV dobot_bringup/Sync[0m
+[ 98%] [34m[1mGenerating Python code from SRV dobot_bringup/SyncAll[0m
+[ 98%] [34m[1mGenerating Python code from SRV dobot_bringup/StartPath[0m
+[ 98%] [34m[1mGenerating Python code from SRV dobot_bringup/MoveJog[0m
+[ 98%] [34m[1mGenerating Python code from SRV dobot_bringup/StartFCTrace[0m
+[ 98%] [34m[1mGenerating Python code from SRV dobot_bringup/TcpDashboard[0m
+[100%] [34m[1mGenerating Python code from SRV dobot_bringup/TcpRealData[0m
+[100%] Built target dobot_bringup_generate_messages_cpp
+[100%] Built target dobot_bringup_generate_messages_eus
+[100%] [34m[1mGenerating Python msg __init__.py for dobot_bringup[0m
+[100%] [34m[1mGenerating Python srv __init__.py for dobot_bringup[0m
+[100%] Built target dobot_bringup_generate_messages_py
+[35m[1mScanning dependencies of target dobot_bringup_generate_messages[0m
+[35m[1mScanning dependencies of target dobot_bringup[0m
+[100%] Built target dobot_bringup_generate_messages
+[100%] [32mBuilding CXX object CMakeFiles/dobot_bringup.dir/src/cr5_robot.cpp.o[0m
+[100%] [32mBuilding CXX object CMakeFiles/dobot_bringup.dir/src/tcp_socket.cpp.o[0m
+[100%] [32mBuilding CXX object CMakeFiles/dobot_bringup.dir/src/main.cpp.o[0m
+[100%] [32m[1mLinking CXX executable /home/bclacy/Cube-Sorting-Robot/devel/.private/dobot_bringup/lib/dobot_bringup/dobot_bringup[0m
+[100%] Built target dobot_bringup

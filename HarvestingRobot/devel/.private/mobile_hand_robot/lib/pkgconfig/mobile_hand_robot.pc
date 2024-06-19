@@ -1,0 +1,8 @@
+prefix=/home/bclacy/Cube-Sorting-Robot/devel/.private/mobile_hand_robot
+
+Name: mobile_hand_robot
+Description: Description of mobile_hand_robot
+Version: 0.3.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

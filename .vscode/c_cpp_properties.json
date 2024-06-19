@@ -1,0 +1,29 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "${default}",
+        "limitSymbolsToIncludedHeaders": false
+      },
+      "includePath": [
+        "/home/justin/catkin_ws/devel/include/**",
+        "/opt/ros/noetic/include/**",
+        "/home/justin/catkin_ws/src/MiFood/dh_gripper_ros/dh_gripper_driver/include/**",
+        "/home/justin/catkin_ws/src/MiFood/TCP-IP-ROS-6AXis/dobot_bringup/include/**",
+        "/home/justin/catkin_ws/src/MiFood/TCP-IP-ROS-6AXis/dobot_v4_bringup/include/**",
+        "/home/justin/catkin_ws/src/MiFood/TCP-IP-ROS-6AXis/mi_food_nova5_control/include/**",
+        "/home/justin/catkin_ws/src/MiFood/dh_gripper_ros/dh_robotics_ag95_gripper/dh_robotics_ag95_simulation/roboticsgroup_gazebo_plugins/include/**",
+        "/home/justin/catkin_ws/src/MiFood/TCP-IP-ROS-6AXis/rosdemo_v3/include/**",
+        "/home/justin/catkin_ws/src/MiFood/TCP-IP-ROS-6AXis/rosdemo_v4/include/**",
+        "/home/justin/catkin_ws/src/MiFood/TCP-IP-ROS-6AXis/rviz_dobot_control/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS",
+      "intelliSenseMode": "gcc-x64",
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "gnu11",
+      "cppStandard": "c++14"
+    }
+  ],
+  "version": 4
+}

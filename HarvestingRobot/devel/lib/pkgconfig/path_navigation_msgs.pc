@@ -1,0 +1,1 @@
+/home/bclacy/Cube-Sorting-Robot/devel/.private/path_navigation_msgs/lib/pkgconfig/path_navigation_msgs.pc

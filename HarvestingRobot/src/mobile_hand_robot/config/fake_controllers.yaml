@@ -1,0 +1,19 @@
+controller_list:
+  - name: fake_nova_arm_controller
+    type: $(arg fake_execution_type)
+    joints:
+      - joint1
+      - joint2
+      - joint3
+      - joint4
+      - joint5
+      - joint6
+  - name: fake_gripper_controller
+    type: $(arg fake_execution_type)
+    joints:
+      - finger1_joint
+initial:  # Define initial robot poses per group
+  - group: nova_arm
+    pose: home
+  - group: gripper
+    pose: open

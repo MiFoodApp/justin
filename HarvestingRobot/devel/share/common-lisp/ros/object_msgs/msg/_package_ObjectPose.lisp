@@ -1,0 +1,1 @@
+/home/bclacy/Cube-Sorting-Robot/devel/.private/object_msgs/share/common-lisp/ros/object_msgs/msg/_package_ObjectPose.lisp

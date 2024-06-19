@@ -1,0 +1,5 @@
+dobot_gazebo
+/home/bclacy/Cube-Sorting-Robot/devel/.private/dobot_gazebo/cmake.lock /home/bclacy/Cube-Sorting-Robot/devel/./cmake.lock
+/home/bclacy/Cube-Sorting-Robot/devel/.private/dobot_gazebo/lib/pkgconfig/dobot_gazebo.pc /home/bclacy/Cube-Sorting-Robot/devel/lib/pkgconfig/dobot_gazebo.pc
+/home/bclacy/Cube-Sorting-Robot/devel/.private/dobot_gazebo/share/dobot_gazebo/cmake/dobot_gazeboConfig-version.cmake /home/bclacy/Cube-Sorting-Robot/devel/share/dobot_gazebo/cmake/dobot_gazeboConfig-version.cmake
+/home/bclacy/Cube-Sorting-Robot/devel/.private/dobot_gazebo/share/dobot_gazebo/cmake/dobot_gazeboConfig.cmake /home/bclacy/Cube-Sorting-Robot/devel/share/dobot_gazebo/cmake/dobot_gazeboConfig.cmake

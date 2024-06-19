@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/bclacy/Cube-Sorting-Robot/devel/.private/object_msgs/setup.sh
