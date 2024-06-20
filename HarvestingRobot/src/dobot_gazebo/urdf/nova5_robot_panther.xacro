@@ -514,7 +514,7 @@
           <origin rpy="1.5707963267948966 0 1.5707963267948966" xyz="0.0046500000000000005 -0.0475 0" />
           <geometry>
               <!-- <box size="${d455_cam_depth} ${d455_cam_width} ${d455_cam_height}"/> -->
-              <mesh filename="package://realsense2_description/meshes/d435.dae" />
+              <mesh filename="package://realsense2_description/meshes/d435.stl" scale="0.001 0.001 0.001"/>
           </geometry>
           <material name="aluminum" />
       </visual>
@@ -538,9 +538,10 @@
     <child link="camera_link" />
   </joint>
 
-  <!-- xacro:sensor_d455 parent="base_link_gripper" use_nominal_extrinsics="$(arg use_nominal_extrinsics)">
-    <origin xyz="0.065 0 0" rpy="0 -1.57 3.14"/>
-  </xacro:sensor_d435 -->
+  <xacro:sensor_d435 name="camera" topics_ns="camera" parent="base_link_gripper" publish_pointcloud="true">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+  </xacro:sensor_d435>  
+
   <link
     name="finger1_link">
     <inertial>

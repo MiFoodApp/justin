@@ -38,45 +38,6 @@ aluminum peripherial evaluation case.
     <material name="${name}_aluminum">
     <color rgba="0.5 0.5 0.5 1"/>
     </material>
-
-
-    <!-- camera body, with origin at bottom screw mount -->
-    <joint name="${name}_joint" type="fixed">
-      <xacro:insert_block name="origin" />
-      <parent link="${parent}"/>
-      <child link="${name}_bottom_screw_frame" />
-    </joint>
-    <link name="${name}_bottom_screw_frame"/>
-
-    <joint name="${name}_link_joint" type="fixed">
-      <origin xyz="0 ${d435_cam_depth_py} ${d435_cam_depth_pz}" rpy="0 0 0"/>
-      <parent link="${name}_bottom_screw_frame"/>
-      <child link="${name}_link" />
-    </joint>
-
-    <link name="${name}_link">
-      <visual>
-      <origin xyz="${d435_cam_mount_from_center_offset} ${-d435_cam_depth_py} 0" rpy="${M_PI/2} 0 ${M_PI/2}"/>
-        <geometry>
-          <!-- <box size="${d435_cam_width} ${d435_cam_height} ${d435_cam_depth}"/> -->
-          <mesh filename="package://realsense2_description/meshes/d435.dae" />
-          <!--<mesh filename="package://realsense2_description/meshes/d435/d435.dae" />-->
-        </geometry>
-        <material name="${name}_aluminum"/>
-      </visual>
-      <collision>
-        <origin xyz="0 ${-d435_cam_depth_py} 0" rpy="0 0 0"/>
-        <geometry>
-        <box size="${d435_cam_depth} ${d435_cam_width} ${d435_cam_height}"/>
-        </geometry>
-      </collision>
-      <inertial>
-        <!-- The following are not reliable values, and should not be used for modeling -->
-        <mass value="0.564" />
-        <origin xyz="0 0 0" />
-        <inertia ixx="0.003881243" ixy="0.0" ixz="0.0" iyy="0.000498940" iyz="0.0" izz="0.003879257" />
-      </inertial>
-    </link>
    
     <!-- camera depth joints and links -->
     <joint name="${name}_depth_joint" type="fixed">

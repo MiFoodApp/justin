@@ -5,8 +5,8 @@
   <arg name="world" default="" />
   <arg name="world_pose" default="-x 2 -y 2 -z 0 -R 0 -P 0 -Y 0" doc="Pose to spawn the robot at"/>
   <arg name="initial_joint_positions" default=" -J finger1_joint 0.0102 -J joint1 0 -J joint2 0 -J joint3 0 -J joint4 0 -J joint5 0 -J joint6 0" doc="Initial joint configuration of the robot"/>
-  <arg name="model" default="$(find realsense2_description)/urdf/test_d435_camera.urdf.xacro"/>
-
+  <arg name="model" default="$(find realsense2_description)/urdf/_d435.urdf.xacro"/>
+  <param name="robot_description" command="$(find xacro)/xacro $(arg model)" />
   
   <include file="$(find dobot_gazebo)/launch/$(arg DOBOT_TYPE)_robot_description.xml"/>
   <!-- <include file="$(find dobot_gazebo)/launch/robot_control.xml"/> -->
@@ -20,6 +20,7 @@
     <arg name="headless" value="false"/>
     <arg name="verbose" value="true"/>
   </include>
+
   <node 
     name="urdf_spawner" 
     pkg="gazebo_ros" 

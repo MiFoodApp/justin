@@ -52,11 +52,7 @@ BOX_X = -0.5                        # [m]
 TAU = 2*pi
 
 wait_time: float = 0.0
-stem_positions: float = [
-    [0.0, 0.0, 0.0],
-    [0.0, 0.0, 0.0],
-    [0.0, 0.0, 0.0],
-    ]
+stem_positions: float = []
  
 class Pose:
     def __init__(self, position_x: float, position_y: float, position_z: float,  
@@ -154,17 +150,11 @@ display_trajectory_publisher = rospy.Publisher('/move_group/display_planned_path
 # print(f'{current_pose = }')
 
 # Define stem positions here
-stem_positions[0][0] = 0.3
-stem_positions[0][1] = -0.6
-stem_positions[0][2] = 0.2
+stem_positions.append([0.3, -0.6, 0.2])
 
-stem_positions[1][0] = 0.0
-stem_positions[1][1] = -0.6
-stem_positions[1][2] = 0.8
+stem_positions.append([0.0, -0.6, 0.8])
 
-stem_positions[2][0] = -0.3
-stem_positions[2][1] = -0.7
-stem_positions[2][2] = 0.5
+# stem_positions.append([-0.3, -0.7, 0.5])
 
 velocity_level = "FAST"
 
@@ -172,8 +162,8 @@ velocity_level = "FAST"
 # stem_position[1] = float(input("\n\nGive Stem Position Y [-0.3, -0,6]: "))
 # stem_position[2] = float(input("Give Stem Position Z [0.2,0.8]: "))
 
-velocity_level = input("Give Velocity Level [SLOW, MEDIUM, FAST]: ")
-print("\n\n")
+# velocity_level = input("Give Velocity Level [SLOW, MEDIUM, FAST]: ")
+# print("\n\n")
 
 waypoints = []
 
@@ -198,7 +188,12 @@ if current_joint_values != sitting_joint_values:
     time.sleep(ARM_WAIT_TIME)
     arm_group.stop()
 
-for i in range(len(stem_positions)):
+counter = 0
+
+for i in stem_positions:
+    counter += 1
+print(f'{counter = }')
+for i in range(counter):
 
     # Calculate smallest rotation angle for local y-axis to intersect with z-axis of stem 
     stem_rotation = math.atan2(stem_positions[i][1], stem_positions[i][0]) + TAU/4
@@ -243,6 +238,8 @@ for i in range(len(stem_positions)):
                 current_pose.orientation.x, current_pose.orientation.y, current_pose.orientation.z, current_pose.orientation.w)
     arm_group.go(target_2_pose.pose, wait=True)
     go_gripper(GRIP_GRAB)
+
+    time.sleep(10)
 
     ## Pick strawberry ##
     rospy.loginfo('\n\nSTEP 4:\tPick strawberry\n\n')
