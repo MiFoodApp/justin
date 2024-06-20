@@ -151,12 +151,12 @@ git config credential.helper store
 
 * Username for 'https://github.com':
 ```bash
-Justin-Riekehof
+mifoodrobot
 ```
 
 * Password for 'https://Justin-Riekehof@github.com':
 ```bash
-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
+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
 ```
 
 * Source the *setup.bash* of the workspace by default:
