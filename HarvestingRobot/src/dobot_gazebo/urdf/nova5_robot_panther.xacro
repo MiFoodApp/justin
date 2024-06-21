@@ -2,6 +2,14 @@
 <robot name="nova5_robot" xmlns:xacro="http://www.ros.org/wiki/xacro" >
   <xacro:include filename="camera.xacro"/>
   <xacro:include filename="$(find realsense2_description)/urdf/_d435.urdf.xacro" />
+
+  <!-- 
+  SET CAMERA POSITION AND FOV OFFSET HERE
+  -->
+  
+  <xacro:property name="camera_position" value="0.011150000000000002 0 0.0145"/>
+  <xacro:property name="fov_offset" value="0.00465 0 0"/>
+
   <link name="world"/>
   <joint
     name="world_joint"
@@ -14,7 +22,7 @@
   </joint>
   <xacro:property name="r" value="0.08" />
   <xacro:property name="h" value="0.20" />
-  <xacro:property name="limit" value="4000000"/>
+  <xacro:property name="limit" value="40000"/>
     <material name="aluminum">
         <color rgba="0.5 0.5 0.5 1" />
     </material>
@@ -511,7 +519,7 @@
       <visual>
           <!-- the mesh origin is at front plate in between the two infrared camera axes -->
           <!-- <origin xyz="${d455_zero_depth_to_glass-d455_cam_depth/2} ${-d455_cam_depth_py} 0" rpy="0 0 0"/> -->
-          <origin rpy="1.5707963267948966 0 1.5707963267948966" xyz="0.0046500000000000005 -0.0475 0" />
+          <origin rpy="1.5707963267948966 0 1.5707963267948966" xyz="${fov_offset}" />
           <geometry>
               <!-- <box size="${d455_cam_depth} ${d455_cam_width} ${d455_cam_height}"/> -->
               <mesh filename="package://realsense2_description/meshes/d435.stl" scale="0.001 0.001 0.001"/>
@@ -533,7 +541,7 @@
   </link>
 
   <joint name="camera_link_joint" type="fixed">
-    <origin rpy="0 0 0" xyz="0.011150000000000002 0.0475 0.0145" />
+    <origin rpy="0 0 0" xyz="${camera_position}" />
     <parent link="camera_bottom_screw_frame" />
     <child link="camera_link" />
   </joint>
