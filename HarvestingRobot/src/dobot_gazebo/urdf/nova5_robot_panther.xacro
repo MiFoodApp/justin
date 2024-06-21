@@ -3,12 +3,15 @@
   <xacro:include filename="camera.xacro"/>
   <xacro:include filename="$(find realsense2_description)/urdf/_d435.urdf.xacro" />
 
-  <!-- 
-  SET CAMERA POSITION AND FOV OFFSET HERE
-  -->
-  
+  <!-- SET CAMERA POSITION AND FOV OFFSET HERE -->
   <xacro:property name="camera_position" value="0.011150000000000002 0 0.0145"/>
   <xacro:property name="fov_offset" value="0.00465 0 0"/>
+
+   <xacro:property name="platform_type" value="panther"/>
+   <!-- PLATFORM TYPES
+   panther
+   hunter
+   -->
 
   <link name="world"/>
   <joint
@@ -83,7 +86,7 @@
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
          <mesh
-          filename="package://dobot_description/meshes/nova5/panther.stl" scale="0.001 0.001 0.001"/>
+          filename="package://dobot_description/meshes/nova5/${platform_type}.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </visual>
     <inertial>
