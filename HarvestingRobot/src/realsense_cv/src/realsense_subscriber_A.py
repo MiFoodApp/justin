@@ -103,7 +103,7 @@ if __name__ == '__main__':
     # color_pic_listener = ImageListener(color_topic, "bgr8")
     depth_pic_listener = ImageListener(depth_topic, "16SC1")
     # ir1_pic_listener = ImageListener(ir1_topic, "8UC1")
-    print(f"{pathlib.Path(__file__).parent.resolve()}")
+    
     # while not rospy.is_shutdown():
     #     cv2.imshow(color_pic_listener.topic, color_pic_listener.image)
     #     #cv2.imshow(depth_pic_listener.topic, depth_pic_listener.image)
