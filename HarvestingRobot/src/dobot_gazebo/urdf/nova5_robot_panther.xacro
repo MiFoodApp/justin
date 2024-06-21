@@ -14,21 +14,21 @@
   <joint
     name="world_joint"
     type="fixed">
-    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <origin xyz="0 0 0.16" rpy="0 0 0"/>
     <parent
       link="world" />
     <child
-      link="base_link" />
+      link="mobile_platform_link" />
   </joint>
   <xacro:property name="r" value="0.08" />
   <xacro:property name="h" value="0.20" />
   <xacro:property name="limit" value="40000"/>
-    <material name="aluminum">
-        <color rgba="0.5 0.5 0.5 1" />
-    </material>
-    <material name="plastic">
-        <color rgba="0.1 0.1 0.1 1" />
-    </material>
+  <material name="aluminum">
+      <color rgba="0.5 0.5 0.5 1" />
+  </material>
+  <material name="plastic">
+      <color rgba="0.1 0.1 0.1 1" />
+  </material>
 
   <!-- <link name="cylinder_link">
     <visual>
@@ -77,6 +77,54 @@
     <child
       link="base_link" />
   </joint> -->
+
+  <link name="mobile_platform_link">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+         <mesh
+          filename="package://dobot_description/meshes/nova5/panther.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </visual>
+    <inertial>
+      <origin xyz="0 0 0.04" rpy="0 0 0"/>
+      <mass value="0.01"/>
+      <inertia ixx="0.00308109148952278"
+        ixy="-4.0369958400766E-08"
+        ixz="5.2607663395944E-07"
+        iyy="0.00309758743296662"
+        iyz="-6.37484696538659E-09"
+        izz="0.00232835367593981" />
+    </inertial>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+         <box size="0.1 0.1 0.1"/>
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="mobile_platform_link">
+    <material>Gazebo/Grey</material>
+    <dampingFactor>0.05</dampingFactor>
+    <kp>1000000</kp>
+    <kd>1.0</kd>
+    <mu1>100.0</mu1>
+    <mu2>100.0</mu2>
+    <minDepth>0.001</minDepth>
+  </gazebo>
+
+  <joint
+    name="robot_joint"
+    type="fixed">
+    <origin
+      xyz="0 0 0.13"
+      rpy="0 0 0" />
+    <parent
+      link="mobile_platform_link" />
+    <child
+      link="base_link" />
+  </joint>
+
   <link
     name="base_link">
     <inertial>
