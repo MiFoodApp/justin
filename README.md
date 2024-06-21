@@ -200,5 +200,9 @@ roslaunch dobot_moveit moveit.launch
 rosrun dobot_control pick_strawberry.py
 ```
 
+```bash
+rosrun realsense_cv realsense_subscriber.py
+```
+
 NOTE: The scripts must be ran in that order due to subscriber connections.
 
