@@ -7,6 +7,12 @@ import sys
 import os
 from mask_rcnn import *
 import cv2
+from torchvision.io.image import read_image
+from torchvision.models.segmentation import fcn_resnet50, FCN_ResNet50_Weights
+from torchvision.transforms.functional import to_pil_image
+import time
+from pathlib import Path
+
 
 '''
 D435i TOPICS
@@ -65,7 +71,20 @@ D435i TOPICS
 
 '''
 
+'''
+RESNET50 CLASSES
+
+{'__background__': 0, 'aeroplane': 1, 'bicycle': 2, 'bird': 3, 'boat': 4, 'bottle': 5, 
+'bus': 6, 'car': 7, 'cat': 8, 'chair': 9, 'cow': 10, 'diningtable': 11, 'dog': 12, 
+'horse': 13, 'motorbike': 14, 'person': 15, 'pottedplant': 16, 'sheep': 17, 'sofa': 18, 'train': 19, 'tvmonitor': 20}
+
+'''
+
+
 mrcnn = MaskRCNN()
+path = str(Path(__file__).parent.resolve())
+
+one_time = True
 
 color_images = []
 depth_images = []
@@ -79,38 +98,56 @@ ir1_topic = '/camera/infra1/image_raw'
 ir2_topic = '/camera/infra2/image_raw'
 
 
+bridge = CvBridge()
+mask = None
+start = time.time()
+
+# Step 1: Initialize model with the best available weights
+weights = FCN_ResNet50_Weights.DEFAULT
+model = fcn_resnet50(weights=weights)
+model.eval()
+
+# Step 2: Initialize the inference transforms
+preprocess = weights.transforms()
+
 class ImageListener:
+    
     def __init__(self, topic, encoding):
         self.topic = topic
         self.data = None
         self.image = None
         self.encoding = encoding
-        self.bridge = CvBridge()
         self.sub = rospy.Subscriber(topic, msg_Image, self.imageDepthCallback)
 
     def imageDepthCallback(self, data):
+        global mask
         try:
-            if self.topic == color_topic and data.header.frame_id == 'camera_color_optical_frame':   
+
+            if self.topic == color_topic and data.header.frame_id == 'camera_color_optical_frame': 
+                print('\n\nc\n\n')
                 # Get object mask
-                img = self.bridge.imgmsg_to_cv2(data, self.encoding)
-                boxes, classes, contours, centers = mrcnn.detect_objects_mask(img)
-                # Draw object mask
-                img = mrcnn.draw_object_mask(img)
-                # # Show depth info of the objects
-                # mrcnn.draw_object_info(img, depth_frame)
-                # Append image to global list
-                color_images.append(img)
+                img = bridge.imgmsg_to_cv2(data, self.encoding)
+                cv2.imwrite(f"{path}/img.png", img)
+                img = read_image(f"{path}/img.png")
+                # Step 3: Apply inference preprocessing transforms
+                batch = preprocess(img).unsqueeze(0)
+                prediction = model(batch)["out"]
+                normalized_masks = prediction.softmax(dim=1)
+                class_to_idx = {cls: idx for (idx, cls) in enumerate(weights.meta["categories"])}
+                mask = normalized_masks[0, class_to_idx["car"]]
             elif self.topic == depth_topic:
-                depth_images.append(self.bridge.imgmsg_to_cv2(data, self.encoding))
+                depth_images.append(bridge.imgmsg_to_cv2(data, self.encoding))
                 self.pix = (data.width, data.height)
             elif self.topic == ir1_topic:
-                ir1_images.append(self.bridge.imgmsg_to_cv2(data, self.encoding))
+                ir1_images.append(bridge.imgmsg_to_cv2(data, self.encoding))
             elif self.topic == ir2_topic:
-                ir2_images.append(self.bridge.imgmsg_to_cv2(data, self.encoding))
+                ir2_images.append(bridge.imgmsg_to_cv2(data, self.encoding))
+            
+            
+
         except CvBridgeError as e:
             print(e)
             return
-
 
 if __name__ == '__main__':
     rospy.init_node("depth_image_processor")
@@ -121,10 +158,15 @@ if __name__ == '__main__':
     ir2_pic_listener = ImageListener(ir2_topic, "8UC1")
 
     while not rospy.is_shutdown():
-        if len(color_images) != 0:
-            img = color_images.pop()
-            cv2.imshow(color_topic, img)
-            color_images = []
+        if mask is not None and one_time:
+            
+            #one_time = False
+            to_pil_image(mask).show()
+
+            end = time.time()
+            print(f'Processing time: {end-start} s')  
+            start = time.time()
+            mask = None
         elif len(depth_images) != 0:
             img = depth_images.pop()
             if depth_pic_listener.pix == (1280, 720):
