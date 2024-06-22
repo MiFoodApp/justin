@@ -1,0 +1,10 @@
+newmtl polySurface4SG
+	illum 4
+	Kd 0.50 0.50 0.50
+	Ka 0.00 0.00 0.00
+	Tf 1.00 1.00 1.00
+	Ni 1.00
+	Ks 0.00 0.00 0.00
+	Ns 18.00
+	map_Ka Green_Apple_Basecolor.png
+	map_Kd Green_Apple_Basecolor.png
