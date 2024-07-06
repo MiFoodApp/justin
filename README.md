@@ -168,18 +168,6 @@ echo "source ~/<CATKIN_WS_NAME>/devel/setup.bash" >> ~/.bashrc
 ```bash
 echo "export DOBOT_TYPE=nova5" >> ~/.bashrc
 ```
-* Make python scripts executable:
-```bash
-cd ~/<CATKIN_WS_NAME>/src/MiFood/HarvestingRobot/src/dobot_control/src
-sudo chmod +x pick_strawberry.py
-```
-
-* Load header files via VS Code:
-```bash
-code
-```
-
-* Open CATKIN workspace source folder in VS Code and with *CTRL+P* search for *dh_gripper_Test.cpp*
 
 * Build the CATKIN workspace:
 ```bash
