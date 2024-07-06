@@ -169,6 +169,12 @@ echo "source ~/<CATKIN_WS_NAME>/devel/setup.bash" >> ~/.bashrc
 echo "export DOBOT_TYPE=nova5" >> ~/.bashrc
 ```
 
+* Set mobile platform type (panther or hunter):
+```bash
+echo "export MOBILE_PLATFORM=<TYPE>" >> ~/.bashrc
+```
+
+
 * Build the CATKIN workspace:
 ```bash
 cd ~/<CATKIN_WS_NAME>
