@@ -161,7 +161,7 @@ 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
 
 * Source the *setup.bash* of the workspace by default:
 ```bash
-source ~/<CATKIN_WS_NAME>/devel/setup.bash
+echo "~/<CATKIN_WS_NAME>/devel/setup.bash" >> ~/.bashrc
 ```
 
 * Add "export DOBOT_TYPE=nova5" to ~/.bashrc file:
