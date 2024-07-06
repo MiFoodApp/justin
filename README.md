@@ -61,6 +61,9 @@ sudo pip install opencv-python
 ```bash
 sudo pip install numpy
 ```
+```bash
+sudo pip install ultralytics
+```
 
 ### Install CUDA
 * Install the NVIDIA driver:
