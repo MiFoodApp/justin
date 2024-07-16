@@ -62,12 +62,14 @@ def process_detections(detections, img_shape, depth_frame):
             mapped_bbox = map_coordinates(box, img_shape)
             x_center = int((mapped_bbox[0] + mapped_bbox[2]) / 2)
             y_center = int((mapped_bbox[1] + mapped_bbox[3]) / 2)
-
             depth_value = get_depth_value(depth_frame, x_center, y_center)
             depth_cm, depth_in = convert_depth_to_units(depth_value)
-
+    
+            # Publish object coordinates
             object_position = calculate_object_position(depth_cm, x_center, y_center)
-            print(f'\n\n{object_position = }\n\n')
+            apple_coordinates = Int16MultiArray()
+            apple_coordinates.data.append(object_position)
+            apple_coordinates_publisher.publish(apple_coordinates)
 
             width_pixels = None
             width_cm = None
@@ -168,15 +170,6 @@ def process_realsense():
                 boxes = result.boxes.cpu().numpy()
                 for box in boxes.xyxy:
                     x1, y1, x2, y2 = [int(coord) for coord in box]
-
-                    # Publish apple coordinates
-                    apple_coordinates = Int16MultiArray()
-                    apple_coordinates.data.append(x1)
-                    apple_coordinates.data.append(y1)
-                    apple_coordinates.data.append(x2)
-                    apple_coordinates.data.append(y2)
-                    apple_coordinates_publisher.publish(apple_coordinates)
-
                     # Augment image with rectangle and label
                     label = result.names[int(boxes.cls[0])]
                     confidence = boxes.conf[0]
