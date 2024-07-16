@@ -66,9 +66,11 @@ def process_detections(detections, img_shape, depth_frame):
             depth_cm, depth_in = convert_depth_to_units(depth_value)
     
             # Publish object coordinates
-            object_position = calculate_object_position(depth_cm, x_center, y_center)
+            apple_position = calculate_object_position(depth_cm, x_center, y_center)
             apple_coordinates = Int16MultiArray()
-            apple_coordinates.data.append(object_position)
+            apple_coordinates.data.append(apple_position[0])
+            apple_coordinates.data.append(apple_position[1])
+            apple_coordinates.data.append(apple_position[2])
             apple_coordinates_publisher.publish(apple_coordinates)
 
             width_pixels = None
@@ -196,6 +198,6 @@ def process_realsense():
         rospy.signal_shutdown("Signal Shutdown")
 
 if __name__ == "__main__":
-    apple_coordinates_publisher = rospy.Publisher("apple_coordinates_publisher", Int16MultiArray, queue_size=10)
+    apple_coordinates_publisher = rospy.Publisher("apple_coordinates", Int16MultiArray, queue_size=10)
     rospy.init_node("intel_d435_stream")
     process_realsense()
