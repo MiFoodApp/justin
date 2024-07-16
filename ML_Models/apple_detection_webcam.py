@@ -80,8 +80,6 @@ def process_webcam():
     model = YOLO(path)
     cap = cv2.VideoCapture(0, cv2.CAP_V4L2)
 
-    apple_coordinates = Int16MultiArray()
-
     while True:
         ret, frame = cap.read()
         if not ret:
@@ -99,6 +97,7 @@ def process_webcam():
                 x1, y1, x2, y2 = [int(coord) for coord in box]
 
                 # Publish apple coordinates
+                apple_coordinates = Int16MultiArray()
                 apple_coordinates.data.append(x1)
                 apple_coordinates.data.append(y1)
                 apple_coordinates.data.append(x2)
@@ -111,9 +110,9 @@ def process_webcam():
                 cv2.rectangle(frame, (x1, y1), (x2, y2), (0, 255, 0), 2)
                 cv2.putText(frame, f"{label}: {confidence:.2f}", (x1, y1 - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
 
+        #  FUNCTIONALITY ?!
         cv2.imshow('Webcam Stream', frame)
         if cv2.waitKey(1) & 0xFF == ord('q'):
-            print("\n\nCheck\n\n")
             break
 
     rospy.signal_shutdown("Node Termination")
