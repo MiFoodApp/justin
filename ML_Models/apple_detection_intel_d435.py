@@ -137,7 +137,7 @@ def process_realsense():
 
             if not color_frame or not depth_frame:
                 continue
-
+# Test
             frame = np.asanyarray(color_frame.get_data())
             results = model(frame, conf=0.7, show_conf=False, show_labels=False, device=0)
             output = process_detections(results, frame.shape, depth_frame)
