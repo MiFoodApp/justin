@@ -1,8 +1,15 @@
+#!/usr/bin/env python3
+
 import cv2
 import pyrealsense2 as rs
 from ultralytics import YOLO
 import numpy as np
 import time
+import rospy
+from std_msgs.msg import Int16MultiArray
+from sensor_msgs.msg import Image as msg_Image
+from cv_bridge import CvBridge, CvBridgeError
+from pathlib import Path
 
 def map_coordinates(coords, img_shape):
     return coords
@@ -136,6 +143,26 @@ def process_realsense():
             output = process_detections(results, frame.shape, depth_frame)
             print_detections(output)
 
+            for result in results:
+                boxes = result.boxes.cpu().numpy()
+                for box in boxes.xyxy:
+                    x1, y1, x2, y2 = [int(coord) for coord in box]
+
+                    # Publish apple coordinates
+                    apple_coordinates = Int16MultiArray()
+                    apple_coordinates.data.append(x1)
+                    apple_coordinates.data.append(y1)
+                    apple_coordinates.data.append(x2)
+                    apple_coordinates.data.append(y2)
+                    apple_coordinates_publisher.publish(apple_coordinates)
+
+                    # Augment image with rectangle and label
+                    label = result.names[int(boxes.cls[0])]
+                    confidence = boxes.conf[0]
+                    cv2.rectangle(frame, (x1, y1), (x2, y2), (0, 255, 0), 2)
+                    cv2.putText(frame, f"{label}: {confidence:.2f}", (x1, y1 - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
+
+
             frame = display_frame(frame, results, depth_frame)
             frame_count += 1
             if frame_count >= 10:
@@ -155,5 +182,6 @@ def process_realsense():
         rospy.signal_shutdown("Signal Shutdown")
 
 if __name__ == "__main__":
+    apple_coordinates_publisher = rospy.Publisher("apple_coordinates_publisher", Int16MultiArray, queue_size=10)
     rospy.init_node("intel_d435_stream")
     process_realsense()
