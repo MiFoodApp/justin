@@ -23,7 +23,7 @@ def calculate_object_position(depth, x_center, y_center):
     x = sin(theta) * depth
     y = sin(psi) * depth
     z = cos(theta) * cos(psi) * depth
-    return [x,y,z]
+    return [x,y,z,theta,psi]
 
 def map_coordinates(coords, img_shape):
     return coords
