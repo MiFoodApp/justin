@@ -142,8 +142,8 @@ def process_realsense():
             frame_depth = np.asanyarray(depth_frame.get_data())
 
             # Compare frame shapes
-            print(f'{frame_rgb.shape = }')
-            print(f'{frame_depth.shape = }')
+            print(f'\n\n{frame_rgb.shape = }')
+            print(f'{frame_depth.shape = }\n\n')
 
             results = model(frame_rgb, conf=0.7, show_conf=False, show_labels=False, device=0)
             output = process_detections(results, frame_rgb.shape, depth_frame)

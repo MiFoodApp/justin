@@ -14,6 +14,9 @@ from ultralytics import YOLO
 from pathlib import Path
 import torch
 
+RGB_FOV = [69,42]
+FRAME_SIZE = [640,480]
+
 color_images = []
 depth_images = []
 ir1_images = []
@@ -25,8 +28,12 @@ start = time.time()
 
 img = None
 
+def calc_object_angles(x_center, y_center):
+    theta = x_center * (-RGB_FOV[0]/FRAME_SIZE[0]) + RGB_FOV[0]/2
+    psi = y_center * (-RGB_FOV[1]/FRAME_SIZE[1]) + RGB_FOV[1]/2
+    return [theta, psi]
 
-def resize_frame(frame, size=(640, 640)):
+def resize_frame(frame, size=(FRAME_SIZE[0], FRAME_SIZE[1])):
     """Resize frame to specific dimensions."""
     return cv2.resize(frame, size, interpolation=cv2.INTER_LINEAR)
 
@@ -46,6 +53,11 @@ def process_detections(detections, img_shape):
             mapped_bbox = map_coordinates(box, img_shape)
             x_center = (mapped_bbox[0] + mapped_bbox[2]) / 2
             y_center = (mapped_bbox[1] + mapped_bbox[3]) / 2
+
+            [theta,  psi] = calc_object_angles(x_center, y_center)
+            print(f'\n\n{theta = }')
+            print(f'{psi = }\n\n')
+
             center_point = (x_center, y_center)
 
             detection_data = {
@@ -82,6 +94,7 @@ def process_webcam():
 
     while True:
         ret, frame = cap.read()
+        frame = resize_frame(frame)
         if not ret:
             print(f'{ret = }')
             break
