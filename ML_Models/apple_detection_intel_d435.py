@@ -10,6 +10,20 @@ from std_msgs.msg import Int16MultiArray
 from sensor_msgs.msg import Image as msg_Image
 from cv_bridge import CvBridge, CvBridgeError
 from pathlib import Path
+from math import *
+
+RGB_FOV = [69,42]
+FRAME_SIZE = [640,480]
+
+def calculate_object_position(depth, x_center, y_center):
+    # Calculate angles around x (horizontal and orthogonal to direction of view) and y axis (vertical)
+    theta = x_center * (-RGB_FOV[0]/FRAME_SIZE[0]) + RGB_FOV[0]/2   # Rotation around the y-axis
+    psi = y_center * (-RGB_FOV[1]/FRAME_SIZE[1]) + RGB_FOV[1]/2     # Rotation around the x-axis
+    # Calculate the x- and y-coordinate
+    x = sin(theta) * depth
+    y = sin(psi) * depth
+    z = cos(theta) * cos(psi) * depth
+    return [x,y,z]
 
 def map_coordinates(coords, img_shape):
     return coords
@@ -48,8 +62,13 @@ def process_detections(detections, img_shape, depth_frame):
             mapped_bbox = map_coordinates(box, img_shape)
             x_center = int((mapped_bbox[0] + mapped_bbox[2]) / 2)
             y_center = int((mapped_bbox[1] + mapped_bbox[3]) / 2)
+
             depth_value = get_depth_value(depth_frame, x_center, y_center)
             depth_cm, depth_in = convert_depth_to_units(depth_value)
+
+            object_position = calculate_object_position(depth_cm, x_center, y_center)
+            print(f'\n\n{object_position = }\n\n')
+
             width_pixels = None
             width_cm = None
             width_in = None
@@ -121,8 +140,8 @@ def process_realsense():
     model = YOLO(path)
     pipeline = rs.pipeline()
     config = rs.config()
-    config.enable_stream(rs.stream.color, 640, 480, rs.format.bgr8, 30)
-    config.enable_stream(rs.stream.depth, 640, 480, rs.format.z16, 30)
+    config.enable_stream(rs.stream.color, FRAME_SIZE[0], FRAME_SIZE[1], rs.format.bgr8, 30)
+    config.enable_stream(rs.stream.depth, FRAME_SIZE[0], FRAME_SIZE[1], rs.format.z16, 30)
     pipeline.start(config)
 
     fps = 0
@@ -140,10 +159,6 @@ def process_realsense():
 
             frame_rgb = np.asanyarray(color_frame.get_data())
             frame_depth = np.asanyarray(depth_frame.get_data())
-
-            # Compare frame shapes
-            print(f'\n\n{frame_rgb.shape = }')
-            print(f'{frame_depth.shape = }\n\n')
 
             results = model(frame_rgb, conf=0.7, show_conf=False, show_labels=False, device=0)
             output = process_detections(results, frame_rgb.shape, depth_frame)
