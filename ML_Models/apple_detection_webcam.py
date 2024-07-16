@@ -16,23 +16,10 @@ from pathlib import Path
 import torch
 from torchvision import transforms
 
-path_model = str(Path(__file__).parent.resolve()) + "/AppleV1.pt"
-path_img = str(Path(__file__).parent.resolve())
-model = YOLO(path_model)
-
-cap = cv2.VideoCapture(0, cv2.CAP_V4L2)     # Trigger V4L2 before GStreamer back-end 
-
 color_images = []
 depth_images = []
 ir1_images = []
 ir2_images = []
-
-# Topics of all camera feeds
-color_topic = '/camera/color/image_raw' 
-depth_topic = '/camera/depth/image_raw'
-ir1_topic = '/camera/infra1/image_raw'
-ir2_topic = '/camera/infra2/image_raw'
-
 
 bridge = CvBridge()
 mask = None
@@ -95,8 +82,6 @@ def process_webcam():
     model = YOLO(path)
     cap = cv2.VideoCapture(0, cv2.CAP_V4L2)
 
-    
-
     while True:
         ret, frame = cap.read()
         if not ret:
@@ -119,12 +104,13 @@ def process_webcam():
 
         cv2.imshow('Webcam Stream', frame)
         if cv2.waitKey(1) & 0xFF == ord('q'):
+            print("\n\nCheck\n\n")
             break
 
+    rospy.signal_shutdown("Node Termination")
     cap.release()
     cv2.destroyAllWindows()
 
-
 if __name__ == '__main__':
-    rospy.init_node("depth_image_processor")
+    rospy.init_node("intel_d435_feed")
     process_webcam()
