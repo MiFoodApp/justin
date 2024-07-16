@@ -137,10 +137,16 @@ def process_realsense():
 
             if not color_frame or not depth_frame:
                 continue
-# Test
-            frame = np.asanyarray(color_frame.get_data())
-            results = model(frame, conf=0.7, show_conf=False, show_labels=False, device=0)
-            output = process_detections(results, frame.shape, depth_frame)
+
+            frame_rgb = np.asanyarray(color_frame.get_data())
+            frame_depth = np.asanyarray(depth_frame.get_data())
+
+            # Compare frame shapes
+            print(f'{frame_rgb.shape = }')
+            print(f'{frame_depth.shape = }')
+
+            results = model(frame_rgb, conf=0.7, show_conf=False, show_labels=False, device=0)
+            output = process_detections(results, frame_rgb.shape, depth_frame)
             print_detections(output)
 
             for result in results:
@@ -159,11 +165,11 @@ def process_realsense():
                     # Augment image with rectangle and label
                     label = result.names[int(boxes.cls[0])]
                     confidence = boxes.conf[0]
-                    cv2.rectangle(frame, (x1, y1), (x2, y2), (0, 255, 0), 2)
-                    cv2.putText(frame, f"{label}: {confidence:.2f}", (x1, y1 - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
+                    cv2.rectangle(frame_rgb, (x1, y1), (x2, y2), (0, 255, 0), 2)
+                    cv2.putText(frame_rgb, f"{label}: {confidence:.2f}", (x1, y1 - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
 
 
-            frame = display_frame(frame, results, depth_frame)
+            frame_rgb = display_frame(frame_rgb, results, depth_frame)
             frame_count += 1
             if frame_count >= 10:
                 end_time = time.time()
@@ -171,8 +177,8 @@ def process_realsense():
                 frame_count = 0
                 start_time = end_time
 
-            cv2.putText(frame, f"FPS: {fps:.2f}", (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 2, cv2.LINE_AA)
-            cv2.imshow('RealSense Stream', cv2.resize(frame, (960, 540)))
+            cv2.putText(frame_rgb, f"FPS: {fps:.2f}", (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 2, cv2.LINE_AA)
+            cv2.imshow('RealSense Stream', cv2.resize(frame_rgb, (960, 540)))
             if cv2.waitKey(1) & 0xFF == ord('q'):
                 break
 
