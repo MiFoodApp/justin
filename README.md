@@ -159,7 +159,7 @@ mifoodrobot
 
 * Password for 'https://Justin-Riekehof@github.com':
 ```bash
-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
+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
 ```
 
 * Source the *setup.bash* of the workspace by default:
