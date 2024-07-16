@@ -1,20 +1,18 @@
 #!/usr/bin/env python3
 
 import rospy
+from std_msgs.msg import Int16MultiArray
 from sensor_msgs.msg import Image as msg_Image
 from cv_bridge import CvBridge, CvBridgeError
 import sys
 import os
 import cv2
-from torchvision.io.image import read_image
-from torchvision.transforms.functional import to_pil_image
 import time
 from pathlib import Path
 import cv2
 from ultralytics import YOLO
 from pathlib import Path
 import torch
-from torchvision import transforms
 
 color_images = []
 depth_images = []
@@ -82,6 +80,8 @@ def process_webcam():
     model = YOLO(path)
     cap = cv2.VideoCapture(0, cv2.CAP_V4L2)
 
+    apple_coordinates = Int16MultiArray()
+
     while True:
         ret, frame = cap.read()
         if not ret:
@@ -97,6 +97,15 @@ def process_webcam():
             boxes = result.boxes.cpu().numpy()
             for box in boxes.xyxy:
                 x1, y1, x2, y2 = [int(coord) for coord in box]
+
+                # Publish apple coordinates
+                apple_coordinates.data.append(x1)
+                apple_coordinates.data.append(y1)
+                apple_coordinates.data.append(x2)
+                apple_coordinates.data.append(y2)
+                apple_coordinates_publisher.publish(apple_coordinates)
+
+                # Augment image with rectangle and label
                 label = result.names[int(boxes.cls[0])]
                 confidence = boxes.conf[0]
                 cv2.rectangle(frame, (x1, y1), (x2, y2), (0, 255, 0), 2)
@@ -112,5 +121,6 @@ def process_webcam():
     cv2.destroyAllWindows()
 
 if __name__ == '__main__':
+    apple_coordinates_publisher = rospy.Publisher("apple_coordinates_publisher", Int16MultiArray, queue_size=10)
     rospy.init_node("intel_d435_feed")
     process_webcam()
