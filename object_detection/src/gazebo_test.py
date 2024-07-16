@@ -15,14 +15,12 @@ from ultralytics import YOLO
 from pathlib import Path
 import torch
 from torchvision import transforms
-from math import *
-
-RGB_FOV = [69,42]
-FRAME_SIZE = [640,480]
 
 path_model = str(Path(__file__).parent.resolve()) + "/AppleV1.pt"
 path_img = str(Path(__file__).parent.resolve())
 model = YOLO(path_model)
+
+# cap = cv2.VideoCapture(0, cv2.CAP_V4L2)     # Trigger V4L2 before GStreamer back-end 
 
 one_time = True
 
@@ -44,17 +42,7 @@ start = time.time()
 
 img = None
 
-def calculate_object_position(depth, x_center, y_center):
-    # Calculate angles around x (horizontal and orthogonal to direction of view) and y axis (vertical)
-    theta = x_center * (-RGB_FOV[0]/FRAME_SIZE[0]) + RGB_FOV[0]/2   # Rotation around the y-axis
-    psi = y_center * (-RGB_FOV[1]/FRAME_SIZE[1]) + RGB_FOV[1]/2     # Rotation around the x-axis
-    # Calculate the x- and y-coordinate
-    x = sin(theta) * depth
-    y = sin(psi) * depth
-    z = cos(theta) * cos(psi) * depth
-    return [x,y,z]
-
-def resize_frame(frame, size=(FRAME_SIZE[0], FRAME_SIZE[1])):
+def resize_frame(frame, size=(640, 640)):
     """Resize frame to specific dimensions."""
     return cv2.resize(frame, size, interpolation=cv2.INTER_LINEAR)
 
@@ -103,7 +91,8 @@ def print_detections(detections):
             print()
 
 
-class ImageListener: 
+class ImageListener:
+    
     def __init__(self, topic, encoding):
         self.topic = topic
         self.data = None
@@ -117,33 +106,31 @@ class ImageListener:
         try:
 
             if self.topic == color_topic and data.header.frame_id == 'camera_color_optical_frame': 
-                ## Get object mask
-
+                # Get object mask
                 self.image = bridge.imgmsg_to_cv2(data, self.encoding)
-                self.image = resize_frame(self.image)
-                # cv2.imwrite(f"{path_img}/img.png", img)
                 # img = cv2.imread(f"{path_img}/img.png")
 
-                ## Step 3: Perform classification
-                results = model(self.image, conf=0.5, show_boxes=True, show_conf=True, show_labels=True)
-                output = process_detections(results, self.image.shape)
-                print_detections(output)
+                # Step 3: Perform classification
+                results = model(self.image, conf=0.8, show_boxes=True, show_conf=True, show_labels=True)
+                # output = process_detections(results, img.shape)
+                # print_detections(output)
                 for result in results:
                     boxes = result.boxes.cpu().numpy()
                     for box in boxes.xyxy:
                         x1, y1, x2, y2 = [int(coord) for coord in box]
                         label = result.names[int(boxes.cls[0])]
                         confidence = boxes.conf[0]
-                        cv2.rectangle(self.image, (x1, y1), (x2, y2), (0, 255, 0), 2)
-                        cv2.putText(self.image, f"{label}: {confidence:.2f}", (x1, y1 - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
-            elif self.topic == depth_topic and data.header.frame_id == 'camera_depth_optical_frame':
-                depth_images.append(resize_frame(bridge.imgmsg_to_cv2(data, self.encoding)))
+                        cv2.rectangle(img, (x1, y1), (x2, y2), (0, 255, 0), 2)
+                        cv2.putText(img, f"{label}: {confidence:.2f}", (x1, y1 - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
+            elif self.topic == depth_topic:
+                depth_images.append(bridge.imgmsg_to_cv2(data, self.encoding))
                 self.pix = (data.width, data.height)
             elif self.topic == ir1_topic:
-                ir1_images.append(resize_frame(bridge.imgmsg_to_cv2(data, self.encoding)))
+                ir1_images.append(bridge.imgmsg_to_cv2(data, self.encoding))
             elif self.topic == ir2_topic:
-                ir2_images.append(resize_frame(bridge.imgmsg_to_cv2(data, self.encoding)))
-                
+                ir2_images.append(bridge.imgmsg_to_cv2(data, self.encoding))
+            
+            
 
         except CvBridgeError as e:
             print(e)
@@ -158,15 +145,18 @@ if __name__ == '__main__':
 
     while not rospy.is_shutdown(): 
         if color_pic_listener.image is not None:
+            # print("\n\nCheck\n\n")
             cv2.imshow('Webcam Stream', color_pic_listener.image)
             end = time.time()
-            # print(f'Processing time: {end-start} s')  
+            #print(f'Processing time: {end-start} s')  
             start = time.time()
         if len(depth_images) != 0:
-            cv2.imshow(depth_topic, depth_images.pop())
-        if len(ir1_images) != 0:
+            img = depth_images.pop()
+            if depth_pic_listener.pix == (1280, 720):
+                cv2.imshow(depth_topic, img)
+        elif len(ir1_images) != 0:
             cv2.imshow(ir1_topic, ir1_images.pop())
-        if len(ir2_images) != 0:
+        elif len(ir2_images) != 0:
             cv2.imshow(ir2_topic, ir2_images.pop())
 
         cv2.waitKey(3)
