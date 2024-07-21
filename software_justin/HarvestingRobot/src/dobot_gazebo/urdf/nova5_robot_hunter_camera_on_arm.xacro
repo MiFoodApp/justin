@@ -3,8 +3,9 @@
   <xacro:include filename="camera.xacro"/>
   <xacro:include filename="$(find realsense2_description)/urdf/_d435.urdf.xacro" />
 
-  <!-- SET CAMERA POSITION AND FOV OFFSET HERE -->
+  <!-- SET CAMERA POSE AND FOV OFFSET HERE -->
   <xacro:property name="camera_position" value="0.011150000000000002 0 0.0145"/>
+  <xacro:property name="camera_orientation" value="0 0 0"/>
   <xacro:property name="fov_offset" value="0.00465 0 0"/>
 
    <xacro:property name="platform_type" value="hunter"/>
@@ -592,7 +593,7 @@
   </link>
 
   <joint name="camera_link_joint" type="fixed">
-    <origin rpy="0 0 0" xyz="${camera_position}" />
+    <origin rpy="${camera_orientation}" xyz="${camera_position}" />
     <parent link="camera_bottom_screw_frame" />
     <child link="camera_link" />
   </joint>

@@ -2,6 +2,7 @@
 <launch>
   <arg name="DOBOT_TYPE" default="$(env DOBOT_TYPE)" />
   <arg name="MOBILE_PLATFORM" default="$(env MOBILE_PLATFORM)"/>
+  <arg name="CAMERA_POSITION" default="$(env CAMERA_POSITION)"/>
   <arg name="use_rviz" default="false" />
   <arg name="world" default="" />
   <arg name="world_pose" default="-x 2 -y 2 -z 0 -R 0 -P 0 -Y 0" doc="Pose to spawn the robot at"/>
@@ -9,7 +10,7 @@
   <arg name="model" default="$(find realsense2_description)/urdf/_d435.urdf.xacro"/>
   <param name="robot_description" command="$(find xacro)/xacro $(arg model)" />
   
-  <include file="$(find dobot_gazebo)/launch/$(arg DOBOT_TYPE)_$(arg MOBILE_PLATFORM)_robot_description.xml"/>
+  <include file="$(find dobot_gazebo)/launch/$(arg DOBOT_TYPE)_$(arg MOBILE_PLATFORM)_robot_camera_on_$(arg CAMERA_POSITION)_description.xml"/>
   <!-- <include file="$(find dobot_gazebo)/launch/robot_control.xml"/> -->
 
   <!-- Launch a gazebo world-->

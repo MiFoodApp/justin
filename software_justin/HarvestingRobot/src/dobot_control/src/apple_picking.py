@@ -136,6 +136,7 @@ def main():
 
     target_3_joint_values = [6-TAU*(5/4), 0.82, -2.286, -4.8+TAU, 0.279, -TAU/4]
 
+    apple_position_check = None
 
     while True:
         if apple_position != apple_position_check:  # Only ask for permission for each apple position once
