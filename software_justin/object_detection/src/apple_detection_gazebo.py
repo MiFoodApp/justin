@@ -2,6 +2,7 @@
 
 import rospy
 from sensor_msgs.msg import Image as msg_Image
+from sensor_msgs.msg import PointCloud2
 from cv_bridge import CvBridge, CvBridgeError
 import sys
 import os
@@ -10,12 +11,11 @@ from torchvision.io.image import read_image
 from torchvision.transforms.functional import to_pil_image
 import time
 from pathlib import Path
-import cv2
 from ultralytics import YOLO
-from pathlib import Path
 import torch
 from torchvision import transforms
 from math import *
+import numpy as np
 
 RGB_FOV = [69,42]
 FRAME_SIZE = [640,480]
@@ -45,6 +45,13 @@ mask = None
 start = time.time()
 
 img = None
+
+point_cloud_data = None
+
+def depth_point_cloud_callback(data):
+    print("Check")
+    global point_cloud_data
+    point_cloud_data = data
 
 def calculate_object_position(depth, x_center, y_center):
     # Calculate angles around x (horizontal and orthogonal to direction of view) and y axis (vertical)
@@ -129,7 +136,7 @@ class ImageListener:
                 ## Step 3: Perform classification
                 results = model(self.image, conf=0.5, show_boxes=True, show_conf=True, show_labels=True)
                 output = process_detections(results, self.image.shape)
-                print_detections(output)
+                # print_detections(output)
                 for result in results:
                     boxes = result.boxes.cpu().numpy()
                     for box in boxes.xyxy:
@@ -138,11 +145,10 @@ class ImageListener:
                         confidence = boxes.conf[0]
                         cv2.rectangle(self.image, (x1, y1), (x2, y2), (0, 255, 0), 2)
                         cv2.putText(self.image, f"{label}: {confidence:.2f}", (x1, y1 - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
-            elif self.topic == depth__point_topic:
-                depth_point_images.append(resize_frame(bridge.imgmsg_to_cv2(data, self.encoding)))
             elif self.topic == depth_topic and data.header.frame_id == 'camera_depth_optical_frame':
                 depth_images.append(resize_frame(bridge.imgmsg_to_cv2(data, self.encoding)))
                 self.pix = (data.width, data.height)
+                print(self.pix)
             elif self.topic == ir1_topic:
                 ir1_images.append(resize_frame(bridge.imgmsg_to_cv2(data, self.encoding)))
             elif self.topic == ir2_topic:
@@ -157,19 +163,24 @@ if __name__ == '__main__':
     rospy.init_node("depth_image_processor")
     color_pic_listener = ImageListener(color_topic, "bgr8")
     depth_pic_listener = ImageListener(depth_topic, "16SC1")
-    depth_point_cloud_listener = ImageListener(depth__point_topic, "16SC1")
     ir1_pic_listener = ImageListener(ir1_topic, "8UC1")
     ir2_pic_listener = ImageListener(ir2_topic, "8UC1")
 
+    ## Depth point cloud Subscriber
+    sub_point_cloud = rospy.Subscriber(depth__point_topic, PointCloud2, depth_point_cloud_callback, None, queue_size=10)
+
     while not rospy.is_shutdown(): 
+        if point_cloud_data is not None:
+            print(point_cloud_data.fields[0])
+            # point_cloud_data = np.array(point_cloud_data.data)
+            # print(np.info(point_cloud_data))
+            #print(point_cloud_data)
+            pass
         if color_pic_listener.image is not None:
-            cv2.imshow('Webcam Stream', color_pic_listener.image)
+            cv2.imshow('Camera Stream', color_pic_listener.image)
             end = time.time()
             # print(f'Processing time: {end-start} s')  
             start = time.time()
-        if len(depth_point_images) != 0:
-            print("Check")
-            cv2.imshow(depth__point_topic, depth_point_images.pop())
         if len(depth_images) != 0:
             cv2.imshow(depth_topic, depth_images.pop())
         if len(ir1_images) != 0:
@@ -178,5 +189,4 @@ if __name__ == '__main__':
             cv2.imshow(ir2_topic, ir2_images.pop())
 
         cv2.waitKey(3)
-
     rospy.spin()
