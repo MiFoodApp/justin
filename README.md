@@ -157,7 +157,7 @@ git config credential.helper store
 mifoodrobot
 ```
 
-* Password for 'https://Justin-Riekehof@github.com':
+* Password for 'https://mifood@github.com':
 ```bash
 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
 ```
@@ -172,11 +172,15 @@ echo "source ~/<CATKIN_WS_NAME>/devel/setup.bash" >> ~/.bashrc
 echo "export DOBOT_TYPE=nova5" >> ~/.bashrc
 ```
 
-* Set mobile platform type (panther or hunter):
+* Add "export MOBILE_PLATFORM=<TYPE>" to ~/.bashrc file (types: panther, hunter):
 ```bash
 echo "export MOBILE_PLATFORM=<TYPE>" >> ~/.bashrc
 ```
 
+* Add "export CAMERA_POSITION=<MOUNTING_POSITION>" to ~/.bashrc file (mounting positions: arm, platform):
+```bash
+echo "export CAMERA_POSITION=<MOUNTING_POSITION>" >> ~/.bashrc
+```
 
 * Build the CATKIN workspace:
 ```bash
