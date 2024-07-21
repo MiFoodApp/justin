@@ -28,12 +28,14 @@ one_time = True
 
 color_images = []
 depth_images = []
+depth_point_images = []
 ir1_images = []
 ir2_images = []
 
 # Topics of all camera feeds
 color_topic = '/camera/color/image_raw' 
 depth_topic = '/camera/depth/image_raw'
+depth__point_topic = '/camera/depth/points'
 ir1_topic = '/camera/infra1/image_raw'
 ir2_topic = '/camera/infra2/image_raw'
 
@@ -136,6 +138,8 @@ class ImageListener:
                         confidence = boxes.conf[0]
                         cv2.rectangle(self.image, (x1, y1), (x2, y2), (0, 255, 0), 2)
                         cv2.putText(self.image, f"{label}: {confidence:.2f}", (x1, y1 - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
+            elif self.topic == depth__point_topic:
+                depth_point_images.append(resize_frame(bridge.imgmsg_to_cv2(data, self.encoding)))
             elif self.topic == depth_topic and data.header.frame_id == 'camera_depth_optical_frame':
                 depth_images.append(resize_frame(bridge.imgmsg_to_cv2(data, self.encoding)))
                 self.pix = (data.width, data.height)
@@ -153,6 +157,7 @@ if __name__ == '__main__':
     rospy.init_node("depth_image_processor")
     color_pic_listener = ImageListener(color_topic, "bgr8")
     depth_pic_listener = ImageListener(depth_topic, "16SC1")
+    depth_point_cloud_listener = ImageListener(depth__point_topic, "16SC1")
     ir1_pic_listener = ImageListener(ir1_topic, "8UC1")
     ir2_pic_listener = ImageListener(ir2_topic, "8UC1")
 
@@ -162,6 +167,9 @@ if __name__ == '__main__':
             end = time.time()
             # print(f'Processing time: {end-start} s')  
             start = time.time()
+        if len(depth_point_images) != 0:
+            print("Check")
+            cv2.imshow(depth__point_topic, depth_point_images.pop())
         if len(depth_images) != 0:
             cv2.imshow(depth_topic, depth_images.pop())
         if len(ir1_images) != 0:

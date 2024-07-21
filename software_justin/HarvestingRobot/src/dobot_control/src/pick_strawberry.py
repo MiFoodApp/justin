@@ -159,6 +159,12 @@ display_trajectory_publisher = rospy.Publisher('/move_group/display_planned_path
 # current_pose = arm_group.get_current_pose().pose
 # print(f'{current_pose = }')
 
+## Create Modbus Connection to DH Gripper
+try:
+    subprocess.run("rosservice call /dobot_bringup/srv/ModbusCreate \"ip: '192.168.5.1'\nport: 60000\nslave_id: 0\nis_rtu:\n- true\"", shell=True, check=True, text=True)
+except Exception as e:
+    print(e)
+
 # Define stem positions here
 stem_positions.append([0.3, -0.6, 0.2])
 
