@@ -12,9 +12,10 @@ import geometry_msgs.msg
 from math import pi
 from std_msgs.msg import String
 from moveit_commander.conversions import pose_to_list
-import time
 import math
 from std_msgs.msg import Int16MultiArray
+import subprocess
+from time import sleep
 
 #######################
 ### Dova5 Positions ###
@@ -44,8 +45,8 @@ VELOCITY_SCALING_SLOW = 0.005       # [%]
 VELOCITY_SCALING_MEDIUM = 0.01     # [%]
 VELOCITY_SCALING_FAST = 1.0         # [%]
 
-GRIP_RELEASE = 0.0                  # [m]
-GRIP_GRAB = 0.025                   # [m]
+GRIP_RELEASE = [0.0, 1000]                 # [m]
+GRIP_GRAB = [0.025, 0]                   # [m]
 
 GRIPPER_WAIT_TIME = 1               # [s]
 ARM_WAIT_TIME = 1                   # [s]
@@ -105,12 +106,21 @@ def move_cartesion_path(waypoints, velocity_level):
     arm_group.execute(plan, wait=True)
 
 def go_gripper(pos):
+        # Send command to real gripper via Modbus
+        try:
+            subprocess.run(f"rosservice call /dobot_bringup/srv/SetHoldRegs \"index:\
+                        0\naddr: 256\ncount: 1\nvalTab: '{pos[1]}'\nvaltype: [\'U16\']\"",\
+                        shell=True, check=True, text=True)
+        except Exception as e:
+            print(e) 
+
+        # Send command to virtual gripper
         #rospy.loginfo(f'Going to Gripper Position {pos}')
         joint_goal_gripper = gripper_group.get_current_joint_values()
-        joint_goal_gripper[0] = pos #-0.018 box
-        joint_goal_gripper[1] = pos # 0.009
+        joint_goal_gripper[0] = pos[0] #-0.018 box
+        joint_goal_gripper[1] = pos[0] # 0.009
         gripper_group.go(joint_goal_gripper, wait=True)
-        time.sleep(GRIPPER_WAIT_TIME)
+        sleep(GRIPPER_WAIT_TIME)
         gripper_group.stop()
         #rospy.loginfo(f'Gripper Position Reached')
         
@@ -152,7 +162,7 @@ def main():
                 current_joint_values = arm_group.get_current_joint_values()
                 if current_joint_values != sitting_joint_values:
                     arm_group.go(sitting_joint_values, wait=True)
-                    time.sleep(ARM_WAIT_TIME)
+                    sleep(ARM_WAIT_TIME)
                     arm_group.stop()
 
                 # Calculate smallest rotation angle for local y-axis to intersect with z-axis of stem 
@@ -199,7 +209,7 @@ def main():
                 arm_group.go(target_2_pose.pose, wait=True)
                 go_gripper(GRIP_GRAB)
 
-                time.sleep(10)
+                sleep(10)
 
                 ## Pick strawberry ##
                 rospy.loginfo('\n\nSTEP 4:\tPick strawberry\n\n')
@@ -224,7 +234,7 @@ def main():
                 rospy.loginfo('\n\nSTEP 6:\tMove back to sitting position\n\n')
                 arm_group.go(target_3_joint_values, wait=True)
                 arm_group.go(sitting_joint_values, wait=True)
-                time.sleep(ARM_WAIT_TIME)
+                sleep(ARM_WAIT_TIME)
                 arm_group.stop()
    
     rospy.loginfo('END OF NODE')
@@ -233,7 +243,7 @@ def main():
 
 if __name__ == "__main__":
     moveit_commander.roscpp_initialize(sys.argv)
-    rospy.init_node('pick_apple', anonymous=True)
+    rospy.init_node('pick_apple', anonymous=True) 
 
     sub_apple_position = rospy.Subscriber("apple_coordinates", Int16MultiArray, apple_position_callback)
     # Instantiate a RobotCommander object. This object is the outer-level interface to the robot:
@@ -274,5 +284,11 @@ if __name__ == "__main__":
     # print(robot.get_current_state())
     # current_pose = arm_group.get_current_pose().pose
     # print(f'{current_pose = }')
+
+    ## Create Modbus Connection to DH Gripper
+    try:
+        subprocess.run("rosservice call /dobot_bringup/srv/ModbusCreate \"ip: '192.168.5.1'\nport: 60000\nslave_id: 0\nis_rtu:\n- true\"", shell=True, check=True, text=True)
+    except Exception as e:
+        print(e) 
 
     main()

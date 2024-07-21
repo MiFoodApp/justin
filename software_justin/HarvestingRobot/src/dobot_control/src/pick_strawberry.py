@@ -9,8 +9,9 @@ import geometry_msgs.msg
 from math import pi
 from std_msgs.msg import String
 from moveit_commander.conversions import pose_to_list
-import time
+from time import sleep
 import math
+import subprocess
 
 #######################
 ### Dova5 Positions ###
@@ -40,8 +41,8 @@ VELOCITY_SCALING_SLOW = 0.005       # [%]
 VELOCITY_SCALING_MEDIUM = 0.01     # [%]
 VELOCITY_SCALING_FAST = 1.0         # [%]
 
-GRIP_RELEASE = 0.0                  # [m]
-GRIP_GRAB = 0.025                   # [m]
+GRIP_RELEASE = [0.0, 1000]                 # [m]
+GRIP_GRAB = [0.025, 0]                   # [m]
 
 GRIPPER_WAIT_TIME = 1               # [s]
 ARM_WAIT_TIME = 1                   # [s]
@@ -97,12 +98,21 @@ def move_cartesion_path(waypoints):
     arm_group.execute(plan, wait=True)
 
 def go_gripper(pos):
+                # Send command to real gripper via Modbus
+        try:
+            subprocess.run(f"rosservice call /dobot_bringup/srv/SetHoldRegs \"index:\
+                        0\naddr: 256\ncount: 1\nvalTab: '{pos[1]}'\nvaltype: [\'U16\']\"",\
+                        shell=True, check=True, text=True)
+        except Exception as e:
+            print(e) 
+
+        # Send command to virtual gripper
         #rospy.loginfo(f'Going to Gripper Position {pos}')
         joint_goal_gripper = gripper_group.get_current_joint_values()
-        joint_goal_gripper[0] = pos #-0.018 box
-        joint_goal_gripper[1] = pos # 0.009
+        joint_goal_gripper[0] = pos[0] #-0.018 box
+        joint_goal_gripper[1] = pos[0] # 0.009
         gripper_group.go(joint_goal_gripper, wait=True)
-        time.sleep(GRIPPER_WAIT_TIME)
+        sleep(GRIPPER_WAIT_TIME)
         gripper_group.stop()
         #rospy.loginfo(f'Gripper Position Reached')
         
@@ -185,7 +195,7 @@ go_gripper(GRIP_RELEASE)
 current_joint_values = arm_group.get_current_joint_values()
 if current_joint_values != sitting_joint_values:
     arm_group.go(sitting_joint_values, wait=True)
-    time.sleep(ARM_WAIT_TIME)
+    sleep(ARM_WAIT_TIME)
     arm_group.stop()
 
 counter = 0
@@ -239,7 +249,7 @@ for i in range(counter):
     arm_group.go(target_2_pose.pose, wait=True)
     go_gripper(GRIP_GRAB)
 
-    time.sleep(10)
+    sleep(5)
 
     ## Pick strawberry ##
     rospy.loginfo('\n\nSTEP 4:\tPick strawberry\n\n')
@@ -264,7 +274,7 @@ for i in range(counter):
     rospy.loginfo('\n\nSTEP 6:\tMove back to sitting position\n\n')
     arm_group.go(target_3_joint_values, wait=True)
     arm_group.go(sitting_joint_values, wait=True)
-    time.sleep(ARM_WAIT_TIME)
+    sleep(ARM_WAIT_TIME)
     arm_group.stop()
 
 rospy.loginfo('END OF NODE')
