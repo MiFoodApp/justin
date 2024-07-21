@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+
+<launch>
+
+    <!-- Associate to the robot description parameter, the urdf file that model the robot-->
+    <param name="robot_description" command = "$(find xacro)/xacro --inorder $(find lrwr_description)/urdf/nova5_robot_panther_camera.xacro" />
+
+
+    <!-- Set teh position in empty world-->
+    <arg name="x" default="0" />
+    <arg name="y" default="0" />
+    <arg name="z" default="0" />
+
+    <!-- put world file as argument-->
+    <arg name="world_file" default = "$(find lrwr_environment)/worlds/test_environment.world" />
+
+    <!-- Launch Gezabo world in paused-->
+    <include file = "$(find gazebo_ros)/launch/empty_world.launch" >
+        <arg name="use_sim_time" value="true"/>
+        <arg name="debug" value="false"/>
+        <arg name="gui" value="true"/>
+        <arg name="paused" value="true" />
+        <arg name="world_name" value="$(arg world_file)"/>
+    </include>   
+
+    <!-- Spawn the robot using the package gazebo_ros-->
+    <node name="spawn_the_robot" pkg="gazebo_ros" type="spawn_model"  output="screen" args="-urdf -param robot_description -model nova5_panther_camera -x $(arg x) -y $(arg y) -z $(arg z)" />
+    
+
+    <!-- Load the controllers-->
+    <rosparam command="load" file="$(find lrwr_gazebo)/config/robot_control_nova5_panther.yaml"/>
+
+
+     <!-- Load the node controller manager-->
+    <node name="controller_spawner" pkg="controller_manager" type="spawner"  
+            output="screen" respawn="false" ns="/nova5_robot"
+            args="joint_state_controller
+                joint_controller
+                gripper
+                --timeout 60 ">        
+    </node>
+
+    <!-- Convert joint states to TF transform for rviz and rqt-->
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"  
+            output="screen" respawn="false">
+            <remap from="/joint_states" to="/nova5_robot/joint_states"/>
+        
+    </node>
+
+    <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
+    <remap from="/joint_states" to="/nova5_robot/joint_states"/>
+
+    <!-- Open Rviz with Moveit-->
+    <include file= "$(find lrwr_dobot_moveit_config)/launch/planning_context.launch" >
+        <arg name="load_robot_description" value="false" />
+    </include>
+
+    <include file= "$(find lrwr_dobot_moveit_config)/launch/move_group.launch" >
+        <arg name="publish_monitored_planning_scene" value="true" />
+    </include>
+
+    <include file= "$(find lrwr_dobot_moveit_config)/launch/moveit_rviz.launch" >
+        <arg name="rviz_config" value="$(find lrwr_dobot_moveit_config)/launch/moveit.rviz" />
+    </include>
+    
+
+
+
+    
+</launch>
