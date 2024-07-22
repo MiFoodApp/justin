@@ -106,11 +106,11 @@ def move_cartesion_path(waypoints, velocity_level):
     arm_group.execute(plan, wait=True)
 
 def go_gripper(pos):
-        # Send command to real gripper via Modbus
+                # Send command to real gripper via Modbus
+
+        print(pos[1])
         try:
-            subprocess.run(f"rosservice call /dobot_bringup/srv/SetHoldRegs \"index:\
-                        0\naddr: 256\ncount: 1\nvalTab: '{pos[1]}'\nvaltype: [\'U16\']\"",\
-                        shell=True, check=True, text=True)
+            subprocess.run(f"rosservice call /dobot_bringup/srv/SetHoldRegs \"index: 0\naddr: 259\ncount: 1\nvalTab: '{pos[1]}'\nvaltype: [\'U16\']\"", shell=True, check=True, text=True)
         except Exception as e:
             print(e) 
 
@@ -286,9 +286,51 @@ if __name__ == "__main__":
     # print(f'{current_pose = }')
 
     ## Create Modbus Connection to DH Gripper
-    try:
-        subprocess.run("rosservice call /dobot_bringup/srv/ModbusCreate \"ip: '192.168.5.1'\nport: 60000\nslave_id: 0\nis_rtu:\n- true\"", shell=True, check=True, text=True)
-    except Exception as e:
-        print(e) 
+    
+try:
+    subprocess.run("rosservice call /dobot_bringup/srv/ModbusCreate \"ip: '192.168.5.1'\nport: 60000\nslave_id: 0\nis_rtu:\n- true\"", shell=True, check=True, text=True)
+except Exception as e:
+    print(e)  
+
+try:
+    subprocess.run("sleep 1", shell=True, check=True, text=True)
+except Exception as e:
+    print(e)  
+
+try:
+    subprocess.run("rosservice call /dobot_bringup/srv/SetHoldRegs \"index: 0\naddr: 256\ncount: 1\nvalTab: '165'\nvaltype: [\'U16\']\"", shell=True, check=True, text=True)
+except Exception as e:
+    print(e)  
+
+try:
+    subprocess.run("sleep 2", shell=True, check=True, text=True)
+except Exception as e:
+    print(e)  
+
+try:
+    subprocess.run("rosservice call /dobot_bringup/srv/SetHoldRegs \"index: 0\naddr: 259\ncount: 1\nvalTab: '1000'\nvaltype: [\'U16\']\"", shell=True, check=True, text=True)
+except Exception as e:
+    print(e)  
+
+try:
+    subprocess.run("sleep 1", shell=True, check=True, text=True)
+except Exception as e:
+    print(e)  
+
+try:
+    subprocess.run("rosservice call /dobot_bringup/srv/SetHoldRegs \"index: 0\naddr: 259\ncount: 1\nvalTab: '000'\nvaltype: [\'U16\']\"", shell=True, check=True, text=True)
+except Exception as e:
+    print(e)  
+
+try:
+    subprocess.run("sleep 1", shell=True, check=True, text=True)
+except Exception as e:
+    print(e)  
+
+try:
+    subprocess.run("rosservice call /dobot_bringup/srv/SetHoldRegs \"index: 0\naddr: 259\ncount: 1\nvalTab: '1000'\nvaltype: [\'U16\']\"", shell=True, check=True, text=True)
+except Exception as e:
+    print(e)  
+
 
     main()

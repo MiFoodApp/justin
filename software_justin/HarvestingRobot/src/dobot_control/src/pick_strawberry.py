@@ -99,8 +99,10 @@ def move_cartesion_path(waypoints):
 
 def go_gripper(pos):
                 # Send command to real gripper via Modbus
+
+        print(pos[1])
         try:
-            subprocess.run(f"rosservice call /dobot_bringup/srv/SetHoldRegs \"index: 0\naddr: 256\ncount: 1\nvalTab: '{pos[1]}'\nvaltype: [\'U16\']\"", shell=True, check=True, text=True)
+            subprocess.run(f"rosservice call /dobot_bringup/srv/SetHoldRegs \"index: 0\naddr: 259\ncount: 1\nvalTab: '{pos[1]}'\nvaltype: [\'U16\']\"", shell=True, check=True, text=True)
         except Exception as e:
             print(e) 
 
@@ -157,19 +159,51 @@ display_trajectory_publisher = rospy.Publisher('/move_group/display_planned_path
 # current_pose = arm_group.get_current_pose().pose
 # print(f'{current_pose = }')
 
-## Create Modbus Connection to DH Gripper
 try:
     subprocess.run("rosservice call /dobot_bringup/srv/ModbusCreate \"ip: '192.168.5.1'\nport: 60000\nslave_id: 0\nis_rtu:\n- true\"", shell=True, check=True, text=True)
-    subprocess.run("sleep 5", shell=True, check=True, text=True)
+except Exception as e:
+    print(e)  
+
+try:
+    subprocess.run("sleep 1", shell=True, check=True, text=True)
+except Exception as e:
+    print(e)  
+
+try:
     subprocess.run("rosservice call /dobot_bringup/srv/SetHoldRegs \"index: 0\naddr: 256\ncount: 1\nvalTab: '165'\nvaltype: [\'U16\']\"", shell=True, check=True, text=True)
-    subprocess.run("sleep 5", shell=True, check=True, text=True)
-    subprocess.run("rosservice call /dobot_bringup/srv/SetHoldRegs \"index: 0\naddr: 259\ncount: 1\nvalTab: '1000'\nvaltype: [\'U16\']\"", shell=True, check=True, text=True)
-    subprocess.run("sleep 5", shell=True, check=True, text=True)
-    subprocess.run("rosservice call /dobot_bringup/srv/SetHoldRegs \"index: 0\naddr: 259\ncount: 1\nvalTab: '0'\nvaltype: [\'U16\']\"", shell=True, check=True, text=True)
-    subprocess.run("sleep 5", shell=True, check=True, text=True)
+except Exception as e:
+    print(e)  
+
+try:
+    subprocess.run("sleep 2", shell=True, check=True, text=True)
+except Exception as e:
+    print(e)  
+
+try:
     subprocess.run("rosservice call /dobot_bringup/srv/SetHoldRegs \"index: 0\naddr: 259\ncount: 1\nvalTab: '1000'\nvaltype: [\'U16\']\"", shell=True, check=True, text=True)
 except Exception as e:
     print(e)  
+
+try:
+    subprocess.run("sleep 1", shell=True, check=True, text=True)
+except Exception as e:
+    print(e)  
+
+try:
+    subprocess.run("rosservice call /dobot_bringup/srv/SetHoldRegs \"index: 0\naddr: 259\ncount: 1\nvalTab: '000'\nvaltype: [\'U16\']\"", shell=True, check=True, text=True)
+except Exception as e:
+    print(e)  
+
+try:
+    subprocess.run("sleep 1", shell=True, check=True, text=True)
+except Exception as e:
+    print(e)  
+
+try:
+    subprocess.run("rosservice call /dobot_bringup/srv/SetHoldRegs \"index: 0\naddr: 259\ncount: 1\nvalTab: '1000'\nvaltype: [\'U16\']\"", shell=True, check=True, text=True)
+except Exception as e:
+    print(e)  
+
 
 # Define stem positions here
 stem_positions.append([0.3, -0.6, 0.2])
