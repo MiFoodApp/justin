@@ -28,7 +28,7 @@ public:
 
     void open_gripper(moveit::planning_interface::MoveGroupInterface& move_gripper)
     {
-        move_gripper.setJointValueTarget("fiinger1_joint", 0.0);
+        move_gripper.setJointValueTarget("finger1_joint", 0.0);
         move_gripper.move();
     }
 

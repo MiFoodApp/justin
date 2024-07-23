@@ -16,6 +16,7 @@ import torch
 from torchvision import transforms
 from math import *
 import numpy as np
+import sensor_msgs.point_cloud2 as pc2
 
 RGB_FOV = [69,42]
 FRAME_SIZE = [640,480]
@@ -171,7 +172,8 @@ if __name__ == '__main__':
 
     while not rospy.is_shutdown(): 
         if point_cloud_data is not None:
-            print(point_cloud_data.fields[0])
+            # print(point_cloud_data.data)
+            print(list(pc2.read_points(point_cloud_data, field_names=("x", "y", "z"), skip_nans=True)))
             # point_cloud_data = np.array(point_cloud_data.data)
             # print(np.info(point_cloud_data))
             #print(point_cloud_data)
