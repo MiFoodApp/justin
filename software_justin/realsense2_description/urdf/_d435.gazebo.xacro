@@ -127,12 +127,12 @@
         <depthOpticalframeName>${depth_optical_frame}</depthOpticalframeName>
         <infrared1OpticalframeName>${infrared1_optical_frame}</infrared1OpticalframeName>
         <infrared2OpticalframeName>${infrared2_optical_frame}</infrared2OpticalframeName>
-        <rangeMinDepth>0.2</rangeMinDepth>
-        <rangeMaxDepth>10.0</rangeMaxDepth>
+        <rangeMinDepth>0.01</rangeMinDepth>
+        <rangeMaxDepth>100000.0</rangeMaxDepth>
         <pointCloud>${publish_pointcloud}</pointCloud>
         <pointCloudTopicName>depth/color/points</pointCloudTopicName>
-        <pointCloudCutoff>0.25</pointCloudCutoff>
-        <pointCloudCutoffMax>9.0</pointCloudCutoffMax>
+        <pointCloudCutoff>0.02</pointCloudCutoff>
+        <pointCloudCutoffMax>100001.0</pointCloudCutoffMax>
       </plugin>
     </gazebo>
 

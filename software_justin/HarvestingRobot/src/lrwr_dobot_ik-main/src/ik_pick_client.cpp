@@ -62,7 +62,6 @@ public:
     void pick(moveit::planning_interface::MoveGroupInterface& move_group)
     {
         
-
         orientation.setRPY(-tau/4, 0, -tau);
         pick_position.orientation = tf2::toMsg(orientation);
         

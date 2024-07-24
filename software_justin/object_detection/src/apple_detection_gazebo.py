@@ -50,7 +50,6 @@ img = None
 point_cloud_data = None
 
 def depth_point_cloud_callback(data):
-    print("Check")
     global point_cloud_data
     point_cloud_data = data
 
@@ -137,7 +136,7 @@ class ImageListener:
                 ## Step 3: Perform classification
                 results = model(self.image, conf=0.5, show_boxes=True, show_conf=True, show_labels=True)
                 output = process_detections(results, self.image.shape)
-                # print_detections(output)
+
                 for result in results:
                     boxes = result.boxes.cpu().numpy()
                     for box in boxes.xyxy:
@@ -149,7 +148,6 @@ class ImageListener:
             elif self.topic == depth_topic and data.header.frame_id == 'camera_depth_optical_frame':
                 depth_images.append(resize_frame(bridge.imgmsg_to_cv2(data, self.encoding)))
                 self.pix = (data.width, data.height)
-                print(self.pix)
             elif self.topic == ir1_topic:
                 ir1_images.append(resize_frame(bridge.imgmsg_to_cv2(data, self.encoding)))
             elif self.topic == ir2_topic:
@@ -172,11 +170,17 @@ if __name__ == '__main__':
 
     while not rospy.is_shutdown(): 
         if point_cloud_data is not None:
-            # print(point_cloud_data.data)
-            print(list(pc2.read_points(point_cloud_data, field_names=("x", "y", "z"), skip_nans=True)))
+            # print(f'{point_cloud_data.height = }')
+            # print(f'{point_cloud_data.width = }')
+            # print(f'{point_cloud_data.fields = }')
+            print(len(list(pc2.read_points(point_cloud_data, field_names=("x","y","z"), skip_nans=True))))
+            try:
+                print(list(pc2.read_points(point_cloud_data, field_names=("z"), skip_nans=True))[153600]) 
+            except:
+                pass
             # point_cloud_data = np.array(point_cloud_data.data)
             # print(np.info(point_cloud_data))
-            #print(point_cloud_data)
+            # print(point_cloud_data)
             pass
         if color_pic_listener.image is not None:
             cv2.imshow('Camera Stream', color_pic_listener.image)
@@ -184,7 +188,10 @@ if __name__ == '__main__':
             # print(f'Processing time: {end-start} s')  
             start = time.time()
         if len(depth_images) != 0:
-            cv2.imshow(depth_topic, depth_images.pop())
+            img = depth_images.pop()
+            #print(img.shape)
+            cv2.imshow(depth_topic, img)
+            # cv2.imshow(depth_topic, depth_images.pop())
         if len(ir1_images) != 0:
             cv2.imshow(ir1_topic, ir1_images.pop())
         if len(ir2_images) != 0:
