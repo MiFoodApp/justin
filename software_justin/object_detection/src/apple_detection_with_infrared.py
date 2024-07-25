@@ -11,6 +11,7 @@ from sensor_msgs.msg import Image as msg_Image
 from cv_bridge import CvBridge, CvBridgeError
 from pathlib import Path
 from math import *
+from geometry_msgs.msg import Point
 
 #RGB_FOV = [69,42]
 RGB_FOV = [87,58]
@@ -77,20 +78,16 @@ def process_detections(detections, img_shape, depth_frame):
     
             # Publish object coordinates
             apple_position = calculate_object_position(depth_cm, x_center, y_center)
-            apple_coordinates = Int16MultiArray()
-
-            print(apple_position)
-            print(apple_position)
-            print(apple_coordinates)
+            apple_coordinates = Point()
 
             # XYZ Apple
-            apple_coordinates.data.append(apple_position[0])
-            apple_coordinates.data.append(apple_position[1])
-            apple_coordinates.data.append(apple_position[2])
-            # Theta and Psi Apple
-            apple_coordinates.data.append(apple_position[3])
-            apple_coordinates.data.append(apple_position[4])
+            apple_coordinates.x = apple_position[0]
+            apple_coordinates.y = apple_position[1]
+            apple_coordinates.z = apple_position[2]
             apple_coordinates_publisher.publish(apple_coordinates)
+
+            print(apple_position)
+            print(apple_coordinates)
 
             width_pixels = None
             width_cm = None
@@ -222,6 +219,7 @@ def process_realsense():
             cv2.imshow('RealSense Stream', cv2.resize(bgrinfrared_frame, (960, 540)))
             if cv2.waitKey(1) & 0xFF == ord('q'):
                 break
+                
 
     finally:
         pipeline.stop()
@@ -229,6 +227,6 @@ def process_realsense():
         rospy.signal_shutdown("Signal Shutdown")
 
 if __name__ == "__main__":
-    apple_coordinates_publisher = rospy.Publisher("apple_coordinates", Int16MultiArray, queue_size=10)
+    apple_coordinates_publisher = rospy.Publisher("/object_position_camera_frame", Point, queue_size=10)
     rospy.init_node("intel_d435_stream")
     process_realsense()
