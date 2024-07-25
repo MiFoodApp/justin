@@ -12,17 +12,27 @@ from cv_bridge import CvBridge, CvBridgeError
 from pathlib import Path
 from math import *
 
-RGB_FOV = [69,42]
+#RGB_FOV = [69,42]
+RGB_FOV = [87,58]
 FRAME_SIZE = [640,480]
 
 def calculate_object_position(depth, x_center, y_center):
-    # Calculate angles around x (horizontal and orthogonal to direction of view) and y axis (vertical)
-    theta = x_center * (-RGB_FOV[0]/FRAME_SIZE[0]) + RGB_FOV[0]/2   # Rotation around the y-axis
-    psi = y_center * (-RGB_FOV[1]/FRAME_SIZE[1]) + RGB_FOV[1]/2     # Rotation around the x-axis
+    # Calculate angles around x (horizontal and orthogonal to direction of view) and y axis (vertical) Right hand rule
+    theta = x_center * (-RGB_FOV[0]/FRAME_SIZE[0]) + RGB_FOV[0]/2   # Rotation around the y-axis   left is + and right is -
+    psi = y_center * (-RGB_FOV[1]/FRAME_SIZE[1]) + RGB_FOV[1]/2     # Rotation around the x-axis   down is - and up is +
+    
+    radtheta = radians(theta)
+    radpsi = radians(psi)
+
+    print("theta is:")
+    print(radtheta)
+    print("psi is")
+    print(radpsi)
     # Calculate the x- and y-coordinate
-    x = sin(theta) * depth
-    y = sin(psi) * depth
-    z = cos(theta) * cos(psi) * depth
+    x = -sin(radtheta) * depth
+    y =  sin(radpsi) * depth
+    z = cos(radtheta) * cos(radpsi) * depth
+
     return [x,y,z,theta,psi]
 
 def map_coordinates(coords, img_shape):
@@ -68,6 +78,10 @@ def process_detections(detections, img_shape, depth_frame):
             # Publish object coordinates
             apple_position = calculate_object_position(depth_cm, x_center, y_center)
             apple_coordinates = Int16MultiArray()
+
+            print(apple_position)
+            print(apple_position)
+            print(apple_coordinates)
 
             # XYZ Apple
             apple_coordinates.data.append(apple_position[0])
@@ -134,6 +148,8 @@ def display_frame(frame, results, depth_frame):
             cv2.putText(frame, class_name, (x1, y1 - 40), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 2)
             depth_label = f"Depth: {depth_value:.2f}m ({depth_cm:.2f}cm / {depth_in:.2f}in)"
             cv2.putText(frame, depth_label, (x1, y1 - 20), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 0, 0), 2)
+            cv2.circle(frame, (x_center , y_center), 5, (0, 0, 255), -1)
+
             if masks is not None:
                 mask = masks[i].cpu().numpy()
                 width_pixels = calculate_width(mask, y_center)
@@ -145,12 +161,15 @@ def display_frame(frame, results, depth_frame):
     return frame
 
 def process_realsense():
-    path = str(Path(__file__).parent.resolve()) + "/AppleV1.pt"
+    path = str(Path(__file__).parent.resolve()) + "/yolov10n.pt"
     model = YOLO(path)
     pipeline = rs.pipeline()
     config = rs.config()
-    config.enable_stream(rs.stream.infrared, 1, FRAME_SIZE[0], FRAME_SIZE[1], rs.format.bgr8, 30)
+    config.enable_stream(rs.stream.infrared, 1, FRAME_SIZE[0], FRAME_SIZE[1], rs.format.y8, 30)
+    config.enable_stream(rs.stream.infrared, 2, FRAME_SIZE[0], FRAME_SIZE[1], rs.format.y8, 30)
     config.enable_stream(rs.stream.depth, FRAME_SIZE[0], FRAME_SIZE[1], rs.format.z16, 30)
+
+
     pipeline.start(config)
 
     fps = 0
@@ -161,18 +180,23 @@ def process_realsense():
         while True:
             frames = pipeline.wait_for_frames()
             infrared_frame = frames.get_infrared_frame(1)
+            infrared_frameb = frames.get_infrared_frame(2)
             depth_frame = frames.get_depth_frame()
-
-            infrared_frame = cv2.cvtColor(infrared_frame, cv2.COLOR_GRAY2BGR)
 
             if not infrared_frame or not depth_frame:
                 continue
 
             frame_infrared = np.asanyarray(infrared_frame.get_data())
+            frame_infraredb = np.asanyarray(infrared_frameb.get_data())
             frame_depth = np.asanyarray(depth_frame.get_data())
 
-            results = model(frame_infrared, conf=0.7, show_conf=False, show_labels=False, device=0)
-            output = process_detections(results, frame_infrared.shape, depth_frame)
+
+
+
+            bgrinfrared_frame = cv2.cvtColor(frame_infrared, cv2.COLOR_GRAY2BGR)
+
+            results = model(bgrinfrared_frame, conf=0.7, show_conf=False, show_labels=False, device=0)
+            output = process_detections(results, bgrinfrared_frame.shape, depth_frame)
             print_detections(output)
 
             for result in results:
@@ -182,11 +206,11 @@ def process_realsense():
                     # Augment image with rectangle and label
                     label = result.names[int(boxes.cls[0])]
                     confidence = boxes.conf[0]
-                    cv2.rectangle(frame_infrared, (x1, y1), (x2, y2), (0, 255, 0), 2)
-                    cv2.putText(frame_infrared, f"{label}: {confidence:.2f}", (x1, y1 - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
+                    cv2.rectangle(bgrinfrared_frame, (x1, y1), (x2, y2), (0, 255, 0), 2)
+                    cv2.putText(bgrinfrared_frame, f"{label}: {confidence:.2f}", (x1, y1 - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
 
 
-            frame_infrared = display_frame(frame_infrared, results, depth_frame)
+            bgrinfrared_frame = display_frame(bgrinfrared_frame, results, depth_frame)
             frame_count += 1
             if frame_count >= 10:
                 end_time = time.time()
@@ -194,8 +218,8 @@ def process_realsense():
                 frame_count = 0
                 start_time = end_time
 
-            cv2.putText(frame_infrared, f"FPS: {fps:.2f}", (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 2, cv2.LINE_AA)
-            cv2.imshow('RealSense Stream', cv2.resize(frame_infrared, (960, 540)))
+            cv2.putText(bgrinfrared_frame, f"FPS: {fps:.2f}", (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 2, cv2.LINE_AA)
+            cv2.imshow('RealSense Stream', cv2.resize(bgrinfrared_frame, (960, 540)))
             if cv2.waitKey(1) & 0xFF == ord('q'):
                 break
 
