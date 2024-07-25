@@ -149,7 +149,7 @@ def process_realsense():
     model = YOLO(path)
     pipeline = rs.pipeline()
     config = rs.config()
-    config.enable_stream(rs.stream.color, FRAME_SIZE[0], FRAME_SIZE[1], rs.format.bgr8, 30)
+    config.enable_stream(rs.stream.infrared, 1, FRAME_SIZE[0], FRAME_SIZE[1], rs.format.bgr8, 30)
     config.enable_stream(rs.stream.depth, FRAME_SIZE[0], FRAME_SIZE[1], rs.format.z16, 30)
     pipeline.start(config)
 
@@ -160,17 +160,19 @@ def process_realsense():
     try:
         while True:
             frames = pipeline.wait_for_frames()
-            color_frame = frames.get_color_frame()
+            infrared_frame = frames.get_infrared_frame(1)
             depth_frame = frames.get_depth_frame()
 
-            if not color_frame or not depth_frame:
+            infrared_frame = cv2.cvtColor(infrared_frame, cv2.COLOR_GRAY2BGR)
+
+            if not infrared_frame or not depth_frame:
                 continue
 
-            frame_rgb = np.asanyarray(color_frame.get_data())
+            frame_infrared = np.asanyarray(infrared_frame.get_data())
             frame_depth = np.asanyarray(depth_frame.get_data())
 
-            results = model(frame_rgb, conf=0.7, show_conf=False, show_labels=False, device=0)
-            output = process_detections(results, frame_rgb.shape, depth_frame)
+            results = model(frame_infrared, conf=0.7, show_conf=False, show_labels=False, device=0)
+            output = process_detections(results, frame_infrared.shape, depth_frame)
             print_detections(output)
 
             for result in results:
@@ -180,11 +182,11 @@ def process_realsense():
                     # Augment image with rectangle and label
                     label = result.names[int(boxes.cls[0])]
                     confidence = boxes.conf[0]
-                    cv2.rectangle(frame_rgb, (x1, y1), (x2, y2), (0, 255, 0), 2)
-                    cv2.putText(frame_rgb, f"{label}: {confidence:.2f}", (x1, y1 - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
+                    cv2.rectangle(frame_infrared, (x1, y1), (x2, y2), (0, 255, 0), 2)
+                    cv2.putText(frame_infrared, f"{label}: {confidence:.2f}", (x1, y1 - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
 
 
-            frame_rgb = display_frame(frame_rgb, results, depth_frame)
+            frame_infrared = display_frame(frame_infrared, results, depth_frame)
             frame_count += 1
             if frame_count >= 10:
                 end_time = time.time()
@@ -192,8 +194,8 @@ def process_realsense():
                 frame_count = 0
                 start_time = end_time
 
-            cv2.putText(frame_rgb, f"FPS: {fps:.2f}", (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 2, cv2.LINE_AA)
-            cv2.imshow('RealSense Stream', cv2.resize(frame_rgb, (960, 540)))
+            cv2.putText(frame_infrared, f"FPS: {fps:.2f}", (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 2, cv2.LINE_AA)
+            cv2.imshow('RealSense Stream', cv2.resize(frame_infrared, (960, 540)))
             if cv2.waitKey(1) & 0xFF == ord('q'):
                 break
 
