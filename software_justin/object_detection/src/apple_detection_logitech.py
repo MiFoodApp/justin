@@ -1,0 +1,228 @@
+#!/usr/bin/env python3
+
+import cv2
+import pyrealsense2 as rs
+from ultralytics import YOLO
+import numpy as np
+import time
+import rospy
+from std_msgs.msg import Int16MultiArray
+from sensor_msgs.msg import Image as msg_Image
+from cv_bridge import CvBridge, CvBridgeError
+from pathlib import Path
+from math import *
+from geometry_msgs.msg import Point
+
+#RGB_FOV = [69,42]
+RGB_FOV = [87,58]
+FRAME_SIZE = [640,480]
+
+def calculate_object_position(depth, x_center, y_center):
+    # Calculate angles around x (horizontal and orthogonal to direction of view) and y axis (vertical) Right hand rule
+    theta = x_center * (-RGB_FOV[0]/FRAME_SIZE[0]) + RGB_FOV[0]/2   # Rotation around the y-axis   left is + and right is -
+    psi = y_center * (-RGB_FOV[1]/FRAME_SIZE[1]) + RGB_FOV[1]/2     # Rotation around the x-axis   down is - and up is +
+    
+    radtheta = radians(theta)
+    radpsi = radians(psi)
+
+    print("theta is:")
+    print(radtheta)
+    print("psi is")
+    print(radpsi)
+    # Calculate the x- and y-coordinate
+    x = -sin(radtheta) * depth
+    y =  sin(radpsi) * depth
+    z = cos(radtheta) * cos(radpsi) * depth
+
+    return [x,y,z,theta,psi]
+
+def map_coordinates(coords, img_shape):
+    return coords
+
+def get_depth_value(depth_frame, x, y):
+    return depth_frame.get_distance(x, y)
+
+def convert_depth_to_units(depth_value):
+    depth_cm = depth_value * 100  
+    depth_in = depth_cm / 2.54    
+    return depth_cm, depth_in
+
+def calculate_width(mask, y_center):
+    if mask.ndim == 2:
+        center_row = mask[y_center]
+    elif mask.ndim == 3:
+        center_row = mask[y_center, :]
+    else:
+        return None
+    true_indices = np.where(center_row > 0.5)[0]  
+    if len(true_indices) > 0:
+        left_edge = true_indices[0]
+        right_edge = true_indices[-1]
+        return right_edge - left_edge
+    return None
+
+def process_detections(detections, img_shape):
+    output = []
+    for detection in detections:
+        boxes = detection.boxes.cpu().numpy()
+        masks = detection.masks.data if detection.masks is not None else None
+        if len(boxes) == 0:
+            continue
+        for i, (box, conf, cls) in enumerate(zip(boxes.xyxy, boxes.conf, boxes.cls)):
+            class_name = detection.names[int(cls)]
+            mapped_bbox = map_coordinates(box, img_shape)
+            x_center = int((mapped_bbox[0] + mapped_bbox[2]) / 2)
+            y_center = int((mapped_bbox[1] + mapped_bbox[3]) / 2)
+            depth_value = 0.95
+            depth_cm, depth_in = convert_depth_to_units(depth_value)
+    
+            # Publish object coordinates
+            apple_position = calculate_object_position(depth_cm, x_center, y_center)
+            apple_coordinates = Point()
+
+            # XYZ Apple
+            apple_coordinates.x = apple_position[0]
+            apple_coordinates.y = -apple_position[2]
+            apple_coordinates.z = apple_position[1]
+
+            #apple_coordinates.x = 00
+            #apple_coordinates.y = -90
+            #apple_coordinates.z = 30
+            apple_coordinates_publisher.publish(apple_coordinates)
+
+            print(apple_position)
+            print(apple_coordinates)
+
+            width_pixels = None
+            width_cm = None
+            width_in = None
+            if masks is not None:
+                mask = masks[i].cpu().numpy()
+                width_pixels = calculate_width(mask, y_center)
+                if width_pixels is not None:
+                    width_cm = width_pixels * (depth_cm / img_shape[1])
+                    width_in = width_cm / 2.54
+
+            detection_data = {
+                "class": class_name,
+                "bbox": mapped_bbox,
+                "confidence": conf,
+                "center_point": (x_center, y_center),
+                "depth_meters": depth_value,
+                "depth_cm": depth_cm,
+                "depth_in": depth_in,
+                "width_pixels": width_pixels,
+                "width_cm": width_cm,
+                "width_in": width_in
+            }
+
+            output.append(detection_data)
+    return output
+
+def print_detections(detections):
+    if not detections:
+        print("No objects detected.")
+    else:
+        for i, detection in enumerate(detections, start=1):
+            print(f"Detection {i}:")
+            print(f" Class: {detection['class']}")
+            print(f" Bounding Box: {detection['bbox']}")
+            print(f" Center Point: {detection['center_point']}")
+            print(f" Depth: {detection['depth_meters']:.2f} meters ({detection['depth_cm']:.2f} cm / {detection['depth_in']:.2f} inches)")
+            print(f" Confidence: {detection['confidence']:.2f}")
+            if detection['width_pixels'] is not None:
+                print(f" Width: {detection['width_pixels']} pixels ({detection['width_cm']:.2f} cm / {detection['width_in']:.2f} inches)")
+            print()
+
+def display_frame(frame, results):
+    for result in results:
+        boxes = result.boxes.cpu().numpy()
+        masks = result.masks.data if result.masks is not None else None
+        for i, (box, cls) in enumerate(zip(boxes.xyxy, boxes.cls)):
+            x1, y1, x2, y2 = map(int, box[:4])
+            class_name = result.names[int(cls)]
+            x_center = int((x1 + x2) / 2)
+            y_center = int((y1 + y2) / 2)
+            depth_value = 0.95
+            depth_cm, depth_in = convert_depth_to_units(depth_value)
+            cv2.rectangle(frame, (x1, y1), (x2, y2), (0, 255, 0), 2)
+            cv2.putText(frame, class_name, (x1, y1 - 40), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 2)
+            depth_label = f"Depth: {depth_value:.2f}m ({depth_cm:.2f}cm / {depth_in:.2f}in)"
+            cv2.putText(frame, depth_label, (x1, y1 - 20), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 0, 0), 2)
+            cv2.circle(frame, (x_center , y_center), 5, (0, 0, 255), -1)
+
+            if masks is not None:
+                mask = masks[i].cpu().numpy()
+                width_pixels = calculate_width(mask, y_center)
+                if width_pixels is not None:
+                    width_cm = width_pixels * (depth_cm / frame.shape[1])
+                    width_in = width_cm / 2.54
+                    width_label = f"Width: {width_cm:.2f}cm / {width_in:.2f}in"
+                    cv2.putText(frame, width_label, (x1, y1), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 2)
+    return frame
+
+def resize_frame(frame, size=(FRAME_SIZE[0], FRAME_SIZE[1])):
+    """Resize frame to specific dimensions."""
+    return cv2.resize(frame, size, interpolation=cv2.INTER_LINEAR)
+
+def process_realsense():
+    path = str(Path(__file__).parent.resolve()) + "/yolov10n.pt"
+    model = YOLO(path)
+    cap = cv2.VideoCapture(2, cv2.CAP_V4L2)
+
+   
+    fps = 0
+    frame_count = 0
+    start_time = time.time()
+
+    try:
+        while True:
+            ret, frame = cap.read()
+            frame = resize_frame(frame)
+            if not ret:
+                print(f'{ret = }')
+                break
+
+            frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+            bgrinfrared_frame = cv2.cvtColor(frame, cv2.COLOR_GRAY2BGR)
+
+
+
+
+            results = model(bgrinfrared_frame, conf=0.7, show_conf=False, show_labels=False, device=0)
+            output = process_detections(results, bgrinfrared_frame.shape)
+            print_detections(output)
+
+            for result in results:
+                boxes = result.boxes.cpu().numpy()
+                for box in boxes.xyxy:
+                    x1, y1, x2, y2 = [int(coord) for coord in box]
+                    # Augment image with rectangle and label
+                    label = result.names[int(boxes.cls[0])]
+                    confidence = boxes.conf[0]
+                    cv2.rectangle(bgrinfrared_frame, (x1, y1), (x2, y2), (0, 255, 0), 2)
+                    cv2.putText(bgrinfrared_frame, f"{label}: {confidence:.2f}", (x1, y1 - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
+
+
+            bgrinfrared_frame = display_frame(bgrinfrared_frame, results)
+            frame_count += 1
+            if frame_count >= 10:
+                end_time = time.time()
+                fps = frame_count / (end_time - start_time)
+                frame_count = 0
+                start_time = end_time
+
+            cv2.putText(bgrinfrared_frame, f"FPS: {fps:.2f}", (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 2, cv2.LINE_AA)
+            cv2.imshow('RealSense Stream', cv2.resize(bgrinfrared_frame, (960, 540)))
+            if cv2.waitKey(1) & 0xFF == ord('q'):
+                break
+                
+
+    finally:
+        cv2.destroyAllWindows()
+        rospy.signal_shutdown("Signal Shutdown")
+
+if __name__ == "__main__":
+    apple_coordinates_publisher = rospy.Publisher("/object_position_camera_frame", Point, queue_size=10)
+    rospy.init_node("intel_d435_stream")
+    process_realsense()
