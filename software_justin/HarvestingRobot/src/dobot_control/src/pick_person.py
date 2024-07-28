@@ -57,7 +57,7 @@ BOX_X = -0.5                        # [m]
 TAU = 2*pi
 
 wait_time: float = 0.0
-apple_position: float = [0.0, 0.0, 0.0]
+apple_position: float = [0.0, 0.9, 0.3]
  
 class Pose:
     def __init__(self, position_x: float, position_y: float, position_z: float,  
@@ -75,9 +75,9 @@ class Pose:
         self.pose.orientation.w = orientation_w
 
 def apple_position_callback(data):
-    apple_position[0] = data.x
-    apple_position[1] = data.y
-    apple_position[2] = data.z
+    apple_position[0] = data.x/100
+    apple_position[1] = data.y/100
+    apple_position[2] = data.z/100
 
 def execute_target_movement_rrt(target):
     arm_group.set_pose_target(target.pose)
@@ -150,7 +150,8 @@ def main():
         if apple_position != apple_position_check:  # Only ask for permission for each apple position once
             apple_position_check = apple_position
             print(f'Apple Position: {apple_position_check}')
-            is_picking_authorized = input("Should the apple be picked? (Y/N): ").upper()
+            #is_picking_authorized = input("Should the apple be picked? (Y/N): ").upper()
+            is_picking_authorized = "Y"
 
             if is_picking_authorized == "Y":
                 # Trigger gripper release at beginning of every trajectory for safety
@@ -207,7 +208,7 @@ def main():
                 arm_group.go(target_2_pose.pose, wait=True)
                 go_gripper(GRIP_GRAB)
 
-                sleep(10)
+                sleep(1)
 
                 ## Pick strawberry ##
                 rospy.loginfo('\n\nSTEP 4:\tPick strawberry\n\n')
@@ -234,6 +235,7 @@ def main():
                 arm_group.go(sitting_joint_values, wait=True)
                 sleep(ARM_WAIT_TIME)
                 arm_group.stop()
+                main()
    
     rospy.loginfo('END OF NODE')
     rospy.signal_shutdown("Signal Shutdown")
@@ -302,16 +304,6 @@ if __name__ == "__main__":
 
     try:
         subprocess.run("sleep 2", shell=True, check=True, text=True)
-    except Exception as e:
-        print(e)  
-
-    try:
-        subprocess.run("rosservice call /dobot_bringup/srv/SetHoldRegs \"index: 0\naddr: 259\ncount: 1\nvalTab: '1000'\nvaltype: [\'U16\']\"", shell=True, check=True, text=True)
-    except Exception as e:
-        print(e)  
-
-    try:
-        subprocess.run("sleep 1", shell=True, check=True, text=True)
     except Exception as e:
         print(e)  
 

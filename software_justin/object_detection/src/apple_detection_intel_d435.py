@@ -140,7 +140,7 @@ def display_frame(frame, results, depth_frame):
     return frame
 
 def process_realsense():
-    path = str(Path(__file__).parent.resolve()) + "/AppleV1.pt"
+    path = str(Path(__file__).parent.resolve()) + "/yolov10n.pt"
     model = YOLO(path)
     pipeline = rs.pipeline()
     config = rs.config()

@@ -82,8 +82,12 @@ def process_detections(detections, img_shape, depth_frame):
 
             # XYZ Apple
             apple_coordinates.x = apple_position[0]
-            apple_coordinates.y = apple_position[1]
-            apple_coordinates.z = apple_position[2]
+            apple_coordinates.y = -apple_position[2]
+            apple_coordinates.z = apple_position[1]
+
+            apple_coordinates.x = 00
+            apple_coordinates.y = 80
+            apple_coordinates.z = 30
             apple_coordinates_publisher.publish(apple_coordinates)
 
             print(apple_position)
