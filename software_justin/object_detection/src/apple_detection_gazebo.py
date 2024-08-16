@@ -21,7 +21,7 @@ import sensor_msgs.point_cloud2 as pc2
 RGB_FOV = [69,42]
 FRAME_SIZE = [640,480]
 
-path_model = str(Path(__file__).parent.resolve()) + "/AppleV1.pt"
+path_model = str(Path(__file__).parent.resolve()) + "/yolov8n.pt"
 path_img = str(Path(__file__).parent.resolve())
 model = YOLO(path_model)
 
@@ -134,17 +134,19 @@ class ImageListener:
                 # img = cv2.imread(f"{path_img}/img.png")
 
                 ## Step 3: Perform classification
-                results = model(self.image, conf=0.5, show_boxes=True, show_conf=True, show_labels=True)
-                output = process_detections(results, self.image.shape)
+                # results = model(self.image, conf=0.5, show_boxes=True, show_conf=True, show_labels=True)
+                # output = process_detections(results, self.image.shape)
 
-                for result in results:
-                    boxes = result.boxes.cpu().numpy()
-                    for box in boxes.xyxy:
-                        x1, y1, x2, y2 = [int(coord) for coord in box]
-                        label = result.names[int(boxes.cls[0])]
-                        confidence = boxes.conf[0]
-                        cv2.rectangle(self.image, (x1, y1), (x2, y2), (0, 255, 0), 2)
-                        cv2.putText(self.image, f"{label}: {confidence:.2f}", (x1, y1 - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
+                # for result in results:
+                #     boxes = result.boxes.cpu().numpy()
+                #     for box in boxes.xyxy:
+                #         x1, y1, x2, y2 = [int(coord) for coord in box]
+                #         label = result.names[int(boxes.cls[0])]
+                #         confidence = boxes.conf[0]
+                #         cv2.rectangle(self.image, (x1, y1), (x2, y2), (0, 255, 0), 2)
+                #         cv2.putText(self.image, f"{label}: {confidence:.2f}", (x1, y1 - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
+            
+            
             elif self.topic == depth_topic and data.header.frame_id == 'camera_depth_optical_frame':
                 depth_images.append(resize_frame(bridge.imgmsg_to_cv2(data, self.encoding)))
                 self.pix = (data.width, data.height)
@@ -156,6 +158,8 @@ class ImageListener:
 
         except CvBridgeError as e:
             print(e)
+            print(22222222) 
+
             return
 
 if __name__ == '__main__':
@@ -173,7 +177,7 @@ if __name__ == '__main__':
             # print(f'{point_cloud_data.height = }')
             # print(f'{point_cloud_data.width = }')
             # print(f'{point_cloud_data.fields = }')
-            print(len(list(pc2.read_points(point_cloud_data, field_names=("x","y","z"), skip_nans=True))))
+            # print(len(list(pc2.read_points(point_cloud_data, field_names=("x","y","z"), skip_nans=True))))
             try:
                 print(list(pc2.read_points(point_cloud_data, field_names=("z"), skip_nans=True))[153600]) 
             except:
@@ -184,6 +188,13 @@ if __name__ == '__main__':
             pass
         if color_pic_listener.image is not None:
             cv2.imshow('Camera Stream', color_pic_listener.image)
+
+            img_ir1f = cv2.flip(color_pic_listener.image, 0) 
+            cv2.imshow("flip",img_ir1f)
+
+            cv2.imshow("grayimage",cv2.cvtColor(color_pic_listener.image, cv2.COLOR_BGR2GRAY))
+
+
             end = time.time()
             # print(f'Processing time: {end-start} s')  
             start = time.time()
@@ -193,9 +204,12 @@ if __name__ == '__main__':
             cv2.imshow(depth_topic, img)
             # cv2.imshow(depth_topic, depth_images.pop())
         if len(ir1_images) != 0:
-            cv2.imshow(ir1_topic, ir1_images.pop())
+            img_ir1 = ir1_images.pop()
+            cv2.imshow(ir1_topic, img_ir1)
         if len(ir2_images) != 0:
-            cv2.imshow(ir2_topic, ir2_images.pop())
+            img_ir2 = ir2_images.pop()
+            cv2.imshow(ir2_topic, img_ir2)
+            #cv2.imshow(ir2_topic, ir2_images.pop())
 
         cv2.waitKey(3)
     rospy.spin()

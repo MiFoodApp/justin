@@ -25,6 +25,8 @@ def calculate_object_position(depth, x_center, y_center):
     radtheta = radians(theta)
     radpsi = radians(psi)
 
+    print("different object")
+
     print("theta is:")
     print(radtheta)
     print("psi is")
@@ -54,7 +56,7 @@ def get_output_layers(net):
 def draw_prediction(img, class_id, confidence, x, y, x_plus_w, y_plus_h):
     label = str(classes[class_id])
     color = COLORS[class_id]
-    color = [0, 255 ,0]
+    color = [0, 55 ,0]
     print(class_id)
     print(label)
     print(color)
@@ -81,13 +83,15 @@ def draw_prediction(img, class_id, confidence, x, y, x_plus_w, y_plus_h):
     apple_coordinates.y = -apple_position[2]
     apple_coordinates.z = apple_position[1]
 
-    #apple_coordinates.x = 00
-    #apple_coordinates.y = -90
-    #apple_coordinates.z = 30
+    apple_coordinates.x = 00
+    apple_coordinates.y = 90
+    apple_coordinates.z = 30
     apple_coordinates_publisher.publish(apple_coordinates)
 
     print(apple_position)
     print(apple_coordinates)
+    print("different frame")
+
 
 
 
@@ -194,6 +198,7 @@ while True:
 
     outb.write(frame)
 
+    cv2.namedWindow("object detection", cv2.WINDOW_NORMAL) 
 
     cv2.imshow("object detection", cv2.resize(frame,(720,480)))
     if cv2.waitKey(1) & 0xFF == ord('q'):

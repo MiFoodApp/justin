@@ -3,6 +3,12 @@ import pyrealsense2 as rs
 from ultralytics import YOLO
 import numpy as np
 import time
+from pathlib import Path
+
+start_time = time.time()
+
+path= str(Path(__file__).parent.resolve())
+pathb= path.replace('\\','/')
 
 def map_coordinates(coords, img_shape):
     return coords
@@ -110,7 +116,8 @@ def display_frame(frame, results, depth_frame):
     return frame
 
 def process_realsense():
-    model = YOLO("C:/Users/Bozzy/Desktop/MiFood/Applev6.pt")  # Update Model Path
+    path = str(Path(__file__).parent.resolve()) + "/yolov8n-seg.pt"
+    model = YOLO(path)  # Update Model Path
     pipeline = rs.pipeline()
     config = rs.config()
     config.enable_stream(rs.stream.color, 640, 480, rs.format.bgr8, 30)

@@ -16,7 +16,7 @@ from pathlib import Path
 import torch
 from torchvision import transforms
 
-path_model = str(Path(__file__).parent.resolve()) + "/AppleV1.pt"
+path_model = str(Path(__file__).parent.resolve()) + "/yolov8n.pt"
 path_img = str(Path(__file__).parent.resolve())
 model = YOLO(path_model)
 
@@ -122,7 +122,7 @@ class ImageListener:
                         confidence = boxes.conf[0]
                         cv2.rectangle(img, (x1, y1), (x2, y2), (0, 255, 0), 2)
                         cv2.putText(img, f"{label}: {confidence:.2f}", (x1, y1 - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
-            elif self.topic == depth_topic:
+            elif self.topic == depth_topic and data.header.frame_id == 'camera_depth_optical_frame':
                 depth_images.append(bridge.imgmsg_to_cv2(data, self.encoding))
                 self.pix = (data.width, data.height)
             elif self.topic == ir1_topic:
@@ -152,8 +152,7 @@ if __name__ == '__main__':
             start = time.time()
         if len(depth_images) != 0:
             img = depth_images.pop()
-            if depth_pic_listener.pix == (1280, 720):
-                cv2.imshow(depth_topic, img)
+            cv2.imshow(depth_topic, img)
         elif len(ir1_images) != 0:
             cv2.imshow(ir1_topic, ir1_images.pop())
         elif len(ir2_images) != 0:

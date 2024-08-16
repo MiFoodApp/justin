@@ -146,9 +146,9 @@ def display_frame(frame, results, depth_frame):
             depth_value = get_depth_value(depth_frame, x_center, y_center)
             depth_cm, depth_in = convert_depth_to_units(depth_value)
             cv2.rectangle(frame, (x1, y1), (x2, y2), (0, 255, 0), 2)
-            cv2.putText(frame, class_name, (x1, y1 - 40), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 2)
+            cv2.putText(frame, class_name, (x1, y1 - 60), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 2)
             depth_label = f"Depth: {depth_value:.2f}m ({depth_cm:.2f}cm / {depth_in:.2f}in)"
-            cv2.putText(frame, depth_label, (x1, y1 - 20), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 0, 0), 2)
+            cv2.putText(frame, depth_label, (x1, y1 - 40), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 0, 0), 2)
             cv2.circle(frame, (x_center , y_center), 5, (0, 0, 255), -1)
 
             if masks is not None:
@@ -208,7 +208,7 @@ def process_realsense():
                     label = result.names[int(boxes.cls[0])]
                     confidence = boxes.conf[0]
                     cv2.rectangle(bgrinfrared_frame, (x1, y1), (x2, y2), (0, 255, 0), 2)
-                    cv2.putText(bgrinfrared_frame, f"{label}: {confidence:.2f}", (x1, y1 - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
+                    cv2.putText(bgrinfrared_frame, f"{label}: {confidence:.2f}", (x1, y1 - 20), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
 
 
             bgrinfrared_frame = display_frame(bgrinfrared_frame, results, depth_frame)

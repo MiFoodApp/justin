@@ -146,9 +146,9 @@ def display_frame(frame, results):
             depth_value = 0.95
             depth_cm, depth_in = convert_depth_to_units(depth_value)
             cv2.rectangle(frame, (x1, y1), (x2, y2), (0, 255, 0), 2)
-            cv2.putText(frame, class_name, (x1, y1 - 40), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 2)
+            cv2.putText(frame, class_name, (x1, y1 - 70), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 2)
             depth_label = f"Depth: {depth_value:.2f}m ({depth_cm:.2f}cm / {depth_in:.2f}in)"
-            cv2.putText(frame, depth_label, (x1, y1 - 20), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 0, 0), 2)
+            cv2.putText(frame, depth_label, (x1, y1 - 50), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 0, 0), 2)
             cv2.circle(frame, (x_center , y_center), 5, (0, 0, 255), -1)
 
             if masks is not None:
@@ -158,7 +158,7 @@ def display_frame(frame, results):
                     width_cm = width_pixels * (depth_cm / frame.shape[1])
                     width_in = width_cm / 2.54
                     width_label = f"Width: {width_cm:.2f}cm / {width_in:.2f}in"
-                    cv2.putText(frame, width_label, (x1, y1), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 2)
+                    cv2.putText(frame, width_label, (x1, y1 - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 2)
     return frame
 
 def resize_frame(frame, size=(FRAME_SIZE[0], FRAME_SIZE[1])):
@@ -166,7 +166,7 @@ def resize_frame(frame, size=(FRAME_SIZE[0], FRAME_SIZE[1])):
     return cv2.resize(frame, size, interpolation=cv2.INTER_LINEAR)
 
 def process_realsense():
-    path = str(Path(__file__).parent.resolve()) + "/yolov10n.pt"
+    path = str(Path(__file__).parent.resolve()) + "/yolov8n-seg.pt"
     model = YOLO(path)
     cap = cv2.VideoCapture(2, cv2.CAP_V4L2)
 
@@ -183,9 +183,10 @@ def process_realsense():
                 print(f'{ret = }')
                 break
 
-            frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-            bgrinfrared_frame = cv2.cvtColor(frame, cv2.COLOR_GRAY2BGR)
+            framegray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+            bgrinfrared_frame = cv2.cvtColor(framegray, cv2.COLOR_GRAY2BGR)
 
+            bgrinfrared_frame = frame
 
 
 
@@ -201,7 +202,7 @@ def process_realsense():
                     label = result.names[int(boxes.cls[0])]
                     confidence = boxes.conf[0]
                     cv2.rectangle(bgrinfrared_frame, (x1, y1), (x2, y2), (0, 255, 0), 2)
-                    cv2.putText(bgrinfrared_frame, f"{label}: {confidence:.2f}", (x1, y1 - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
+                    cv2.putText(bgrinfrared_frame, f"{label}: {confidence:.2f}", (x1, y1 - 30), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 155, 0), 2)
 
 
             bgrinfrared_frame = display_frame(bgrinfrared_frame, results)
@@ -211,6 +212,9 @@ def process_realsense():
                 fps = frame_count / (end_time - start_time)
                 frame_count = 0
                 start_time = end_time
+
+            cv2.namedWindow("RealSense Stream", cv2.WINDOW_NORMAL) 
+
 
             cv2.putText(bgrinfrared_frame, f"FPS: {fps:.2f}", (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 2, cv2.LINE_AA)
             cv2.imshow('RealSense Stream', cv2.resize(bgrinfrared_frame, (960, 540)))

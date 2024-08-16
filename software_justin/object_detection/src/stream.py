@@ -47,7 +47,7 @@ def print_detections(detections):
             print()
 
 def process_webcam():
-    path = str(Path(__file__).parent.resolve()) + "/AppleV1.pt"
+    path = str(Path(__file__).parent.resolve()) + "/yolov8n.pt"
     model = YOLO(path)
     cap = cv2.VideoCapture(0, cv2.CAP_V4L2)
 
