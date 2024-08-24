@@ -260,6 +260,7 @@ if __name__ == '__main__':
 
             results = model(instance_color_pic, show=True , conf=0.7, show_conf=True, show_labels=True, device=0)
 
+            norder = 0
 
             xyxys = []
             confidences = []
@@ -285,11 +286,15 @@ if __name__ == '__main__':
 
                 for box in xyxys[-1]:
                     cv2.rectangle(instance_color_pic, (int(box[0]), int(box[1])), (int(box[2]), int(box[3])), (0, 255, 0), 2)
+                    x_center = int((box[0] + box[2]) / 2)
+                    y_center = int((box[1] + box[3]) / 2)
                     center_point = (x_center, y_center)
-
                     cv2.circle(instance_color_pic, center_point, 5, (0, 0, 255), -1)
                     cv2.circle(instance_color_pic, (x_center, int(box[1])), 5, (155, 0, 255), -1)
-                    
+                    cv2.putText(instance_color_pic, f'{norder}', (int(box[0]), int(box[1]) - 50), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 100, 0), 2)
+                    cv2.circle(instance_color_pic, (x_center , y_center), 5, (0, 0, 255), -1)
+                    norder+=1
+                    print(norder)
 
                 # for ids in class_ids:
                 #     ids= ids.astype(int)
