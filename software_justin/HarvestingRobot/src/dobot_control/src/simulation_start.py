@@ -11,13 +11,29 @@ import time
 
 def simulation_launch():
     try:
+        #subprocess.run("roslaunch dobot_control simulation.launch", shell=True, check=True, text=True)
         subprocess.Popen(['gnome-terminal', '--', 'bash', '-c', 'roslaunch dobot_control simulation.launch'])
+    except Exception as e:
+        print(f"Error launching arm: {e}")
+
+# def simulation_launch():
+#     try:
+#         subprocess.Popen(['gnome-terminal', '--', 'bash', '-c', 'python3 /home/mifood/catkin_ws_nova5/src/justin/software_justin/HarvestingRobot/src/dobot_control/src/simulation_start.py'])
+#     except Exception as e:
+#         print(f"Error launching arm: {e}")
+        
+        
+def follow_launch():
+    try:
+        subprocess.Popen(['gnome-terminal', '--', 'bash', '-c', 'source ~/catkin_ws_nova5/devel/setup.bash && python3 /home/mifood/catkin_ws_nova5/src/justin/software_justin/object_detection/src/apple_detection_webcam_yv4.py'])
+        subprocess.Popen(['gnome-terminal', '--', 'bash', '-c', 'rosrun dobot_control follow_person.py'])
     except Exception as e:
         print(f"Error launching arm: {e}")
 
 def follow_human():
     try:
-        subprocess.Popen(['gnome-terminal', '--', 'bash', '-c', 'source ~/catkin_ws_dobot/devel/setup.bash && python3 ~/catkin_ws_dobot/src/dobot_control/src/follow_person.py'])
+        subprocess.Popen(['gnome-terminal', '--', 'bash', '-c', 'source ~/catkin_ws_nova5/devel/setup.bash && python3 /home/mifood/catkin_ws_nova5/src/justin/software_justin/object_detection/src/apple_detection_webcam_yv4.py'])
+        subprocess.Popen(['gnome-terminal', '--', 'bash', '-c', 'source ~/catkin_ws_nova5/devel/setup.bash && python3 ~/catkin_ws_nova5/src/dobot_control/src/follow_person.py'])
     except Exception as e:
         print(f"Error starting socket connection: {e}")
 
@@ -49,9 +65,12 @@ def main():
     root = tk.Tk()
     root.title("MIFOOD Robot Interface")
 
-    root.geometry("400x200")
+    root.geometry("640x480")
 
     start_custom_launch_button = tk.Button(root, text="Start Simulation", command=simulation_launch)
+    start_custom_launch_button.pack()
+    
+    start_custom_launch_button = tk.Button(root, text="Start Following", command=follow_launch)
     start_custom_launch_button.pack()
 
     start_micro_controller_button = tk.Button(root, text="Follow Human", command=follow_human)
@@ -75,9 +94,16 @@ def main():
 
     # subprocess.run("cd",text=True, check=True, shell=True)
     #subprocess.run("code", check=True, text=True, shell=True)
-    time.sleep(3)
-    simulation_launch()
+
     root.mainloop()  
 
 if __name__ == "__main__":
+    subprocess.Popen(['gnome-terminal', '--', 'bash', '-c', 'rosversion -d'])
+
+    #time.sleep(20)
+    simulation_launch()
+    
+    time.sleep(20)
+    follow_launch()
     main()
+    
