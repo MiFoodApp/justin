@@ -3,13 +3,12 @@
   <xacro:include filename="camera.xacro"/>
   <xacro:include filename="$(find realsense2_description)/urdf/_d435.urdf.xacro" />
 
-  <!-- SET CAMERA POSITION AND FOV OFFSET HERE -->
-  <!-- <xacro:property name="camera_position" value="0.011150000000000002 0 0.0145"/> -->
-  <xacro:property name="camera_position" value="0.011150000000000002 0 0"/>
-  <xacro:property name="camera_orientation" value="0 0 0"/>
+  <!-- SET CAMERA POSE AND FOV OFFSET HERE -->
+  <xacro:property name="camera_position" value="0 -0.5 0.25"/>
+  <xacro:property name="camera_orientation" value="0 0 ${-pi/2}"/>
   <xacro:property name="fov_offset" value="0.00465 0 0"/>
 
-   <xacro:property name="platform_type" value="panther"/>
+   <xacro:property name="platform_type" value="hunter"/>
    <!-- PLATFORM TYPES
    panther
    hunter
@@ -85,14 +84,14 @@
 
   <link name="mobile_platform_link">
     <visual>
-      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <origin xyz="-0.03 0 -0.15" rpy="0 0 0"/>
       <geometry>
          <mesh
-          filename="package://dobot_description/meshes/nova5/${platform_type}.stl" scale="0.001 0.001 0.001"/>
+          filename="package://dobot_description/meshes/nova5/${platform_type}.stl"/>
       </geometry>
     </visual>
     <inertial>
-      <origin xyz="0 0 0.04" rpy="0 0 0"/>
+      <origin xyz="-0.03 0 -0.15" rpy="0 0 0"/>
       <mass value="0.01"/>
       <inertia ixx="0.00308109148952278"
         ixy="-4.0369958400766E-08"
@@ -122,7 +121,7 @@
     name="robot_joint"
     type="fixed">
     <origin
-      xyz="0 0 0.5"
+      xyz="0 0 0.17"
       rpy="0 0 0" />
     <parent
       link="mobile_platform_link" />
@@ -560,16 +559,17 @@
     </collision>
   </link>
 
+  <joint name="gripper_joint" type="fixed">
+    <parent link="Link6"/>
+    <child link="base_link_gripper"/>
+    <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+  </joint>
+
   <link name="camera_bottom_screw_frame" />
 
-  <!-- <joint name="camera_joint" type="fixed">
-      <origin rpy="0 -1.57 0" xyz="0.065 0 0" />
-      <parent link="base_link_gripper" />
-      <child link="camera_bottom_screw_frame" />
-  </joint> -->
   <joint name="camera_joint" type="fixed">
-      <origin rpy="0 0 -1.57" xyz="0 -0.360 0.02" />
-      <parent link="base_link" />
+      <origin rpy="0 0 0" xyz="0 0 0" />
+      <parent link="mobile_platform_link" />
       <child link="camera_bottom_screw_frame" />
   </joint>
 
@@ -598,29 +598,15 @@
       </inertial>
   </link>
 
- 
-   <!-- Change camera position-->
-  <!-- <joint name="camera_link_joint" type="fixed">
-    <origin rpy="0 0 0" xyz="${camera_position}" />
-    <parent link="camera_bottom_screw_frame" />
-    <child link="camera_link" />
-  </joint> -->
-
-    
-  <!-- <xacro:sensor_d435 name="camera" topics_ns="camera" parent="base_link_gripper" publish_pointcloud="true">
-    <origin xyz="0 0 0" rpy="0 0 0" />
-  </xacro:sensor_d435>   -->
-
   <joint name="camera_link_joint" type="fixed">
     <origin rpy="${camera_orientation}" xyz="${camera_position}" />
     <parent link="camera_bottom_screw_frame" />
     <child link="camera_link" />
   </joint>
 
-  <xacro:sensor_d435 name="camera" topics_ns="camera" parent="base_link" publish_pointcloud="true">
+  <xacro:sensor_d435 name="camera" topics_ns="camera" parent="base_link_gripper" publish_pointcloud="true">
     <origin xyz="0 0 0" rpy="0 0 0" />
   </xacro:sensor_d435>  
-
 
   <link
     name="finger1_link">
@@ -738,28 +724,12 @@
       upper="0.025"
       effort="${limit}"
       velocity="${limit}" />
-    <mimic
+    <!-- <mimic
       joint="finger1_joint"
       multiplier="1"
-      offset="0" />
+      offset="0" /> -->
       <dynamics damping="0" friction="0"/>
   </joint>
-
-  <joint name="gripper_joint" type="fixed">
-    <parent link="Link6"/>
-    <child link="base_link_gripper"/>
-    <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
-  </joint>
-
-  <!-- create a virtual fixed joint for having the point of the picking of the gripper-->
-
- <link name="picking_point" />
- <joint name="picking_joint" type="fixed">
-    <parent link="Link6"/>
-    <child link="picking_point"/>
-    <origin xyz="0.0 0.0 0.12" rpy="0 0 0"/>
-  </joint>
-
   
  <xacro:macro name="robot_transmission" params="joint_name">
     <transmission name="${joint_name}_trans">
@@ -804,30 +774,5 @@
     <contact_topic>__default_topic__</contact_topic>
   </plugin>
 </gazebo>
-
-
-    <!-- Added Gazebo plugin for grippers -->
-    <xacro:macro name="mimic_joint_plugin_gazebo" params="parent_joint mimic_joint has_pid:=false multiplier:=1.0 offset:=0 sensitiveness:=0.0 max_effort:=200 robot_namespace:='/nova5_robot'">
-            <gazebo>
-                <plugin name="${mimic_joint}_mimic_joint_plugin" filename="libroboticsgroup_upatras_gazebo_mimic_joint_plugin.so">
-                    <joint>${parent_joint}</joint>
-                    <mimicJoint>${mimic_joint}</mimicJoint>
-                    <xacro:if value="${has_pid}">
-                        <hasPID />
-                    </xacro:if>
-                    <multiplier>${multiplier}</multiplier>
-                    <offset>${offset}</offset>
-                    <sensitiveness>${sensitiveness}</sensitiveness>
-                    <maxEffort>${max_effort}</maxEffort>
-                    <xacro:unless value="${robot_namespace == '/nova5_robot'}">
-                        <robotNamespace>($robot_namespace)</robotNamespace>
-                    </xacro:unless>
-                </plugin>
-            </gazebo>
-    </xacro:macro>
-        
-
-    <xacro:mimic_joint_plugin_gazebo  parent_joint="finger1_link" mimic_joint="finger2_link" 
-                                            has_pid="false" multiplier="1.0" max_effort="200" />
 
 </robot>

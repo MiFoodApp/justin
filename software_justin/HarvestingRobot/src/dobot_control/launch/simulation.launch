@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Launch a gazebo world-->
 <launch>
-
+    
     <!-- arguments for the urdf xacro file, rviz visualization and namespace -->
+    <arg name="ARM_NUMBER" default="$(env ARM_NUMBER)"/>
     <arg name="model" default="$(find realsense2_description)/urdf/_d435.urdf.xacro"/>
     <param name="robot_description" command="$(find xacro)/xacro --inorder $(arg model) use_nominal_extrinsics:=true add_plug:=true" />
 
@@ -13,7 +14,7 @@
     <param name="use_gui" value="$(arg gui)" />
     <node name="rviz" pkg="rviz" type="rviz" args="-d $(find realsense2_description)/rviz/urdf.rviz" required="true" />
 
-    <include file="$(find dobot_gazebo)/launch/gazebo.launch">
+    <include file="$(find dobot_gazebo)/launch/gazebo_$(arg ARM_NUMBER)_arms.launch">
         <arg name="world" value=""/>
         <arg name="model" value="$(arg model)" />
     </include>
