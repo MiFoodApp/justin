@@ -38,6 +38,12 @@ sudo apt install ros-noetic-effort-controllers
 sudo apt install ros-noetic-joint-trajectory-controller
 ```
 ```bash
+sudo apt install ros-noetic-xacro
+```
+```bash
+sudo apt-get install ros-noetic-gazebo-ros-pkgs ros-noetic-gazebo-ros-control
+```
+```bash
 sudo apt install python3-pip
 ```
 ```bash
